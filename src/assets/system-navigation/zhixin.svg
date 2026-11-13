@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <g transform="translate(10 10) scale(.9375)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="var(--gx-text-primary, #03091B)"><path vector-effect="non-scaling-stroke" stroke-width="1.4" d="M10 22H6a3 3 0 0 0-3 3v32q13-6 29 2 16-8 29-2V25a3 3 0 0 0-3-3h-4M32 49v10"/><path vector-effect="non-scaling-stroke" stroke-width="1.4" d="M29 43h6"/></g>
+    <g stroke="var(--gx-focus, #CC0000)" color="var(--gx-focus, #CC0000)"><path vector-effect="non-scaling-stroke" stroke-width="1.4" d="M24 31a10 10 0 1 1 16 0q-3 2-3 7H27q0-5-3-7ZM32 4v4M17 9l3 3M47 9l-3 3M14 21h4M46 21h4"/></g>
+  </g>
+</svg>

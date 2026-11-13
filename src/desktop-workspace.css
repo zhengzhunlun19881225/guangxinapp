@@ -1,0 +1,30 @@
+/* Desktop keeps a live phone preview beside the component specification. */
+@media(min-width:1200px){
+ .app-shell{display:grid;grid-template-columns:180px 375px minmax(0,1fr);gap:24px;align-items:start;justify-content:stretch;padding:24px 24px 48px;min-height:100dvh}
+ .app-shell>.desktop-rail{position:static;left:auto;top:auto;width:auto;max-height:calc(100dvh - 72px);margin:0}
+ .app-shell>.desktop-rail .rail-brand{font-size:20px;gap:6px}
+ .app-shell>.device{width:375px;height:min(812px,calc(100dvh - 72px));min-height:0;margin:0;box-shadow:0 16px 56px #1e293b12,0 0 0 1px #fff}
+ .desktop-spec-panel{position:relative;min-width:0;height:calc(100dvh - 72px);overflow:hidden;border:1px solid #e2e5ed;border-radius:20px;background:#f7f8fc;--app-zoom:1}
+ .desktop-spec-scroll{height:100%;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;outline:none}
+ .desktop-spec-panel .mobile-guide{padding:0 24px 28px}
+ .desktop-spec-panel .guide-header{min-height:56px}
+ .desktop-spec-panel .guide-intro{padding-top:20px}
+ .desktop-spec-panel .guide-intro h1{font:600 24px/34px var(--font-app)}
+ .desktop-spec-panel .guide-summary{max-width:520px;padding:16px 0 20px}
+ .desktop-spec-panel .guide-current-summary{padding:14px 16px}
+ .desktop-spec-panel .guide-current-summary>button{min-height:36px}
+ .desktop-spec-panel .guide-categories{background:#f7f8fc;padding:8px 0;gap:3px}
+ .desktop-spec-panel .guide-category-heading{padding-top:20px}
+ .desktop-spec-panel .guide-demo-catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;align-items:start}
+ .desktop-spec-panel .guide-demo-card{height:100%;padding:18px;scroll-margin-top:72px}
+ .desktop-spec-panel .guide-demo-surface{width:100%;max-width:375px}
+ .desktop-spec-panel .guide-palette{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .desktop-spec-panel .guide-color-brand{grid-column:1/-1}
+ .desktop-spec-panel .guide-surfaces{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .desktop-spec-panel .guide-types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .desktop-spec-panel .guide-type-row:nth-last-child(2){border-bottom:0}
+ .desktop-spec-panel .spec-dialog{max-width:375px}
+ .desktop-spec-panel .spec-dialog-drawer{max-width:300px}
+ .desktop-spec-panel .spec-live-message{bottom:28px}
+ .desktop-caption{left:228px;right:24px;bottom:14px;justify-content:flex-start;font-size:11px}
+}

@@ -1,0 +1,9 @@
+.app-toast{display:flex;align-items:center;gap:10px;width:max-content;max-width:100%;min-height:48px;padding:12px 18px;border:1px solid #ebeef5;border-radius:12px;background:#fff;box-shadow:0 0 12px #00000014;font:400 14px/22px var(--font-app);color:var(--color-primary);pointer-events:none}
+.app-toast-icon{flex:0 0 20px;width:20px;height:20px;background:var(--color-blue);mask-size:contain;mask-position:center;mask-repeat:no-repeat}
+.app-toast[data-variant=success]>.app-toast-icon{background:var(--color-success)}
+.app-toast[data-variant=warning]>.app-toast-icon{background:var(--color-warning)}
+.app-toast[data-variant=danger]>.app-toast-icon{background:var(--color-brand)}
+.app-toast-spinner{flex:0 0 20px;width:20px;height:20px;background:conic-gradient(from 90deg,#ff000024,var(--color-brand));mask:url('/assets/spec/LoaderCircle.svg') center/contain no-repeat;animation:app-toast-spin 1s linear infinite}
+.app-toast-text{min-width:0;overflow-wrap:anywhere}
+@keyframes app-toast-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.app-toast-spinner{animation:none}}

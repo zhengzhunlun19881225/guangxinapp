@@ -1,0 +1,68 @@
+/* Provided @2x accent includes transparent glow around its 5×14px core. */
+:root {
+  --section-title-font: 600 16px/24px var(--font-app);
+  --section-accent-width: 5px;
+  --section-accent-height: 14px;
+  --section-title-gap: 8px;
+}
+
+.artboard :is(.shortcut-card,.work-todo,.work-calendar,.work-recent-forms,
+.portal-news,.group-news,.hotspot-tracking,.service-alerts,.overview-table-card,
+.province-tax-card) h2,
+.route-portal-overview :is([data-node-id="0:6258"],[data-node-id="0:6281"],[data-node-id="0:6487"]),
+.portal-notices .app-type-module {
+  font: var(--section-title-font);
+  font-synthesis: weight;
+  letter-spacing: 0;
+  color: var(--color-primary);
+}
+
+.artboard :is(.work-recent-forms,.portal-news,.group-news,.hotspot-tracking,
+.service-alerts,.overview-table-card,.province-tax-card) h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--section-title-gap);
+}
+
+.artboard h2 > img[src$="section-accent.png"] {
+  width: 21px;
+  height: 28.5px;
+  flex: 0 0 21px;
+  margin: 0 -8px;
+  transform: translateY(2px);
+  object-fit: fill;
+}
+
+.artboard :is(.shortcut-card,.work-todo,.work-calendar) h2 {
+  padding-left: calc(var(--section-accent-width) + var(--section-title-gap));
+}
+
+.artboard :is(.shortcut-card,.work-todo,.work-calendar) h2::before {
+  top: calc(50% - 12.25px);
+  left: -8px;
+  width: 21px;
+  height: 28.5px;
+  border-radius: 0;
+  background: url('/assets/workbench/section-accent.png') center/100% 100% no-repeat;
+}
+
+.route-portal-overview :is([data-node-id="0:6259"],[data-node-id="0:6282"],[data-node-id="0:6488"]) {
+  background: url('/assets/workbench/section-accent.png') center/100% 100% no-repeat;
+  box-shadow: none;
+  width: 21px;
+  height: 28.5px;
+  left: -8px;
+  margin-top: 2px;
+  border-radius: 0;
+}
+
+/* Notices use the supplied red/blue artwork at its native @2x scale. */
+.portal-notices .portal-notice-icon {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  width: 20px;
+  height: 18px;
+  object-fit: contain;
+  pointer-events: none;
+}

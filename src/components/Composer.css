@@ -1,0 +1,38 @@
+.device .fixed-composer .composer.composer-enhanced{padding:8px 10px 31px;background:var(--canvas);--composer-hit:max(44px,calc(44px / var(--app-zoom,1)))}
+.device .composer.composer-enhanced .composer-options{position:relative;display:flex;height:44px;gap:8px;align-items:center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.device .composer.composer-enhanced.is-default .composer-options{padding-right:48px}
+.device .composer.composer-enhanced .composer-options>button{border:0;background:none;padding:0;min-width:0;height:var(--composer-hit);min-height:var(--composer-hit);border-radius:0;font:var(--type-function);justify-content:flex-start}
+.device .composer.composer-enhanced .composer-options>button>span{display:flex;align-items:center;gap:6px;height:34px;padding:0 10px;border:0;border-radius:999px;background:#fff;box-shadow:0 4px 14px #26364d14;white-space:nowrap}
+.device .composer.composer-enhanced .composer-options>button[aria-pressed=true]>span{color:var(--color-brand);background:var(--color-brand-soft);border-color:#ffe0da}
+.device .composer.composer-enhanced .composer-options svg{width:16px;height:16px;flex-shrink:0}
+.device .composer.composer-enhanced .composer-options .composer-model-icon{width:20px;height:20px;object-fit:contain}
+.device .composer.composer-enhanced .composer-options>.composer-tools-grid{position:absolute;right:0;top:0;width:44px;min-width:44px;justify-content:center;border-radius:50%;background:#fff;box-shadow:0 4px 16px #1d293926;z-index:2}
+.device .composer.composer-enhanced .composer-options>.composer-tools-grid>span{width:36px;padding:0;justify-content:center;color:#111827;border:0;background:#fff}
+.device .composer.composer-enhanced .composer-input{display:block;height:auto;min-height:52px;padding:4px 6px;border:0;border-radius:16px;background:#fff;box-shadow:0 8px 24px #2934490a}
+.composer-default-entry{display:flex;align-items:center;gap:6px;min-height:44px}.composer-default-entry>input{width:0;min-width:0;flex:1;background:transparent;outline:0;border:0;height:40px;font:var(--type-body);color:var(--color-primary)}.composer-default-entry>input::placeholder{color:var(--color-muted)}
+.device .composer.composer-enhanced .composer-add,.device .composer.composer-enhanced .send-button{width:var(--composer-hit);height:var(--composer-hit);flex-shrink:0;background:transparent;border-radius:50%;display:grid;place-items:center;position:relative;isolation:isolate}
+.device .composer.composer-enhanced .composer-add{color:var(--color-secondary)}
+.device .composer.composer-enhanced .composer-add::before{content:'';position:absolute;inset:7px;background:#f5f6f8;border-radius:50%;z-index:-1}
+.device .composer.composer-enhanced .send-button{color:#fff}
+.device .composer.composer-enhanced .send-button::before{content:'';position:absolute;inset:7px;background:linear-gradient(155deg,#ff7829,#ff0000);border-radius:50%;z-index:-1}
+.device .composer.composer-enhanced .composer-agent-card{border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 8px 24px #2934490a}
+.composer-agent-header{display:flex;align-items:center;justify-content:space-between;padding:0 12px;min-height:44px}
+.composer-agent-header>button:first-child{min-height:44px;text-align:left;font:600 15px/23px var(--font-app);color:var(--color-primary)}
+.device .composer.composer-enhanced .composer-agent-card .composer-options{height:52px;padding:0 12px 8px;gap:12px}
+.device .composer.composer-enhanced .composer-agent-card .composer-options>button:not(.composer-tools-grid){flex:1;min-width:0}
+.device .composer.composer-enhanced .composer-agent-card .composer-options>button>span{height:34px;background:#fff;border:1px solid #ebeef5;border-radius:999px;padding:0 10px}
+.device .composer.composer-enhanced .composer-agent-card .composer-options>button:not(.composer-tools-grid)>span{width:100%;justify-content:center;overflow:hidden}
+.device .composer.composer-enhanced .composer-agent-card .composer-options>button:not(.composer-tools-grid)>span:has(.composer-option-arrow){justify-content:flex-start}
+.device .composer.composer-enhanced .composer-agent-card .composer-options>button>span{box-shadow:none}
+.device .composer.composer-enhanced .composer-agent-card .composer-option-arrow{margin-left:auto;color:#a3adbd;flex-shrink:0;transform:rotate(-45deg)}
+.device .composer.composer-enhanced .composer-agent-header .app-close-button::before{width:22px;height:22px}
+.device .composer.composer-enhanced .composer-agent-header .app-close-button>svg{width:16px;height:16px}
+.composer-agent-card .composer-tool-label{max-width:105px;overflow:hidden;text-overflow:ellipsis}
+.device .composer.composer-enhanced .composer-agent-card .composer-input{min-height:52px;border:0;border-top:1px solid #f1f2f5;border-radius:0;padding:6px 12px;box-shadow:none}
+.composer-chosen-template{display:flex;align-items:center;gap:6px;padding:0 4px 4px;color:var(--color-muted);font:var(--type-helper)}.composer-chosen-template>button{display:grid;place-items:center;min-width:32px;min-height:32px;font-size:18px}
+.composer-agent-list{display:grid;gap:2px;overflow-y:auto;padding:0 20px 20px;min-height:0}
+.composer-agent-list>button{display:flex;align-items:center;gap:10px;min-height:48px;font:var(--type-body);text-align:left;border-bottom:1px solid #f2f3f5}.composer-agent-list>button>span{flex:1}.composer-agent-list>button[aria-pressed=true]{color:var(--color-brand)}
+.composer-summary-list{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:0 16px 20px;overflow-y:auto}.composer-summary-list>button{display:flex;align-items:center;gap:10px;width:100%;border:1px solid #e5e8f0;border-radius:16px;min-height:44px;padding:0 16px;font:var(--type-function);text-align:left;background:#fff}.composer-summary-list svg{width:20px;height:20px;flex-shrink:0;color:var(--color-brand)}.composer-summary-list>button[aria-pressed=true]{background:var(--color-brand-soft);border-color:#ffcfc5}
+.composer-hidden-file{display:none}.composer-error{margin-top:8px;font:var(--type-helper);color:var(--color-brand)}
+.device .chat-page{padding-bottom:calc(var(--composer-height,180px) + var(--preview-keyboard-height,0px) + 16px)}
+.device .fixed-composer .composer.composer-enhanced .composer-options>button{min-width:0;justify-content:flex-start}

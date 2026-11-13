@@ -1,0 +1,292 @@
+[
+  {
+    "id": "expense",
+    "source": "reference-categories-1.png",
+    "box": [
+      56,
+      63,
+      96,
+      103
+    ]
+  },
+  {
+    "id": "travel",
+    "source": "reference-categories-1.png",
+    "box": [
+      204,
+      63,
+      244,
+      103
+    ]
+  },
+  {
+    "id": "invoice",
+    "source": "reference-categories-1.png",
+    "box": [
+      352,
+      63,
+      392,
+      103
+    ]
+  },
+  {
+    "id": "vehicle",
+    "source": "reference-categories-1.png",
+    "box": [
+      500,
+      63,
+      540,
+      103
+    ]
+  },
+  {
+    "id": "leave",
+    "source": "reference-categories-1.png",
+    "box": [
+      56,
+      203,
+      96,
+      243
+    ]
+  },
+  {
+    "id": "overtime",
+    "source": "reference-categories-1.png",
+    "box": [
+      204,
+      203,
+      244,
+      243
+    ]
+  },
+  {
+    "id": "income",
+    "source": "reference-categories-1.png",
+    "box": [
+      352,
+      203,
+      392,
+      243
+    ]
+  },
+  {
+    "id": "contract",
+    "source": "reference-categories-1.png",
+    "box": [
+      56,
+      343,
+      96,
+      383
+    ]
+  },
+  {
+    "id": "counterparty",
+    "source": "reference-categories-1.png",
+    "box": [
+      204,
+      343,
+      244,
+      383
+    ]
+  },
+  {
+    "id": "collaboration",
+    "source": "reference-categories-1.png",
+    "box": [
+      56,
+      483,
+      96,
+      523
+    ]
+  },
+  {
+    "id": "learning",
+    "source": "reference-categories-2.png",
+    "box": [
+      66,
+      53,
+      106,
+      93
+    ]
+  },
+  {
+    "id": "courses",
+    "source": "reference-categories-2.png",
+    "box": [
+      214,
+      53,
+      254,
+      93
+    ]
+  },
+  {
+    "id": "treasury",
+    "source": "reference-categories-2.png",
+    "box": [
+      66,
+      193,
+      106,
+      233
+    ]
+  },
+  {
+    "id": "funds",
+    "source": "reference-categories-2.png",
+    "box": [
+      214,
+      193,
+      254,
+      233
+    ]
+  },
+  {
+    "id": "ai-write",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      29,
+      227,
+      63,
+      261
+    ]
+  },
+  {
+    "id": "legacy-travel",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      99,
+      227,
+      133,
+      261
+    ]
+  },
+  {
+    "id": "ai-query",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      169,
+      227,
+      203,
+      261
+    ]
+  },
+  {
+    "id": "contacts",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      241,
+      227,
+      275,
+      261
+    ]
+  },
+  {
+    "id": "analytics",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      309,
+      227,
+      343,
+      261
+    ]
+  },
+  {
+    "id": "legacy-overtime",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      29,
+      304,
+      63,
+      338
+    ]
+  },
+  {
+    "id": "knowledge",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      99,
+      304,
+      133,
+      338
+    ]
+  },
+  {
+    "id": "legacy-leave",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      169,
+      304,
+      203,
+      338
+    ]
+  },
+  {
+    "id": "ai-ppt",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      241,
+      304,
+      275,
+      338
+    ]
+  },
+  {
+    "id": "attendance",
+    "source": "output/playwright/theme-update/before/workbench.png",
+    "box": [
+      309,
+      304,
+      343,
+      338
+    ]
+  },
+  {
+    "id": "oa-system",
+    "source": "output/playwright/theme-update/before/portal-staff.png",
+    "box": [
+      33,
+      158,
+      65,
+      190
+    ]
+  },
+  {
+    "id": "bpm-system",
+    "source": "output/playwright/theme-update/before/portal-staff.png",
+    "box": [
+      100,
+      158,
+      132,
+      190
+    ]
+  },
+  {
+    "id": "ai-platform",
+    "source": "output/playwright/theme-update/before/portal-staff.png",
+    "box": [
+      169,
+      158,
+      201,
+      190
+    ]
+  },
+  {
+    "id": "legal-system",
+    "source": "output/playwright/theme-update/before/portal-staff.png",
+    "box": [
+      241,
+      158,
+      273,
+      190
+    ]
+  },
+  {
+    "id": "audit-system",
+    "source": "output/playwright/theme-update/before/portal-staff.png",
+    "box": [
+      312,
+      158,
+      344,
+      190
+    ]
+  }
+]

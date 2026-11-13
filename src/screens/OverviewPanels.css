@@ -1,0 +1,26 @@
+.overview-tax-tabs{position:absolute;left:15px;top:58px;width:325px;height:32px;display:grid;grid-template-columns:1.2fr 1fr;gap:2px;padding:2px;border-radius:8px;background:#f3f4f6}
+.overview-tax-tabs button{min-width:0;padding:0 4px;display:flex;align-items:center;justify-content:center;border:0;border-radius:6px;background:transparent;color:var(--color-secondary);font:400 14px/22px var(--font-app);white-space:nowrap}
+.overview-tax-tabs button[aria-selected="true"]{background:#fff;color:var(--color-primary);font-weight:600}
+.overview-tax-tabs button:focus-visible{outline:2px solid var(--color-blue);outline-offset:-2px}
+
+/* Portal overview typography follows the approved mobile design scale. The
+   existing nodes and geometry stay intact; only type metrics are normalized. */
+.route-portal-overview .app-type-page{font-size:18px;line-height:26px;font-weight:600;letter-spacing:0}
+.route-portal-overview .app-type-module{font-size:16px;line-height:24px;font-weight:600;letter-spacing:0}
+.route-portal-overview .app-type-body{font-size:14px;line-height:22px;font-weight:400;letter-spacing:0}
+.route-portal-overview .app-type-secondary,.route-portal-overview .app-type-helper{font-size:12px;line-height:18px;font-weight:400;letter-spacing:0}
+.route-portal-overview [data-node-id="0:6229"] .app-type-body,
+.route-portal-overview [data-node-id="0:6232"] .app-type-body,
+.route-portal-overview [data-node-id="0:6238"] .app-type-body,
+.route-portal-overview [data-node-id="0:6241"] .app-type-body,
+.route-portal-overview [data-node-id="0:6244"] .app-type-body{font-weight:600}
+/* The PC's second view uses the same demonstration series in cyan. */
+.tax-chart-panel.is-actual [data-node-id="0:6304"],.tax-chart-panel.is-actual [data-node-id="0:6328"],.tax-chart-panel.is-actual [data-node-id="0:6329"],.tax-chart-panel.is-actual [data-node-id="0:6330"],.tax-chart-panel.is-actual [data-node-id="0:6331"],.tax-chart-panel.is-actual [data-node-id="0:6332"],.tax-chart-panel.is-actual [data-node-id="0:6333"]{background:#06b6d4}
+.innovation-legend{position:absolute;left:17px;right:17px;top:59px;display:flex;align-items:center;gap:12px;font:400 12px/18px var(--font-app);color:var(--color-muted)}
+.innovation-legend>span{display:flex;align-items:center;gap:5px;white-space:nowrap}
+.innovation-legend i{display:block;flex:none;width:10px;height:10px;border-radius:50%}
+.innovation-budget-key{background:#ff3030}.innovation-actual-key{background:#ffd1bd}
+
+/* Only the financial foreground glyphs change; original exported slots remain. */
+.overview-metric-icon{display:block;width:100%;height:100%}
+.overview-metric-icon[data-metric-icon=revenue]{color:#ff4e1d}.overview-metric-icon[data-metric-icon=profit]{color:#f97316}.overview-metric-icon[data-metric-icon=assets]{color:#0077ff}.overview-metric-icon[data-metric-icon=net]{color:#00b42a}

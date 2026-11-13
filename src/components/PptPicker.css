@@ -1,0 +1,17 @@
+.ppt-picker-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px;row-gap:16px;align-items:start}
+.ppt-picker-grid>article{border:1px solid #e5e8ef;border-radius:8px;overflow:hidden;min-width:0;background:#fff}
+.ppt-picker-grid>article.is-selected{border-color:var(--color-brand)}
+.ppt-picker-cover{display:block;position:relative;width:100%;padding:0;aspect-ratio:660/372;overflow:hidden}
+.ppt-picker-cover img{display:block;width:100%;height:100%;object-fit:cover}
+.ppt-picker-grid article>footer{display:flex;align-items:center;justify-content:space-between;padding:0 7px;min-height:30px;gap:2px;font:var(--type-helper);color:var(--color-secondary)}
+.ppt-picker-grid article>footer>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ppt-picker-grid article>footer>button{min-width:44px;min-height:44px;margin-block:-7px;flex-shrink:0;color:var(--color-muted);font:var(--type-helper)}
+.ppt-selected{position:absolute;right:4px;top:4px;display:flex;align-items:center;gap:2px;padding:3px 5px;background:var(--color-brand);color:#fff;border-radius:5px;font:var(--type-helper)}
+.ppt-preview{padding:0 20px 20px}
+.ppt-preview-back{display:flex;gap:6px;align-items:center;min-height:44px;color:var(--color-secondary);font:var(--type-function);margin-bottom:8px}
+.ppt-preview>img{display:block;width:100%;aspect-ratio:660/372;object-fit:cover;border:1px solid #e5e8ef;border-radius:8px}
+.ppt-preview>h3{font:var(--type-module);margin:16px 0 4px}.ppt-preview>p{font:var(--type-helper);color:var(--color-muted)}
+.ppt-preview ol{margin:12px 0 0;padding-left:22px;font:var(--type-body);color:var(--color-secondary)}.ppt-preview li{padding:6px 0}
+.ppt-preview-footer{flex-shrink:0;padding:10px 20px max(20px,env(safe-area-inset-bottom));border-top:1px solid #f0f1f4}
+.ppt-preview-footer p{font:var(--type-helper);color:var(--color-muted);margin-bottom:8px;text-align:center}
+.ppt-preview-footer>button{width:100%;min-height:44px;border-radius:12px;background:var(--color-brand);color:#fff;font:var(--type-body)}

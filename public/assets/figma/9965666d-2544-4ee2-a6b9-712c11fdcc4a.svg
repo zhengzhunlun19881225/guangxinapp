@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="SVG" clip-path="url(#clip0_0_9654)">
+<mask id="mask0_0_9654" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+<rect id="SVG_2" width="20" height="20" fill="white"/>
+</mask>
+<g mask="url(#mask0_0_9654)">
+<path id="Vector" d="M9.16699 10.833V16.25C9.16699 16.7102 9.53976 17.083 10 17.083C10.4602 17.083 10.833 16.7102 10.833 16.25V10.833M9.16699 10.833H3.75C3.28976 10.833 2.91699 10.4602 2.91699 10C2.91699 9.53976 3.28976 9.16699 3.75 9.16699H9.16699M9.16699 10.833H10.833M9.16699 10.833V9.16699M10.833 10.833H16.25C16.7102 10.833 17.083 10.4602 17.083 10C17.083 9.53976 16.7102 9.16699 16.25 9.16699H10.833M10.833 10.833V9.16699M10.833 9.16699V3.75C10.833 3.28976 10.4602 2.91699 10 2.91699C9.53976 2.91699 9.16699 3.28976 9.16699 3.75V9.16699M10.833 9.16699H9.16699" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" stroke="#374151"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_9654">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>

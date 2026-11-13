@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <g transform="translate(10 10) scale(.9375)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="var(--gx-text-primary, #03091B)"><path vector-effect="non-scaling-stroke" stroke-width="1.4" d="M32 4 58 14v15c0 16-10 25-26 32C16 54 6 45 6 29V14Z"/></g>
+    <g stroke="var(--gx-focus, #CC0000)" color="var(--gx-focus, #CC0000)"><path d="m24 25 6-6 7 4-9 9Z" fill="currentColor" stroke="none"/><path vector-effect="non-scaling-stroke" stroke-width="1.4" d="m29 27 16 16M35 18c14 7 14 22 4 27-7 4-14 1-18-4M22 42l-3 5"/></g>
+  </g>
+</svg>

@@ -1,0 +1,180 @@
+/* Approved mobile specification. All measurements are at the 375px baseline. */
+:root {
+  --app-design-width: 375px;
+  --color-brand: #ff0000;
+  --primary-button-background: linear-gradient(90deg, #FF9622 0%, #FF0000 100%);
+  --control-height: 40px;
+  --color-success: #00b578;
+  --color-warning: #ff7d00;
+  --color-other: #878b99;
+  --color-purple: #722ed1;
+  --color-blue: #006dff;
+  --color-cyan: #14c9c9;
+  --color-primary: #03091b;
+  --color-secondary: #4e5969;
+  --color-muted: #878b99;
+  --color-action: var(--color-brand);
+  --color-link: var(--color-blue);
+  --color-error: var(--color-brand);
+  --color-brand-soft: #fff0f0;
+  --color-brand-border: #ffdada;
+  --color-brand-disabled: #ff9999;
+  --accent: var(--color-action);
+  --muted: var(--color-muted);
+  --type-page: 400 18px/26px var(--font-app);
+  --type-module: 500 16px/24px var(--font-app);
+  --type-list: 400 16px/24px var(--font-app);
+  --type-body: 400 14px/22px var(--font-app);
+  --type-function: 400 13px/20px var(--font-app);
+  --type-secondary: 400 12px/18px var(--font-app);
+  --type-helper: 400 12px/18px var(--font-app);
+  --type-badge: 400 10px/14px var(--font-app);
+  color: var(--color-primary);
+  font: var(--type-body);
+  font-synthesis: weight;
+}
+.scene-layer .app-type-page {font:var(--type-page)}
+.scene-layer .app-type-module {font:var(--type-module);color:var(--color-primary)}
+.scene-layer .app-type-list {font:var(--type-list)}
+.scene-layer .app-type-body {font:var(--type-body)}
+.scene-layer .app-type-function {font:var(--type-function);color:var(--color-secondary)}
+.scene-layer .app-type-secondary {font:var(--type-secondary);color:var(--color-secondary)}
+.scene-layer .app-type-helper {font:var(--type-helper)}
+.scene-layer .app-type-badge {font:var(--type-badge);color:#fff}
+.scene-layer .app-type-link {font:var(--type-body);color:var(--color-blue)}
+.scene-layer .app-inherit-leading {line-height:inherit}
+.scene-layer p:not([class*="app-type-"]) {font-weight:400}
+.device,.artboard,.scene-layer,.scene-layer>div,.fixed-composer,.fixed-home,.bottom-nav,.history-runtime,.ai-messages {width:var(--app-design-width)}
+/* Shared native controls use the same semantic type roles as the source scenes. */
+.profile-page>h1,.canvas-index h1,.modal-sheet h2,.agent-detail h3,.detail-article h3 {
+  font:var(--type-page);color:var(--color-primary);
+}
+.profile-card h2,.work-todo h2,.work-calendar h2,.simple-list article h3 {
+  font:var(--type-module);color:var(--color-primary);
+}
+.segmented button,.directory-tabs button,.directory-info strong,.conversation-info strong,
+.contact-company button,.contact-company .company-child,.contact-person,
+.history-rows>button,.history-tools>button,.profile-links>button,.canvas-index strong,.role-options strong {
+  font:var(--type-list);color:var(--color-primary);
+}
+.search-control input,.add-menu button,.empty-state,.suggestion-row,
+.suggestion-tabs button,.composer-input>input,.todo-tabs button,.todo-row strong,
+.week-strip>button,.message,.message.user p,.primary-button,.secondary-button,
+.demo-form input,.demo-form textarea,.filter-options select,.detail-article textarea,
+.detail-article,.agent-detail p,.simple-list>button,.im-send>input {
+  font:var(--type-body);color:var(--color-primary);
+}
+.composer-options button,.contacts-label,.small-empty,.demo-form label,.filter-options label,
+.detail-article label {font:var(--type-function);color:var(--color-secondary)}
+.directory-info>span,.conversation-info>span,.contact-company small,.role-options small,
+.simple-list article p,.feature-card>p {
+  font:var(--type-secondary);color:var(--color-secondary);
+}
+.directory-info small,.conversation-row time,.work-todo header>button,.work-calendar header>button,
+.todo-row>span,.week-strip small,.calendar-event small,.message small,.history-rows>p,
+.profile-card p,.canvas-index>p,.canvas-index small,.detail-meta,.simple-list article small,
+.demo-note,.filter-result,.selected-agent {
+  font:var(--type-helper);color:var(--color-muted);
+}
+.demo-note,.detail-meta {font-size:12px!important;line-height:18px!important;color:var(--color-muted)!important}
+.badge {font:var(--type-badge);color:#fff;background:var(--color-brand)}
+.text-link {font:var(--type-body);color:var(--color-blue)}
+.directory-tabs button[aria-selected=true],.bottom-nav>button[aria-current],
+.week-strip .current small,.selected-agent,.suggestion-row>span:first-child,
+.suggestion-tabs .selected,.canvas-index>a>span {color:var(--color-brand)}
+.directory-tabs button[aria-selected=true]::after,.week-strip .current span,
+.send-button,.new-chat-button {background:var(--color-brand);color:#fff}
+.primary-button {background:var(--primary-button-background);color:#fff}
+.composer-options button[aria-pressed=true],.role-options>button[aria-pressed=true] {
+  border-color:var(--color-brand);background:#fff5f5;
+}
+.suggestion-tabs .selected,.selected-agent {background:#fff0f0}
+.search-control input::placeholder,.composer-input>input::placeholder {color:var(--color-muted)}
+.secondary-button {color:var(--color-secondary)}
+.bottom-nav>button,.bottom-nav>button.mascot-nav span {font:var(--type-function);color:var(--color-other)}
+.bottom-nav>button[aria-current] span {color:var(--color-brand)}
+.nav-icon {height:22px;width:22px;margin-top:5px;background:var(--color-other);mask-size:contain;mask-repeat:no-repeat;mask-position:center}
+.bottom-nav>button[aria-current] .nav-icon {background:var(--color-brand)}
+.work-todo header>button,.work-calendar header>button {font:var(--type-function);color:var(--color-secondary)}
+.work-todo h2::before,.work-calendar h2::before {background:var(--color-brand)}
+.todo-row em {font:var(--type-helper);top:18px}
+.urgent {background:#fff0f0;border-color:var(--color-brand);color:var(--color-brand)}
+.pending {background:#eef5ff;color:var(--color-blue)}
+.review {background:#fff6eb;border-color:var(--color-warning);color:var(--color-warning)}
+.success {background:#eaf9f3;border:1px solid var(--color-success);color:var(--color-success)}
+.calendar-event strong {font:var(--type-body);color:var(--color-primary)}
+.detail-tag {font:var(--type-helper);background:#fff6eb;color:var(--color-warning)}
+.demo-form input,.demo-form textarea,.filter-options select,.detail-article textarea {outline-color:var(--color-blue)}
+button:focus-visible,a:focus-visible,[role=button]:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible {outline-color:var(--color-blue)}
+/* Allow the larger line boxes without squeezing directory text or card copy. */
+.directory-row {height:96px;padding-top:12px;padding-bottom:10px}
+.directory-info {gap:4px}
+.conversation-info {gap:7px}
+.feature-card h3 {font:var(--type-list);top:7px}
+.feature-card>b {top:35px}
+.feature-card>p {top:99px;width:110px;left:8px;max-height:36px;overflow:hidden}
+.feature-arrow {bottom:4px;height:20px;width:20px}
+.todo-row {gap:2px}
+.todo-row strong {padding-right:48px}
+.calendar-event {gap:4px}
+.week-strip>button:first-child,.week-strip>button:last-child {font-size:26px;line-height:32px}
+.message {line-height:22px}
+.profile-page>h1 {line-height:26px}
+.canvas-index {padding-top:50px}
+/* Text-only clipping masks in Figma exports must not crop the new line boxes. */
+.scene-layer p[class*="app-type-"],.scene-layer [role=button][class*="app-type-"] {mask-image:none}
+.scene-layer div:has(>p[class*="app-type-"]),
+.scene-layer div:has(>[role=button][class*="app-type-"]) {overflow-x:clip;overflow-y:visible}
+.scene-layer p[class*="text-[15px]"] {line-height:15px}
+.scene-layer [data-name^="Gradient"] {background:var(--color-brand)}
+[data-node-id="0:6712"] {top:calc(50% + 7.5px)}
+/* News titles use 16/24; widen their text area and move metadata below it. */
+:is([data-node-id="0:8714"],[data-node-id="0:8745"],[data-node-id="0:8776"],[data-node-id="0:8807"],[data-node-id="0:8839"]) {width:190px;max-height:72px;overflow:hidden}
+.scene-layer div:has(>[data-node-id="0:8714"]),
+.scene-layer div:has(>[data-node-id="0:8745"]),
+.scene-layer div:has(>[data-node-id="0:8776"]),
+.scene-layer div:has(>[data-node-id="0:8807"]),
+.scene-layer div:has(>[data-node-id="0:8839"]) {width:190px;overflow:visible}
+:is([data-node-id="0:8707"],[data-node-id="0:8709"],[data-node-id="0:8710"],
+[data-node-id="0:8740"],[data-node-id="0:8741"],[data-node-id="0:8742"],
+[data-node-id="0:8771"],[data-node-id="0:8772"],[data-node-id="0:8773"],
+[data-node-id="0:8802"],[data-node-id="0:8803"],[data-node-id="0:8804"],
+[data-node-id="0:8834"],[data-node-id="0:8835"],[data-node-id="0:8836"]) {width:190px;overflow:visible}
+:is([data-node-id="0:8715"],[data-node-id="0:8777"],[data-node-id="0:8808"]) {top:52px;height:18px}
+[data-node-id="0:8746"] {top:76px;height:18px}
+:is([data-node-id="0:8887"],[data-node-id="0:8925"]) {height:24px}
+:is([data-node-id="0:8889"],[data-node-id="0:8927"]) {width:157px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;top:0}
+:is([data-node-id="0:8890"],[data-node-id="0:8928"]) {top:65px}
+/* Map callouts need room for 12px text and a gap between province and value. */
+:is([data-node-id="0:6374"],[data-node-id="0:6383"],[data-node-id="0:6392"],
+[data-node-id="0:6401"],[data-node-id="0:6410"]) {width:100px}
+:is([data-node-id="0:6375"],[data-node-id="0:6384"],[data-node-id="0:6393"],
+[data-node-id="0:6402"],[data-node-id="0:6411"]) {width:100%}
+:is([data-node-id="0:6380"],[data-node-id="0:6389"],[data-node-id="0:6398"],
+[data-node-id="0:6407"],[data-node-id="0:6416"]) {left:46px;width:50px}
+@media(max-width:600px) {.device {width:100%;max-width:480px}}
+
+/* System theme: primary actions and selections are brand red; links are blue. */
+.todo-tabs button[aria-pressed=true]{color:var(--color-brand)}
+.segmented button[aria-selected=false]{color:var(--color-secondary);font-weight:400}
+.segmented button[aria-selected=true]{color:var(--color-primary);font-weight:600;font-synthesis:weight}
+.device input::placeholder,.device textarea::placeholder{color:var(--color-muted);opacity:1}
+.device input,.device textarea,.device select{caret-color:var(--color-brand)}
+.device ::selection{background:var(--color-brand-soft);color:var(--color-primary)}
+
+/* Shared select arrow: inset 10px from the trailing edge on every form. */
+:is(.device,.desktop-spec-panel) select:not([multiple]):not([size]),
+:is(.device,.desktop-spec-panel) select[size="1"]:not([multiple]){
+ appearance:none;-webkit-appearance:none;
+ background-image:url('/assets/spec/ChevronDown.svg');
+ background-repeat:no-repeat;background-position:right 10px center;background-size:16px 16px;
+ padding-inline-end:36px;
+}
+/* Schedule rows use the same select arrow instead of a second navigation icon. */
+.device .schedule-field>select+.schedule-icon{display:none}
+
+/* Single-line form controls share the 40px visual height. */
+.device .demo-form input:not([type=checkbox]):not([type=radio]):not([type=file]),
+.device .filter-options select,
+.device .news-sub-field>input,.device .news-sub-field>select{height:var(--control-height);min-height:var(--control-height);padding-block:8px}

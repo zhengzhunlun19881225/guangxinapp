@@ -1,0 +1,20 @@
+/* Category rows determine card height; the portal shifts the following module by its measured height. */
+.group-news{position:absolute;left:10px;top:1012px;width:355px;height:auto;border-radius:16px;background:#fff;overflow:hidden;color:var(--color-primary)}
+.route-portal-manager .group-news{top:calc(1335px + var(--service-alert-offset,0px))}.route-portal-leader .group-news{top:calc(1367px + var(--service-alert-offset,0px))}
+.group-news>header{height:44px;padding:0 14px;display:flex;align-items:center;justify-content:space-between}
+.group-news h2{display:flex;align-items:center;gap:9px;font:var(--type-module)}
+.group-news h2>img{width:7px;height:17px;object-fit:contain;margin-left:-3px}
+.group-news>header>button{display:flex;align-items:center;justify-content:flex-end;gap:2px;min-height:44px;min-width:44px;font:var(--type-helper);color:var(--color-secondary)}
+.group-news .portal-news-tabs{padding:0 20px}
+.group-news-rows{padding:6px 14px 8px}
+.group-news-row{width:100%;display:grid;grid-template-columns:16px minmax(0,1fr) 100px;align-items:start;gap:10px;min-height:94px;padding:12px 0;text-align:left;border-bottom:1px solid #f7f8fa}
+.group-news-row:last-child{border-bottom:0}
+.group-news-rank{font:var(--type-list);color:var(--color-muted);text-align:center;padding-top:2px}
+.group-news-row[data-rank="1"] .group-news-rank{color:var(--color-brand)}.group-news-row[data-rank="2"] .group-news-rank{color:var(--color-warning)}.group-news-row[data-rank="3"] .group-news-rank{color:#ffb000}
+.group-news-copy{display:flex;flex-direction:column;min-width:0}
+.group-news-copy strong{font:var(--type-body);color:var(--color-primary);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.group-news-copy strong>span{display:block}.group-news-row[data-lines="1"] .group-news-copy strong{-webkit-line-clamp:2}
+.group-news-meta{display:flex;align-items:center;gap:7px;margin-top:8px;font:var(--type-helper);color:var(--color-muted);white-space:nowrap}.group-news-meta i{font-style:normal}
+.group-news-row>img{width:100px;height:67px;object-fit:cover;border-radius:5px}
+.group-news-row:active{background:#fafbfe}
+.portal-news-list.is-group{padding:0 0 24px}.portal-news-list.is-group .group-news-rows{padding:16px 16px 8px}.portal-news-list.is-group .group-news-row{min-height:100px}

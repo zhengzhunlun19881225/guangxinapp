@@ -1,0 +1,20 @@
+.work-daily-brief{position:absolute;top:1415px;left:10px;width:355px;padding:0 16px 16px;border-radius:16px;background:#fff;color:var(--color-primary)}
+.work-daily-brief>header{height:50px;display:flex;align-items:center;justify-content:space-between}
+.daily-brief-actions{display:flex;align-items:center;flex-shrink:0;margin-right:-8px}
+.daily-brief-title>button,.daily-brief-actions>button{display:grid;place-items:center;width:44px;height:44px;color:var(--color-secondary)}
+.work-daily-brief h2{display:flex;align-items:center;gap:var(--section-title-gap);font:var(--section-title-font)}
+.work-daily-brief article+article{margin-top:20px;padding-top:16px;border-top:1px solid #f0f2f5}
+.work-daily-brief h3{display:flex;align-items:center;gap:8px;font:600 15px/24px var(--font-app);margin:0 0 12px}
+.daily-brief-icon{width:24px;height:24px;display:grid;place-items:center;flex-shrink:0;background:#ff5d5f;color:#fff;border-radius:50%}
+.daily-brief-icon.orange{background:#ff9314}
+.daily-brief-banner{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover;border-radius:10px;margin-bottom:14px}
+.work-daily-brief h4{font:600 14px/22px var(--font-app);margin:0 0 4px}
+.work-daily-brief p{font:400 14px/22px var(--font-app);color:var(--color-muted);margin:0;overflow-wrap:anywhere}
+.daily-brief-care>footer{display:flex;justify-content:flex-end;margin-top:12px}
+.daily-brief-care>footer>button{min-height:36px;padding:0 12px;border-radius:999px;background:var(--color-brand);color:#fff;display:flex;align-items:center;gap:5px;font:var(--type-function)}
+.daily-brief-item+.daily-brief-item{margin-top:16px}
+
+.daily-brief-title{display:flex;align-items:center;min-width:0}
+.daily-brief-title h2{white-space:nowrap}
+.daily-brief-title>button{flex-shrink:0;margin-left:-6px}
+.daily-brief-title>button>svg,.daily-brief-actions>button>svg{width:16px;height:16px;display:block}

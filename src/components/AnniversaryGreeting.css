@@ -1,0 +1,29 @@
+.modal-sheet.modal-daily-greeting{max-height:94%;padding-bottom:0}
+.modal-daily-greeting>.modal-body{display:flex;flex:1;min-height:0;min-width:0;width:100%;overflow:hidden;padding:0}
+.modal-daily-greeting>header>button{width:44px;height:44px;background:transparent}
+.anniversary-greeting{display:flex;flex-direction:column;flex:1;min-height:0;min-width:0;width:100%;font:var(--type-body);color:var(--color-primary)}
+.anniversary-greeting-body{padding:16px 20px;flex:1;min-height:0;min-width:0;width:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain}
+.anniversary-greeting-banner{display:block;width:100%;aspect-ratio:3/1;object-fit:cover;border-radius:12px;margin-bottom:18px}
+.greeting-writing-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.anniversary-greeting h3{font:600 14px/22px var(--font-app);margin:0;min-width:0}
+.greeting-tone-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.greeting-tones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:0 8px;flex:1;min-width:0}
+.greeting-tones>button{display:flex;align-items:center;justify-content:center;min-width:0;min-height:44px;white-space:nowrap;font:var(--type-function);color:var(--color-secondary)}
+.greeting-tones>button>span{padding:6px 8px;border-radius:999px;background:#f4f6f8;width:100%;text-align:center}
+.greeting-tones>button[aria-pressed=true]{color:var(--color-brand)}
+.greeting-tones>button[aria-pressed=true]>span{background:var(--color-brand-soft)}
+.greeting-refresh{display:flex;align-items:center;gap:5px;flex-shrink:0;min-height:44px;font:var(--type-helper);color:var(--color-secondary)}
+.anniversary-greeting-editor{border:1px solid var(--color-brand-border);border-radius:12px;background:#fff}
+.anniversary-greeting-editor:focus-within{border-color:var(--color-brand)}
+.anniversary-greeting-editor textarea{display:block;width:100%;height:160px;min-height:120px;padding:14px 14px 6px;border:0;border-radius:12px;resize:none;font:var(--type-body);color:var(--color-primary);background:transparent}
+.anniversary-greeting-editor textarea:focus-visible{outline:none}
+.greeting-editor-tools{display:flex;align-items:center;justify-content:space-between;padding:0 8px 4px 4px;min-height:44px}
+.greeting-editor-tools small{font:var(--type-helper);color:var(--color-muted);padding-right:6px}
+.greeting-emoji{position:relative}
+.greeting-emoji>button{width:44px;height:44px;display:grid;place-items:center;color:var(--color-muted)}
+.greeting-emoji-picker{position:absolute;bottom:46px;left:4px;display:flex;padding:4px;background:#fff;border:1px solid #e5e9f1;border-radius:10px;box-shadow:0 4px 16px #18203215;z-index:1}
+.greeting-emoji-picker>button{width:34px;height:40px;display:grid;place-items:center;font-size:20px}
+.greeting-send-error{font:var(--type-function);color:var(--color-brand);margin:12px 0 0}
+.anniversary-greeting-footer{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px 20px max(20px,env(safe-area-inset-bottom));flex-shrink:0;background:#fff}
+.anniversary-greeting-footer>span{font:var(--type-helper);color:var(--color-muted)}
+.anniversary-greeting-footer>.primary-button{padding:8px 22px;min-height:42px;color:#fff}

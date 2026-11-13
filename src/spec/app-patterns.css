@@ -1,0 +1,50 @@
+.spec-current-shortcut{padding:12px 8px;background:linear-gradient(135deg,#ffebe5,#f4e6ef 55%,#dceaff);border-radius:16px}
+.mobile-guide .spec-current-shortcut .shortcut-card{position:relative;left:auto;top:auto!important;width:100%;margin:0;z-index:0}
+.mobile-guide .spec-current-shortcut .shortcut-card h2{font:var(--section-title-font)}
+.mobile-guide .spec-current-shortcut .shortcut-card header{padding-inline:12px}
+.mobile-guide .spec-current-shortcut .shortcut-grid{padding-inline:2px}
+.mobile-guide .spec-current-shortcut .shortcut-grid>button{min-width:0}
+.spec-current-banner .portal-banner{position:relative;left:auto;top:auto;width:100%;height:134px}
+.mobile-guide .spec-current-banner .portal-banner-pagination>button{min-width:14px;min-height:36px}
+.mobile-guide .spec-current-banner .portal-banner-case{min-width:0;min-height:134px}
+.spec-current-follow{height:440px;display:flex;flex-direction:column;border:1px solid #e7ecf5;border-radius:12px;overflow:hidden;background:#fff}
+.spec-current-follow .hotspot-manager{flex:1;min-height:0}
+.spec-current-follow .hotspot-manager-body{padding:14px}
+.spec-current-follow .hotspot-manager-footer{padding:10px 14px}
+.spec-current-follow .hotspot-follow-card{padding:12px}
+.spec-current-follow .hotspot-manage-toolbar .news-sub-modes{width:100%;height:36px}
+.spec-current-composer{padding:14px 8px;background:#f8fafe;border-radius:16px}
+.spec-composer-options{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:8px}
+.spec-composer-options>button{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid #ebeef5;background:#fff;border-radius:999px;padding:0 10px;font:var(--type-function)}
+.spec-composer-input{display:flex;align-items:center;background:white;border-radius:16px;padding:4px;box-shadow:0 8px 24px #2934490a}
+.spec-composer-input>button{flex-shrink:0;display:grid;place-items:center;padding:0}
+.spec-composer-input>button>span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#f7f7f7}
+.spec-composer-input>button>span.spec-composer-mic{background:#ff3c22;color:white}
+.spec-composer-input>input{flex:1;min-width:0;width:0;padding:0 4px;border:0;background:transparent;font:var(--type-function)}
+.spec-current-heading{position:relative;padding-left:13px;font:var(--section-title-font)!important;color:var(--color-primary)}
+.spec-current-heading::before{content:'';position:absolute;left:-8px;top:calc(50% - 12.25px);width:21px;height:28.5px;background:url('/assets/workbench/section-accent.png') center/100% 100% no-repeat}
+.spec-current-brief>header,.spec-current-brief>header>div{display:flex;align-items:center}
+.spec-current-brief>header{justify-content:space-between;min-height:50px}
+.spec-current-brief>header button{display:grid;place-items:center;color:var(--color-secondary);flex-shrink:0}
+.spec-current-brief h4{font:600 15px/24px var(--font-app);margin:4px 0 10px}
+.spec-current-brief>img{display:block;width:100%;aspect-ratio:3/1;object-fit:cover;border-radius:10px;margin-bottom:12px}
+.spec-current-brief>strong{font:600 14px/22px var(--font-app)}
+.spec-current-brief>p{font:var(--type-body);color:var(--color-muted);margin-top:4px}
+.spec-current-brief>footer{display:flex;justify-content:flex-end;margin-top:12px}
+.spec-current-brief>footer>button{border-radius:999px}
+.spec-adaptive-stage{background:var(--canvas);padding:10px;border-radius:16px}
+.spec-adaptive-news{padding:14px;background:white;border-radius:16px}
+.spec-adaptive-news [role=tablist]{display:flex;gap:var(--category-pill-gap);margin-top:8px;flex-wrap:wrap}
+.spec-adaptive-news [role=tablist]>button{display:grid;place-items:center}
+.spec-adaptive-rows>article{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid #f7f8fa}
+.spec-adaptive-rows>article:last-child{border:0}
+.spec-adaptive-rows>article>span{color:var(--color-brand);font:var(--type-body)}
+.spec-adaptive-rows strong{font:var(--type-body)}
+.spec-adaptive-rows small{display:block;margin-top:7px;color:var(--color-muted);font:var(--type-helper)}
+.spec-adaptive-empty{font:var(--type-helper);color:var(--color-muted);padding:16px 0;text-align:center}
+.spec-adaptive-next{padding:14px;margin-top:10px;background:white;border-radius:16px;font:var(--type-helper);color:var(--color-secondary)}
+
+/* Compact business examples keep their specified visual sizes. */
+.mobile-guide .spec-composer-options>button{height:34px;min-height:34px}
+.mobile-guide .hotspot-manager .hotspot-follow-actions>button{height:28px;min-height:28px;border-radius:999px}
+.mobile-guide .hotspot-manager .hotspot-generate{height:36px;min-height:36px}

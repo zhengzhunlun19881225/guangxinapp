@@ -1,0 +1,30 @@
+/* The four main navigation destinations share one unmirrored header image. */
+:root {
+  --main-header-background: url('/assets/ui/main-header-background.png');
+}
+
+.route-workbench :is([data-node-id="0:6660"],[data-node-id="0:6666"]),
+:is(.route-portal-leader,.route-portal-manager,.route-portal-staff) [data-node-id="0:8625"],
+.route-portal-overview [data-node-id="0:6161"],
+.route-im [data-node-id="0:5935"],
+.route-contacts [data-node-id="0:5711"] {
+  height: 210px;
+  background: var(--main-header-background) left top / 375px 210px no-repeat !important;
+  mask-image: none;
+}
+
+.route-workbench :is([data-node-id="0:6661"],[data-node-id="0:6667"]),
+:is(.route-portal-leader,.route-portal-manager,.route-portal-staff) [data-node-id="0:8626"],
+.route-portal-overview [data-node-id="0:6161"] > img,
+.route-im [data-node-id="0:5936"],
+.route-contacts [data-node-id="0:5712"] {
+  display: none;
+}
+
+.route-portal-overview [data-node-id="0:6159"] {
+  background: var(--canvas) !important;
+}
+
+.route-profile .profile-page {
+  background: var(--main-header-background) left top / 375px 210px no-repeat var(--canvas);
+}

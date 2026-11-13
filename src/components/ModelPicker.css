@@ -1,0 +1,8 @@
+.model-picker-list{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 4px max(20px,env(safe-area-inset-bottom));scrollbar-width:none}
+.model-picker-list>button{display:flex;align-items:center;width:100%;min-height:50px;gap:10px;padding:6px 8px;text-align:left;border-radius:8px}
+.model-picker-list>button[aria-selected=true]{background:#edf3ff}
+.model-picker-list>button>img{width:24px;height:24px;object-fit:contain;flex-shrink:0}
+.model-picker-list>button>span{min-width:0;display:flex;flex-direction:column;gap:1px}
+.model-picker-list strong{font:600 15px/21px var(--font-app);color:var(--color-primary);overflow-wrap:anywhere}
+.model-picker-list small{font:var(--type-helper);color:var(--color-muted);overflow-wrap:anywhere}
+.model-picker-list>button:focus-visible{outline:2px solid var(--color-blue);outline-offset:-2px}

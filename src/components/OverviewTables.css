@@ -1,0 +1,17 @@
+.overview-table-card{position:absolute;left:10px;width:355px;padding:14px 14px 10px;background:#fff;border-radius:16px;color:var(--color-primary)}
+.overview-table-card>header{display:flex;align-items:center;justify-content:space-between;min-height:24px;margin-bottom:12px}
+.overview-table-card h2{display:flex;align-items:center;gap:8px;font:400 16px/24px var(--font-app)}
+.overview-table-card h2 img{width:7px;height:17px;object-fit:contain}
+.overview-data-table{border-collapse:collapse;text-align:left;width:100%;font:14px/22px var(--font-app)}
+.overview-data-table th,.overview-data-table td{padding:6px 20px 6px 0;font-weight:400;vertical-align:top}
+.overview-data-table tr>:first-child{padding-left:0}
+.overview-data-table tr>:last-child{padding-right:0}
+.overview-data-table thead th{color:var(--color-muted);border-bottom:1px solid #e5e9f1;padding-top:8px;padding-bottom:8px}
+.research-updates{top:1109px}
+.research-table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+.research-updates-table{table-layout:auto;min-width:520px}
+.research-company,.research-category{width:76px}
+.research-updates-table tr>:nth-child(-n+2),.research-updates-table td{white-space:nowrap}
+.research-updates-table td{overflow-wrap:normal}
+.research-updates-table button{display:block;width:100%;padding:0;text-align:left;font:inherit;color:inherit;white-space:normal;overflow-wrap:anywhere}
+.research-updates-table button:focus-visible{outline:2px solid var(--color-blue);outline-offset:2px;border-radius:2px}

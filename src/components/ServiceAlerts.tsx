@@ -1,0 +1,16 @@
+import {useLayoutEffect,useRef} from 'react';
+import {Building2,CalendarClock,ChevronRight} from 'lucide-react';
+import {serviceAlerts} from '../data/serviceAlerts';
+import type {SceneProps} from './SceneAction';
+import './ServiceAlerts.css';
+const fieldIcons:Record<string,string>={'申请单':'application-solid.svg','出差安排':'calendar-solid.svg','事由':'details-solid.svg','关联机票':'plane.svg','去程机票':'plane.svg','返程高铁':'train.svg','酒店记录':'hotel.svg','本次酒店':'hotel.svg','其他酒店订单':'hotel.svg','状态说明':'note.svg'};
+export default function ServiceAlerts({hidden,onIgnore,onAction,onHeightChange}:{hidden:string[];onIgnore:(id:string)=>void;onHeightChange:(height:number)=>void}&SceneProps){
+ const section=useRef<HTMLElement>(null);
+ useLayoutEffect(()=>{const element=section.current;if(!element)return;const measure=()=>onHeightChange(element.offsetHeight);measure();const observer=new ResizeObserver(measure);observer.observe(element);return()=>observer.disconnect()},[onHeightChange]);
+ const items=serviceAlerts.filter(item=>!hidden.includes(item.id));
+ return <section ref={section} className="service-alerts" aria-label="AI 主动服务与智能提醒"><header><h2><img src="/assets/workbench/section-accent.png" alt=""/>AI 主动服务与智能提醒</h2><button aria-label="更多智能提醒" onClick={()=>onAction({type:'service-alerts',value:'all'})}>更多<ChevronRight size={14}/></button></header><div className="service-alert-list">{items.map(item=><article className="service-alert-card" key={item.id}><span className={'service-alert-icon '+item.id} aria-hidden="true">{item.id==='travel'?<CalendarClock size={20}/>:<Building2 size={20}/>}</span><div className="service-alert-copy"><button className="service-alert-title" title={item.title} onClick={()=>onAction({type:'service-alerts',value:item.id})}>{item.title}</button><p title={item.summary}>{item.summary}</p></div><footer><div className="service-alert-tags" title={item.type}><span>{item.type}</span></div><button className="service-alert-ignore" aria-label={'忽略'+item.title} onClick={()=>onIgnore(item.id)}>忽略</button><button className="service-alert-open" onClick={()=>onAction({type:'service-alerts',value:item.id})}>{item.action}<ChevronRight size={12}/></button></footer></article>)}{!items.length&&<div className="service-alert-empty"><p>暂无待处理提醒</p><button onClick={()=>onAction({type:'service-alerts',value:'all'})}>查看全部提醒</button></div>}</div></section>
+}
+export function ServiceAlertsDetail({selectedId,hidden,onRestore}:{selectedId:string;hidden:string[];onRestore:()=>void}){
+ const all=selectedId==='all',items=serviceAlerts.filter(item=>all?!hidden.includes(item.id):item.id===selectedId);
+ return <div className="service-alert-details">{items.map(item=><article className="service-alert-detail" key={item.id}><h3>{item.title}</h3><div className="service-alert-meta"><span>{item.tag}</span><small>{item.type} · 示例数据</small></div><dl>{item.fields.map(([label,value])=><div key={label}><dt><span aria-hidden="true" style={{maskImage:'url(/assets/service-alerts/'+(fieldIcons[label]||'application-solid.svg')+')'}}/>{label}</dt><dd>{value}</dd></div>)}</dl><aside><p title={'生成依据：'+item.basis}>生成依据：{item.basis}</p></aside></article>)}{!items.length&&<p className="empty-state">暂无待处理提醒</p>}{all&&hidden.length>0&&<button className="secondary-button service-alert-restore" onClick={onRestore}>恢复已忽略提醒（{hidden.length}）</button>}</div>
+}

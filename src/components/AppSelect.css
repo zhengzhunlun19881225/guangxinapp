@@ -1,0 +1,11 @@
+.app-select{position:relative;min-width:0;width:100%}
+.mobile-guide .app-select-trigger{width:100%;height:40px;min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;border:1px solid #e5e8f0;border-radius:9px;padding:8px 10px;background:#fff;color:var(--color-primary);font:var(--type-body)}
+.mobile-guide .app-select-trigger:hover,.mobile-guide .app-select-trigger:is(:active,:focus-visible,[aria-expanded=true]){background:#fcfcfe}
+.app-select-trigger>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app-select-trigger>svg{flex-shrink:0;transition:transform .15s}
+.app-select-trigger[aria-expanded=true]>svg{transform:rotate(180deg)}
+.app-select-menu{position:absolute;z-index:90;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:4px;background:#fff;border:1px solid #e7ecf5;border-radius:12px;box-shadow:0 6px 20px #18203612;font:var(--type-function);color:var(--color-primary)}
+.app-select-menu>[role=option]{min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;overflow-wrap:anywhere}
+.app-select-menu>[role=option].is-active{background:#f4f6f8}
+.app-select-menu>[role=option][aria-selected=true]{color:var(--color-brand);background:var(--color-brand-soft)}
+.app-select-menu>[role=option]>svg{flex-shrink:0}

@@ -1,0 +1,79 @@
+[
+  {
+    "route": "chat",
+    "nodeId": "0:5137",
+    "component": "ChatScene",
+    "height": 812,
+    "name": "对话"
+  },
+  {
+    "route": "history",
+    "nodeId": "0:4808",
+    "component": "HistoryScene",
+    "height": 812,
+    "name": "历史记录"
+  },
+  {
+    "route": "skills",
+    "nodeId": "0:5372",
+    "component": "SkillsScene",
+    "height": 812,
+    "name": "技能"
+  },
+  {
+    "route": "agents",
+    "nodeId": "0:5540",
+    "component": "AgentsScene",
+    "height": 812,
+    "name": "智能体"
+  },
+  {
+    "route": "contacts",
+    "nodeId": "0:5708",
+    "component": "ContactsScene",
+    "height": 816,
+    "name": "通讯录"
+  },
+  {
+    "route": "im",
+    "nodeId": "0:5932",
+    "component": "ImScene",
+    "height": 816,
+    "name": "IM"
+  },
+  {
+    "route": "portal-overview",
+    "nodeId": "0:6156",
+    "component": "OverviewScene",
+    "height": 1698,
+    "name": "我的门户-领导1"
+  },
+  {
+    "route": "workbench",
+    "nodeId": "0:6655",
+    "component": "WorkbenchScene",
+    "height": 1425,
+    "name": "工作台"
+  },
+  {
+    "route": "portal-manager",
+    "nodeId": "0:7256",
+    "component": "ManagerScene",
+    "height": 2539,
+    "name": "我的门户-中层备份"
+  },
+  {
+    "route": "portal-leader",
+    "nodeId": "0:7975",
+    "component": "LeaderScene",
+    "height": 2571,
+    "name": "我的门户-领导2"
+  },
+  {
+    "route": "portal-staff",
+    "nodeId": "0:8620",
+    "component": "StaffScene",
+    "height": 2216,
+    "name": "我的门户-普通"
+  }
+]

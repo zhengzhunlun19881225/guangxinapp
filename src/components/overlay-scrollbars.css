@@ -1,0 +1,7 @@
+/* App-wide floating scroll indicators: hidden while idle and never reserve layout width. */
+*,*::before,*::after{scrollbar-width:none!important;scrollbar-gutter:auto!important}
+*::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+.app-scrollbar-overlay{position:fixed;inset:0;z-index:900;pointer-events:none;overflow:hidden}
+.app-scrollbar-thumb{position:fixed;pointer-events:none;background:color-mix(in srgb,var(--color-muted) 55%,transparent);border-radius:2px;opacity:0;transition:opacity .15s ease}
+.app-scrollbar-thumb.is-scrolling{opacity:1}
+@media(prefers-reduced-motion:reduce){.app-scrollbar-thumb{transition:none}}

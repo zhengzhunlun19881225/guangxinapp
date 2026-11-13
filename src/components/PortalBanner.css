@@ -1,0 +1,18 @@
+/* Five local case posters reuse the portal's article photos and detail entries. */
+.portal-banner{position:absolute;left:10px;top:242px;width:355px;height:134px;border-radius:16px;overflow:hidden;background:#323e4b;color:white}
+.portal-banner-track{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;user-select:none;-webkit-user-select:none}
+.portal-banner-track::-webkit-scrollbar{display:none}
+.portal-banner-slide{flex:0 0 100%;min-width:0;height:100%;scroll-snap-align:start;scroll-snap-stop:always}
+.portal-banner-case{display:block;position:relative;width:100%;height:100%;text-align:left;color:white}
+.portal-banner-case>img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.portal-banner-shade{position:absolute;inset:0;background:linear-gradient(90deg,#171b2aa6,#171b2a45)}
+.portal-banner-copy{position:absolute;left:16px;right:16px;top:20px;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.portal-banner-copy>strong{font:400 18px/26px var(--font-app);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.portal-banner-caption{display:flex;align-items:center;gap:8px;min-width:0;width:max-content;max-width:100%;padding:3px 8px 3px 4px;border-radius:999px;background:#0005;font:12px/18px var(--font-app)}
+.portal-banner-caption>span:first-child{flex:none;padding:0 9px;border-radius:999px;background:linear-gradient(90deg,#ff7338,#ff4e1d)}
+.portal-banner-caption>span:last-child{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.portal-banner-pagination{position:absolute;bottom:0;left:50%;transform:translateX(-50%);display:flex;height:36px;align-items:center}
+.portal-banner-pagination>button{width:14px;height:36px;display:grid;place-items:center}
+.portal-banner-pagination>button>span{display:block;width:6px;height:6px;border-radius:50%;background:#fff6}
+.portal-banner-pagination>button[aria-current]>span{width:8px;height:8px;background:#fff}
+.portal-banner button:focus-visible,.portal-banner-track:focus-visible{outline:2px solid white;outline-offset:-3px}

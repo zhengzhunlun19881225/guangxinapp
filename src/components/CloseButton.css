@@ -1,0 +1,53 @@
+:root{
+ --close-visual-size:30px;
+ --close-icon-size:20px;
+ --close-hit-size:44px;
+ --close-inset:12px;
+ --close-background:#f5f6f8;
+ --close-color:var(--color-muted);
+ --dialog-title-font:600 18px/26px var(--font-app);
+ --dialog-header-height:66px;
+ --dialog-header-inset:20px;
+}
+:is(.device,.desktop-spec-panel) button.app-close-button,
+:is(.device,.desktop-spec-panel) .app-close-surface>header>button.app-close-button{
+ position:relative;display:grid;place-items:center;justify-content:center;align-items:center;flex:0 0 var(--close-hit-size);
+ width:var(--close-hit-size);height:var(--close-hit-size);min-width:var(--close-hit-size);min-height:var(--close-hit-size);
+ padding:0;margin:0;border:0;border-radius:50%;background:transparent;color:var(--close-color);line-height:1;
+ touch-action:manipulation;
+}
+.app-close-button::before{content:'';position:absolute;inset:0;margin:auto;width:var(--close-visual-size);height:var(--close-visual-size);border-radius:50%;background:var(--close-background)}
+:is(.device,.desktop-spec-panel) button.app-close-button>svg{position:relative;display:block;width:var(--close-icon-size);height:var(--close-icon-size);flex-shrink:0}
+:is(.device,.desktop-spec-panel) button.app-close-button:focus-visible{outline:2px solid var(--color-blue);outline-offset:0}
+:is(.device,.desktop-spec-panel) .app-close-surface{position:relative}
+:is(.device,.desktop-spec-panel) .app-close-surface>header{position:static;padding-right:56px}
+:is(.device,.desktop-spec-panel) .app-close-surface>header>button.app-close-button{
+ position:absolute;z-index:3;
+ top:calc(var(--close-inset) - (var(--close-hit-size) - var(--close-visual-size))/2);
+ right:calc(var(--close-inset) - (var(--close-hit-size) - var(--close-visual-size))/2);
+}
+:is(.device,.desktop-spec-panel) .modal-sheet.app-close-surface>header h2{max-width:100%;min-width:0}
+:is(.device,.desktop-spec-panel) .app-close-surface.modal-article>header.article-closebar{position:absolute;top:0;right:0;width:54px;height:54px;min-height:54px;padding:0;border:0;background:transparent;z-index:3}
+.modal-article .portal-news-article>h3,.modal-article .group-detail-article>header h2{padding-right:44px}
+:is(.device,.desktop-spec-panel) .im2-dialog.app-close-surface>header{padding-inline:36px}
+:is(.device,.desktop-spec-panel) .schedule-header>.app-close-button{margin-left:-5px}
+.spec-close-demo{min-height:76px;border:1px solid #edf0f4;border-radius:16px;padding:18px 20px;background:#fff}
+.spec-close-demo h3{font:var(--type-module)}
+
+/* All App dialog headers follow the approved Daily Brief Sources template. */
+:is(.device,.desktop-spec-panel) .app-close-surface>header:not(.article-closebar){
+ display:flex;align-items:center;justify-content:flex-start;flex-shrink:0;
+ height:auto;min-height:var(--dialog-header-height);
+ padding:16px 56px 16px var(--dialog-header-inset);border:0;box-shadow:none;
+}
+:is(.device,.desktop-spec-panel) .app-close-surface>header :is(h2,h3){
+ font:var(--dialog-title-font);font-synthesis:weight;text-align:left;
+ margin:0;letter-spacing:0;max-width:100%;min-width:0;
+ white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;
+}
+/* These surfaces pad their bodies; let their headers span the full surface. */
+:is(.device,.desktop-spec-panel) .im2-dialog.app-close-surface>header{margin-inline:-15px}
+:is(.device,.desktop-spec-panel) .schedule-sheet.app-close-surface>header{margin-inline:-20px}
+:is(.device,.desktop-spec-panel) .spec-dialog.app-close-surface>header{margin-inline:-18px}
+:is(.device,.desktop-spec-panel) .spec-dialog-image.app-close-surface>header{margin-inline:0}
+:is(.device,.desktop-spec-panel) .spec-close-demo{padding:0;min-height:var(--dialog-header-height)}

@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="13.1519" height="13.1143" viewBox="0 0 13.1519 13.1143" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="frame" clip-path="url(#clip0_0_9503)">
+<g id="frame_2">
+</g>
+<mask id="mask0_0_9503" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="14" height="14">
+<rect id="frame_3" width="13.1519" height="13.1143" fill="white"/>
+</mask>
+<g mask="url(#mask0_0_9503)">
+<path id="vector" d="M1.09599 2.73214C1.09599 2.43036 1.34134 2.18571 1.64399 2.18571H9.31594C9.6186 2.18571 9.86394 2.43036 9.86394 2.73214V5.19107L12.0559 3.55179V9.83571L9.86394 8.19643V10.3821C9.86394 10.6839 9.6186 10.9286 9.31594 10.9286H1.64399C1.34134 10.9286 1.09599 10.6839 1.09599 10.3821V2.73214Z" fill="#165DFF" stroke-width="0.971429" stroke-linecap="round" stroke-linejoin="round" stroke="#165DFF"/>
+<path id="vector_2" d="M2.73998 4.37143V5.46429" stroke-width="0.971429" stroke-linecap="round" stroke-linejoin="round" stroke="white"/>
+<path id="vector_3" d="M4.10997 3.825V6.01071" stroke-width="0.971429" stroke-linecap="round" stroke-linejoin="round" stroke="white"/>
+<path id="vector_4" d="M5.47997 4.37143V5.46429" stroke-width="0.971429" stroke-linecap="round" stroke-linejoin="round" stroke="white"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_9503">
+<rect width="13.1519" height="13.1143" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,39 @@
+/* Shared geometry at the 375px design baseline. */
+:root{--page-inset:16px;--card-inset:16px;--home-inset:10px;--module-gap:10px;--sheet-inset:20px}
+.artboard .im2-flow .im2-body{padding:16px var(--page-inset) 16px}
+.artboard .im2-flow .im2-card{padding-inline:var(--card-inset);margin-bottom:var(--module-gap);border-radius:16px}
+.artboard .im2-flow .im2-card:last-child{margin-bottom:0}
+.artboard .im2-search{margin-bottom:16px;border-radius:12px;padding-inline:12px}
+.artboard .im2-breadcrumb{margin:0 0 16px;min-height:28px;gap:8px}
+.artboard .im2-person-row{gap:16px}.artboard .im2-selection-footer,.artboard .im2-meeting-footer{padding-inline:var(--page-inset)}
+.artboard .im2-im-chat .im2-body{padding-top:0}
+.artboard .im2-im-preferences .im2-body,.artboard .im2-im-account .im2-body,.artboard .im2-im-login .im2-body{padding:16px var(--page-inset)}
+.artboard .im2-flow .im2-profile{padding-block:24px}
+.artboard .feature-flow .feature-body{padding:16px var(--page-inset)}
+.artboard .feature-media-body{margin:-16px calc(-1 * var(--page-inset))}
+.artboard .feature-footer{padding-inline:var(--page-inset)}
+.artboard .applications-scroll{padding:16px var(--page-inset) 24px}
+.artboard .applications-card{margin-bottom:var(--module-gap)}
+.artboard .schedule-agenda{margin:4px var(--page-inset) 16px;padding-inline:var(--card-inset)}
+.artboard .schedule-form-group,.artboard .schedule-search-results{padding-inline:var(--page-inset)}
+.artboard .schedule-search{height:40px;margin-bottom:16px}
+.artboard .portal-news-page .portal-news-search{padding:8px var(--page-inset)}
+.artboard .portal-news-page>.portal-news-tabs{padding-inline:var(--page-inset)}
+.artboard .portal-news-list{padding:16px var(--page-inset) 24px;gap:24px}
+.artboard .profile-page{padding-inline:var(--page-inset)}
+.artboard .profile-links{padding-inline:var(--card-inset)}
+.artboard .directory-search,.artboard .directory{left:var(--page-inset);width:calc(375px - 2 * var(--page-inset))}
+.artboard .im-search{left:var(--page-inset);width:calc(375px - 2 * var(--page-inset));height:40px}
+.artboard .im-list{left:var(--page-inset);width:calc(375px - 2 * var(--page-inset));padding-inline:var(--card-inset)}
+.artboard .contacts-content{left:var(--page-inset);right:var(--page-inset)}
+.artboard .contact-company,.artboard .contacts-list{padding-inline:var(--card-inset)}
+.artboard .work-todo,.artboard .work-calendar{padding-inline:var(--card-inset)}
+.artboard .todo-tabs{display:flex;justify-content:flex-start;align-items:center;gap:16px;height:44px;padding:0;background:transparent;border-radius:0;margin-bottom:0}
+.artboard .todo-tabs>button{position:relative;flex:0 0 auto;min-height:44px;height:44px;display:flex;align-items:center;border-radius:0;background:transparent;box-shadow:none}
+.artboard .todo-row strong{padding-right:0}
+
+/* IM and personal-service pages use the requested 10px page gutter. */
+.artboard:is(.route-im,.route-contacts,.route-profile,[class*="route-im-"],.route-knowledge,.route-knowledge-files,.route-cloud-drive,.route-share){--page-inset:10px}
+.artboard:is([class*="route-im-"],.route-share) .feature-im-search-header{padding-inline:var(--page-inset)}
+.artboard:is([class*="route-im-"],.route-share) .feature-im-search .feature-surface{padding-inline:var(--page-inset)}
+.artboard:is([class*="route-im-"]) .im2-selection-footer,.artboard:is([class*="route-im-"]) .im2-meeting-footer{padding-inline:var(--page-inset)}

@@ -1,0 +1,11 @@
+/* Shared category pills and the visual gap between adjacent categories. */
+:root{--category-pill-gap:16px}
+:is(.device,.desktop-spec-panel) .app-pill-label{
+ display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ box-sizing:border-box;height:28px;min-height:28px;padding:0 10px;
+ border:0;border-radius:999px;background:#f4f6f8;color:var(--color-secondary);
+ font:400 14px/22px var(--font-app);white-space:nowrap;
+}
+:is(.device,.desktop-spec-panel) button[aria-selected=true]>.app-pill-label{
+ background:var(--color-brand-soft);color:var(--color-brand);font-weight:600;font-synthesis:weight;
+}
