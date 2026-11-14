@@ -20,7 +20,7 @@ const modes:Exclude<Mode,''>[]=['智能问答','智能问数','智能写作','�
 const summaryTypes=['提取材料中的要点','提炼文档中的结论','梳理政策要求','提炼文档核心内容'];
 function modeIcon(mode:string){return mode==='智能问答'?<Bot size={16}/>:mode==='智能问数'?<ChartNoAxesCombined size={16}/>:mode==='智能摘要'?<FileText size={16}/>:mode==='PPT生成'?<Presentation size={16}/>:mode==='AI+财务自动差旅'?<Plane size={16}/>:<WandSparkles size={16}/>}
 
-export default function Composer({onSend,onAction,request}:{onSend:(text:string,attachments?:ComposerAttachment[])=>boolean|void;onAction:(action:Action)=>void;request?:ComposerRequest}){
+export default function Composer({onSend,onAction,request,onModeChange}:{onSend:(text:string,attachments?:ComposerAttachment[])=>boolean|void;onAction:(action:Action)=>void;request?:ComposerRequest;onModeChange?:(mode:string)=>void}){
  const [text,setText]=useState(()=>readLocal('composer-text',''));
  const [mode,setMode]=useState<Mode>(()=>{const value=readLocal<Mode>('composer-mode-v2','');return modes.includes(value as Exclude<Mode,''>)?value:''});
  const [model,setModel]=useState(()=>normalizeModel(readLocal('composer-model','qwen3.8')));
@@ -34,6 +34,7 @@ export default function Composer({onSend,onAction,request}:{onSend:(text:string,
  const attachmentApi=useRef<ComposerAttachmentsHandle>(null);
  const input=useRef<HTMLTextAreaElement>(null),root=useRef<HTMLDivElement>(null),dialog=useRef<HTMLElement>(null);
  useEffect(()=>{saveLocal('composer-text',text)},[text]);
+ useEffect(()=>{onModeChange?.(mode)},[mode,onModeChange]);
  useEffect(()=>{saveLocal('composer-ppt',ppt)},[ppt]);
  useLayoutEffect(()=>{const field=input.current;if(!field)return;const resize=()=>{field.style.height='0px';field.style.height=Math.min(150,Math.max(40,field.scrollHeight))+'px'};resize();const observer=new ResizeObserver(()=>{if(field.clientWidth!==lastWidth){lastWidth=field.clientWidth;resize()}});let lastWidth=field.clientWidth;observer.observe(field);return()=>observer.disconnect()},[text]);
  useEffect(()=>{const element=root.current,device=element?.closest<HTMLElement>('.device');if(!element||!device)return;setDevice(device);const update=()=>device.style.setProperty('--composer-height',element.offsetHeight+'px');const observer=new ResizeObserver(update);observer.observe(element);update();return()=>{observer.disconnect();device.style.removeProperty('--composer-height')}},[]);

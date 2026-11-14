@@ -10,7 +10,7 @@ import {ComposerAttachmentPreview} from './ComposerAttachments';
 import {attachmentSize,type ComposerAttachment} from './attachmentStore';
 import './ChatPage.css';
 
-type Props={active:boolean;messages:Message[];selectedAgent:string;history:string[];height:number;onAction:(action:Action)=>void;onHome:()=>void;onClearAgent:()=>void};
+type Props={hideWelcome:boolean;active:boolean;messages:Message[];selectedAgent:string;history:string[];height:number;onAction:(action:Action)=>void;onHome:()=>void;onClearAgent:()=>void};
 
 const answerTitle='数据监测与优化策略';
 const answerSections=[
@@ -32,15 +32,15 @@ function AiAnswerCard({onAction}:{onAction:(action:Action)=>void}){
   <div className="ai-answer-actions"><button aria-label="朗读回答"><Volume2 size={17}/></button><button aria-label="复制回答" onClick={()=>copyText(answer).catch(()=>onAction({type:'external-app-tip',value:'请使用系统复制操作'}))}><Copy size={17}/></button><button aria-label="下载回答" onClick={()=>downloadText(answer,answerTitle+'.txt')}><Download size={17}/></button><button aria-label="重新生成"><RotateCw size={17}/></button><button aria-label="分享回答" onClick={()=>onAction({type:'share-answer',value:answer})}><Share2 size={17}/></button><i/><button aria-label="赞"><ThumbsUp size={17}/></button><button aria-label="踩"><ThumbsDown size={17}/></button></div>
  </article>;
 }
-export default function ChatPage({active,messages,selectedAgent,history,height,onAction,onHome,onClearAgent}:Props){
+export default function ChatPage({hideWelcome,active,messages,selectedAgent,history,height,onAction,onHome,onClearAgent}:Props){
  const root=useRef<HTMLElement>(null),[preview,setPreview]=useState<ComposerAttachment|null>(null);
  return <section ref={root} className="chat-page" style={{minHeight:height}}>
   <header className="chat-header">
    <div className="chat-status"><time>19:41</time><div><img src={assets.chat.imgCellularConnection} alt=""/><img src={assets.chat.imgWifi} alt=""/><img src={assets.chat.imgBattery} alt=""/></div></div>
    <AppNavBar label="小新 AI 导航" title="广智新" left={<><button aria-label={active?'返回 AI 首页':'返回工作台'} onClick={()=>active?onHome():onAction({type:'navigate',value:'workbench'})}><NavBackIcon/></button><button aria-label="打开历史记录" onClick={()=>onAction({type:'navigate',value:'history'})}><Menu size={22}/></button></>}/>
   </header>
-  {!active?<div className="chat-welcome"><h2>您好，欢迎使用广智新</h2><FeatureCards onAction={onAction}/><Suggestions history={history} onAction={onAction}/></div>:<>
    {selectedAgent&&<button className="chat-selected-agent" onClick={onClearAgent}>{selectedAgent}<X size={14}/></button>}
+  {!active?<>{!hideWelcome&&<div className="chat-welcome"><h2>您好，欢迎使用广智新</h2><FeatureCards onAction={onAction}/><Suggestions history={history} onAction={onAction}/></div>}</>:<>
    <section className="ai-messages" aria-label="AI 对话">{messages.map((message,index)=><div className={'message '+message.role} key={index}>{message.role==='assistant'?(message.plain?<p>{message.text}</p>:<AiAnswerCard onAction={onAction}/>):<><small>我</small><p>{message.text}</p>{!!message.attachments?.length&&<div className="message-attachments" aria-label="已发送附件">{message.attachments.map(item=><button type="button" className="message-attachment" key={item.id} onClick={()=>setPreview(item)} aria-label={'预览已发送附件 '+item.name}><FileText size={22}/><span><strong>{item.name}</strong><small>{attachmentSize(item.size)} · {item.source}</small></span></button>)}</div>}</>}</div>)}</section>
   </>}
  {preview&&root.current?.closest<HTMLElement>('.device')&&<ComposerAttachmentPreview device={root.current.closest<HTMLElement>('.device')!} item={preview} close={()=>setPreview(null)}/>}
