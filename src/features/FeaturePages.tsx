@@ -5,9 +5,13 @@ import Writing from './Writing';
 import FileMedia from './FileMedia';
 import IMSearch from './IMSearch';
 import CreateGroup from './CreateGroup';
+import TravelPreferences from './TravelPreferences';
+import CloudDrive from './CloudDrive';
 import type {FeatureProps} from './data';
 export default function FeaturePages(props:FeatureProps&{ask:(text:string)=>void}){
  const {route}=props;
+ if(route==='travel-preferences')return <TravelPreferences {...props}/>;
+ if(route==='cloud-drive')return <CloudDrive {...props}/>;
  if(route==='im-create-group')return <CreateGroup {...props}/>;
  if(route==='skill-tree')return <SkillTree {...props}/>;
  if(route==='scheduled-shares')return <ScheduledShares {...props}/>;

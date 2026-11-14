@@ -2,8 +2,8 @@ import {readLocal,saveLocal} from '../data';
 import {people,initialMembers,initialGroups,initialMessages,type ChatMessage,type Group,type ChatSettings} from '../im/data';
 import {isGroupMuted} from '../im/conversations';
 
-export const featureRoutes=['im-create-group','skill-tree','scheduled-shares','knowledge','knowledge-files','writing','writing-document','share','im-search-all','im-chat-search','im-chat-files','im-media','cloud-drive'];
-export const featureTitles:Record<string,string>={'im-create-group':'创建群组','skill-tree':'技能树','scheduled-shares':'定时分享管理',knowledge:'知识库','knowledge-files':'知识库文档',writing:'智能写作','writing-document':'文档详情',share:'选择联系人','im-search-all':'搜索','im-chat-search':'查找聊天内容','im-chat-files':'聊天文件','im-media':'图片及视频','cloud-drive':'云盘'};
+export const featureRoutes=['im-create-group','skill-tree','scheduled-shares','knowledge','knowledge-files','writing','writing-document','share','im-search-all','im-chat-search','im-chat-files','im-media','cloud-drive','travel-preferences'];
+export const featureTitles:Record<string,string>={'im-create-group':'创建群组','skill-tree':'技能树','scheduled-shares':'定时分享管理',knowledge:'知识库','knowledge-files':'知识库文档',writing:'智能写作','writing-document':'文档详情',share:'选择联系人','im-search-all':'搜索','im-chat-search':'查找聊天内容','im-chat-files':'聊天文件','im-media':'图片及视频','cloud-drive':'云盘','travel-preferences':'差旅偏好设置'};
 export type FeatureProps={route:string;locationKey:string;height:number;navigate:(route:string)=>void;notify:(text:string)=>void};
 export const uid=()=>globalThis.crypto.randomUUID();
 export const today=()=>new Date().toLocaleDateString('en-CA');
