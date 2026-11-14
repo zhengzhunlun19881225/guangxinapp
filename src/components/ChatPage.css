@@ -7,7 +7,7 @@
 .chat-status>div{display:flex;align-items:center;gap:5px}.chat-status img:nth-child(1){width:17px;height:12px}.chat-status img:nth-child(2){width:16px;height:12px}.chat-status img:nth-child(3){width:24px;height:12px}
 .chat-welcome{padding-top:29px}
 .chat-welcome>h2{text-align:center;font:var(--type-page);font-synthesis:weight;color:var(--color-primary)}
-.chat-page .feature-carousel{position:relative;top:auto;left:auto;margin-top:32px;width:375px;height:214px;padding:8px 123px 20px;gap:0;scroll-snap-type:x mandatory;scroll-padding-inline:123px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;touch-action:pan-x;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.chat-page .feature-carousel{position:relative;top:auto;left:auto;margin-top:32px;width:375px;height:214px;padding:8px 16px 20px;gap:0;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;touch-action:pan-x;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .chat-page .feature-carousel{scrollbar-color:transparent transparent;-ms-overflow-style:none}
 .chat-page .feature-carousel::-webkit-scrollbar,.chat-page .feature-carousel::-webkit-scrollbar-track,.chat-page .feature-carousel::-webkit-scrollbar-thumb{display:none;width:0;height:0;background:transparent}
 .device:has(.route-chat),.device:has(.route-chat) *{scrollbar-width:none;-ms-overflow-style:none}
@@ -15,7 +15,7 @@
 .chat-page .feature-card{flex:0 0 129px;height:167px;margin-right:8px;border:1px solid #fff;border-radius:18px;box-shadow:0 6px 28px #7e8b9e24;scroll-snap-align:center;transform-origin:center bottom;transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s cubic-bezier(.22,1,.36,1);will-change:transform}
 .chat-page .feature-carousel.is-scrolling .feature-card{transition:none}
 .chat-page .feature-card>img{top:0;left:0;width:127px;height:98px;object-fit:cover}
-.chat-page .feature-carousel.is-scrolling{scroll-snap-type:none}
+.chat-page .feature-card:last-child{margin-right:0}
 .chat-page .feature-card h3{top:12px;left:10px;font:var(--type-list);font-synthesis:weight}
 .chat-page .feature-card>b{display:none}
 .chat-page .feature-card>p{top:105px;left:7px;width:113px;max-height:36px;font:var(--type-helper)}
