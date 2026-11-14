@@ -1,6 +1,6 @@
 import {useRef,useState} from 'react';
-import {Menu,X,Volume2,Copy,Download,RotateCw,Share2,ThumbsUp,ThumbsDown,FileText,FileType} from 'lucide-react';
-import AppNavBar,{NavBackIcon} from './AppNavBar';
+import {ChevronLeft,Menu,MessageCircleDashed,X,Volume2,Copy,Download,RotateCw,Share2,ThumbsUp,ThumbsDown,FileText,FileType} from 'lucide-react';
+import AppNavBar from './AppNavBar';
 import {assets} from '../assets';
 import type {Message} from '../data';
 import type {Action} from './SceneAction';
@@ -37,7 +37,8 @@ export default function ChatPage({hideWelcome,active,messages,selectedAgent,hist
  return <section ref={root} className="chat-page" style={{minHeight:height}}>
   <header className="chat-header">
    <div className="chat-status"><time>19:41</time><div><img src={assets.chat.imgCellularConnection} alt=""/><img src={assets.chat.imgWifi} alt=""/><img src={assets.chat.imgBattery} alt=""/></div></div>
-   <AppNavBar label="小新 AI 导航" title="广智新" left={<><button aria-label={active?'返回 AI 首页':'返回工作台'} onClick={()=>active?onHome():onAction({type:'navigate',value:'workbench'})}><NavBackIcon/></button><button aria-label="打开历史记录" onClick={()=>onAction({type:'navigate',value:'history'})}><Menu size={22}/></button></>}/>
+   <AppNavBar className="chat-navbar" label="小新 AI 导航" title={<div className="chat-nav-heading"><h1>广智新</h1><p>内容由AI生成仅供参考</p></div>} left={<><button className="chat-nav-action" aria-label={active?'返回 AI 首页':'返回工作台'} onClick={()=>active?onHome():onAction({type:'navigate',value:'workbench'})}><ChevronLeft size={22}/></button><button className="chat-nav-action" aria-label="打开历史记录" onClick={()=>onAction({type:'navigate',value:'history'})}><Menu size={22}/></button></>} right={<button className="chat-nav-action" aria-label="新建对话" onClick={()=>onAction({type:'new-chat',value:'新建对话'})}><MessageCircleDashed size={22}/></button>}/>
+
   </header>
    {selectedAgent&&<button className="chat-selected-agent" onClick={onClearAgent}>{selectedAgent}<X size={14}/></button>}
   {!active?<>{!hideWelcome&&<div className="chat-welcome"><h2>您好，欢迎使用广智新</h2><FeatureCards onAction={onAction}/><Suggestions history={history} onAction={onAction}/></div>}</>:<>

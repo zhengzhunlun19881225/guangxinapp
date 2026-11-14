@@ -185,7 +185,12 @@ export default function App(){
     if(route!=='chat')navigate('chat');
     setComposerRequest(value=>({id:value.id+1,mode:'',text}));
   }
+  function startNewChat(){
+    if(!saveLocal('ai-messages',[])){notify('新建对话失败，请重试');return}
+    setMessages([]);setChatActive(false);setSelectedAgent('');navigate('chat');scroll.current?.scrollTo(0,0);
+  }
   const onAction=(a:Action)=>{
+    if(a.type==='new-chat'){startNewChat();return}
     if(a.type==='navigate'){navigate(a.value);return}
     if(a.type==='list'&&['知识库','云盘'].includes(a.value)){navigate(a.value==='知识库'?'knowledge':'cloud-drive');return}
     if(a.type==='composer-agent'||(a.type==='agent'&&['制作PPT','财务自动差旅'].includes(a.value))){setComposerRequest(value=>({id:value.id+1,mode:a.value==='制作PPT'?'PPT生成':a.value==='财务自动差旅'?'AI+财务自动差旅':a.value}));return}
@@ -280,7 +285,7 @@ export default function App(){
         <button className="history-dismiss" aria-label="关闭历史记录" onClick={()=>navigate('chat')}/>
         <div className="history-drawer">
           <div className="history-search-row"><Search value={historySearch} onChange={setHistorySearch}/><button className="new-chat-button" aria-label="新建对话"
-            onClick={()=>{setMessages([]);saveLocal('ai-messages',[]);navigate('chat')}}>+</button></div>
+            onClick={startNewChat}>+</button></div>
           <div className="history-rows"><p>近7天</p>{historyRows.map((v,i)=><button key={v+i} onClick={()=>send(v)}>{v}</button>)}
             {!historyRows.length&&<p className="empty-state">未找到历史记录</p>}</div>
           <div className="history-tools">{['智能体·技能','知识库','数字员工管理','云盘'].map((v,i)=><button key={v}
