@@ -1,4 +1,4 @@
-.modal-sheet:has(.profile-feedback){background:#f7f8fd}.modal-sheet:has(.profile-feedback)>header{background:#fff;border-radius:22px 22px 0 0}.modal-sheet:has(.profile-feedback)>.modal-body{padding:14px 12px 4px}
+.modal-sheet:has(.profile-feedback){background:#fff}.modal-sheet:has(.profile-feedback)>header{background:#fff;border-radius:22px 22px 0 0}.modal-sheet:has(.profile-feedback)>.modal-body{padding:14px 12px 4px;background:#fff}
 .profile-feedback{display:flex;flex-direction:column;gap:10px;font:var(--type-body)}
 .profile-feedback-label{font:var(--type-list);color:var(--color-primary)}.profile-feedback-label>span{color:#ff4d4f}
 .profile-feedback-editor{position:relative;overflow:hidden;border:1px solid var(--control-border);border-radius:12px;background:#fff}
