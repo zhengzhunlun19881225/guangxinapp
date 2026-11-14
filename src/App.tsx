@@ -1,5 +1,6 @@
 import {lazy,Suspense,useCallback,useEffect,useLayoutEffect,useRef,useState,type ComponentType,type FormEvent,type CSSProperties} from 'react';
 import manifest from './manifest.json';
+import type {ComposerRequest} from './components/Composer';
 import type {ComposerAttachment} from './components/attachmentStore';
 import {assets} from './assets';
 import {contacts,historyItems,mascot,questions,readLocal,roles,saveLocal,type Message} from './data';
@@ -124,7 +125,7 @@ export default function App(){
   const [zoom,setZoom]=useState(1),[historySearch,setHistorySearch]=useState(''),[selectedAgent,setSelectedAgent]=useState('');
   const [messages,setMessages]=useState<Message[]>(()=>readLocal<Message[]>('ai-messages',[]));
   const [skillTreeOpen,setSkillTreeOpen]=useState(false);
-  const [chatActive,setChatActive]=useState(()=>readLocal<Message[]>('ai-messages',[]).length>0),[composerRequest,setComposerRequest]=useState({id:0,mode:''});
+  const [chatActive,setChatActive]=useState(()=>readLocal<Message[]>('ai-messages',[]).length>0),[composerRequest,setComposerRequest]=useState<ComposerRequest>({id:0,mode:''});
   const [savedHistory,setSavedHistory]=useState<string[]>(()=>readLocal<string[]>('history',[]));
   const [role,setRole]=useState(()=>readLocal('portal-role','portal-overview'));
   const [company,setCompany]=useState('全部企业'),[year,setYear]=useState('2026年');
@@ -178,6 +179,11 @@ export default function App(){
     setTimeout(()=>scroll.current?.scrollTo({top:scroll.current.scrollHeight,behavior:'smooth'}),50);
     return true;
   }
+  function draftComposer(text:string){
+    saveLocal('composer-text',text);setSkillTreeOpen(false);
+    if(route!=='chat')navigate('chat');
+    setComposerRequest(value=>({id:value.id+1,mode:'',text}));
+  }
   const onAction=(a:Action)=>{
     if(a.type==='navigate'){navigate(a.value);return}
     if(a.type==='list'&&['知识库','云盘'].includes(a.value)){navigate(a.value==='知识库'?'knowledge':'cloud-drive');return}
@@ -195,7 +201,7 @@ export default function App(){
     if(a.type==='call'){navigate('im-meeting?'+new URLSearchParams({name:a.value,origin:'contacts'}).toString());return}
     if(a.type==='detail'&&referenceTodos.some(item=>item.title===a.value)){setModal({type:'todo-detail',value:a.value});return}
     if(a.type==='list'&&a.value==='统一待办'){setModal({type:'todo-list',value:'统一待办'});return}
-    if(a.type==='question'){send(a.value);return}
+    if(a.type==='question'){draftComposer(a.value);return}
     if(a.type==='attendance'){const t=new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});saveLocal('attendance',t);notify('打卡成功 '+t);return}
     if(a.type==='ignore-reminder'){notify('已忽略此条提醒');return}
     if(a.type==='sync-calendar'){saveLocal('synced-meeting',true);notify('会议已同步到我的日程');return}
@@ -231,7 +237,7 @@ export default function App(){
     <div className="device" ref={device} style={{'--app-zoom':zoom} as CSSProperties}>
       <div className="device-scroll" ref={scroll}>
         <main className={'artboard route-'+route} style={{zoom,paddingBottom:isFeature?0:undefined,minHeight:isImSecondary||isSchedule||isApps||isNews||isFeature?deviceHeight/zoom:sceneHeight-(['portal-leader','portal-overview'].includes(route)?48:0),'--service-alert-offset':serviceAlertOffset+'px','--group-news-offset':groupNewsOffset+'px','--investment-offset':(investmentHeight+10)+'px','--research-offset':(researchHeight-230)+'px'} as CSSProperties}>
-          {route==='chat'?<ChatPage active={chatActive} messages={messages} selectedAgent={selectedAgent} history={savedHistory} height={deviceHeight/zoom} onAction={onAction} onHome={()=>{setChatActive(false);scroll.current?.scrollTo(0,0)}} onClearAgent={()=>setSelectedAgent('')}/>:route==='group-news-detail'?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><GroupNewsDetail locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate}/></Suspense>:route==='portal-news'?<PortalNewsPage locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} onAction={onAction} subscription={newsSubscription}/>:isApps?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><ApplicationsPage locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} onAction={onAction} notify={notify}/></Suspense>:isSchedule?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><SchedulePages route={route} locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} notify={notify}/></Suspense>:isFeature?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><FeaturePages key={locationKey} route={route} locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} notify={notify} ask={send}/></Suspense>:isImSecondary?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><ImPages route={route} locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} notify={notify}/></Suspense>:route==='mobile-spec'?<MobileSpec/>:route==='profile'?<ProfilePage onAction={onAction} navigate={navigate}/>:route==='canvases'?<div className="canvas-index"><h1>App 全部画布</h1><p>共 11 张，点击进入对应页面</p>
+          {route==='chat'?<ChatPage active={chatActive} messages={messages} selectedAgent={selectedAgent} history={savedHistory} height={deviceHeight/zoom} onAction={onAction} onHome={()=>{setChatActive(false);scroll.current?.scrollTo(0,0)}} onClearAgent={()=>setSelectedAgent('')}/>:route==='group-news-detail'?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><GroupNewsDetail locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate}/></Suspense>:route==='portal-news'?<PortalNewsPage locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} onAction={onAction} subscription={newsSubscription}/>:isApps?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><ApplicationsPage locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} onAction={onAction} notify={notify}/></Suspense>:isSchedule?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><SchedulePages route={route} locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} notify={notify}/></Suspense>:isFeature?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><FeaturePages key={locationKey} route={route} locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} notify={notify} ask={draftComposer}/></Suspense>:isImSecondary?<Suspense fallback={<div className="scene-loading">正在加载…</div>}><ImPages route={route} locationKey={locationKey} height={deviceHeight/zoom} navigate={navigate} notify={notify}/></Suspense>:route==='mobile-spec'?<MobileSpec/>:route==='profile'?<ProfilePage onAction={onAction} navigate={navigate}/>:route==='canvases'?<div className="canvas-index"><h1>App 全部画布</h1><p>共 11 张，点击进入对应页面</p>
             <div className="canvas-utilities"><a href="#/mobile-spec"><span>手机规范</span><small>375px · 颜色与字体层级</small><span aria-hidden="true">↗</span></a></div>
             {manifest.map((p,i)=><a href={'#/'+p.route} key={p.nodeId}><span>{String(i+1).padStart(2,'0')}</span><div><strong>{p.name}</strong><small>375 × {p.height}</small></div><i>›</i></a>)}
           </div>:<>
@@ -280,7 +286,7 @@ export default function App(){
             onClick={()=>i===0?navigate('agents'):onAction({type:'list',value:v})}><Asset node={['0:5002','0:5045','0:5017','0:5038'][i]}/>{v}<i>›</i></button>)}</div>
         </div>
       </div>}
-      {skillTreeOpen&&device.current&&<Suspense fallback={null}><SkillTreePicker device={device.current} close={()=>setSkillTreeOpen(false)} share={()=>navigate('scheduled-shares')} ask={text=>{setSkillTreeOpen(false);send(text)}}/></Suspense>}
+      {skillTreeOpen&&device.current&&<Suspense fallback={null}><SkillTreePicker device={device.current} close={()=>setSkillTreeOpen(false)} share={()=>navigate('scheduled-shares')} ask={draftComposer}/></Suspense>}
       {toast&&<ToastMessage className="toast" text={toast} announce/>}
       {modal&&<Modal action={modal} close={closeModal}>
         {modal.type==='roles'?<div className="role-options">{roles.map(r=><button key={r.route} aria-pressed={role===r.route}
