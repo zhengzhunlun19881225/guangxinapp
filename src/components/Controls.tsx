@@ -81,8 +81,8 @@ export function MessagingList({kind,onAction}:{kind:'im'|'contacts';onAction:(a:
 }
 export function Suggestions({onAction,history=[]}:{onAction:(a:Action)=>void;history?:string[]}) {
   const [tab,setTab]=useState('热门问答');
-  const rows=tab==='最近记录'?history.slice(0,5):questions;
-  return <section className="chat-suggestions native-card">
+  const rows=(tab==='最近记录'?history:questions).slice(0,3);
+  return <section className="chat-suggestions native-card" data-kind={tab==='最近记录'?'recent':'popular'}>
     <div className="suggestion-tabs" role="tablist" aria-label="AI 首页推荐">{['最近记录','热门问答'].map(t=><button role="tab" aria-selected={tab===t} key={t} className={tab===t?'selected':''} onClick={()=>setTab(t)}>{t}</button>)}</div>
     {rows.map((q,i)=><button className="suggestion-row" key={q+i} onClick={()=>onAction({type:'question',value:q})}>
       <span>{i+1}.</span><span>{q}</span></button>)}
