@@ -8,13 +8,15 @@
 .device .composer.composer-enhanced .composer-options .composer-model-icon{width:20px;height:20px;object-fit:contain}
 .device .composer.composer-enhanced .composer-options>.composer-tools-grid{position:absolute;right:0;top:0;width:44px;min-width:44px;justify-content:center;border-radius:50%;background:#fff;box-shadow:0 4px 16px #1d293926;z-index:2}
 .device .composer.composer-enhanced .composer-options>.composer-tools-grid>span{width:36px;padding:0;justify-content:center;color:var(--color-primary);border:0;background:#fff}
-.device .composer.composer-enhanced .composer-input{display:block;height:auto;min-height:52px;padding:4px 6px;border:0;border-radius:16px;background:#fff;box-shadow:0 8px 24px #2934490a}
-.composer-default-entry{display:flex;align-items:center;gap:6px;min-height:44px}.composer-default-entry>textarea{width:0;min-width:0;flex:1;background:transparent;outline:0;border:0;box-sizing:border-box;height:40px;min-height:40px;max-height:150px;padding:9px 0;resize:none;overflow-y:auto;overflow-wrap:anywhere;white-space:pre-wrap;font:var(--type-body);color:var(--color-primary)}.composer-default-entry>textarea::placeholder{color:var(--color-muted)}
-.device .composer.composer-enhanced .composer-add,.device .composer.composer-enhanced .send-button{width:var(--composer-hit);height:var(--composer-hit);flex-shrink:0;background:transparent;border-radius:50%;display:grid;place-items:center;position:relative;isolation:isolate}
+.device .composer.composer-enhanced .composer-input{display:block;height:auto;min-height:52px;padding:4px 6px;border:1px solid transparent;border-radius:16px;background:#fff;box-shadow:0 8px 24px #2934490a}
+.composer-default-entry{display:flex;flex-direction:column;align-items:stretch;min-width:0}.composer-default-entry>textarea{width:100%;min-width:0;background:#fff;outline:0;border:0;box-sizing:border-box;height:32px;min-height:32px;max-height:150px;padding:6px 4px 0;resize:none;overflow-y:auto;overflow-wrap:anywhere;white-space:pre-wrap;font:var(--type-body);color:var(--color-primary)}.composer-default-entry>textarea::placeholder{color:var(--color-muted)}
+.device .fixed-composer .composer.composer-enhanced .composer-input .composer-default-entry>textarea:is(:hover,:focus){background:#fff}
+.composer-entry-actions{display:flex;align-items:center;min-height:44px;gap:0}.composer-entry-actions>.composer-add{margin-right:auto}
+.device .composer.composer-enhanced .composer-add,.device .composer.composer-enhanced .send-button,.device .composer.composer-enhanced .composer-voice{width:var(--composer-hit);height:var(--composer-hit);flex-shrink:0;background:transparent;border-radius:50%;display:grid;place-items:center;position:relative;isolation:isolate}
 .device .composer.composer-enhanced .composer-add{color:var(--color-secondary)}
 .device .composer.composer-enhanced .composer-add::before{content:'';position:absolute;inset:7px;background:#f5f6f8;border-radius:50%;z-index:-1}
-.device .composer.composer-enhanced .send-button{color:#fff}
-.device .composer.composer-enhanced .send-button::before{content:'';position:absolute;inset:7px;background:linear-gradient(155deg,#ff7829,#ff0000);border-radius:50%;z-index:-1}
+.device .composer.composer-enhanced .send-button,.device .composer.composer-enhanced .composer-voice{color:#fff}
+.device .composer.composer-enhanced .send-button::before,.device .composer.composer-enhanced .composer-voice::before{content:'';position:absolute;inset:7px;background:linear-gradient(155deg,#ff7829,#ff0000);border-radius:50%;z-index:-1}
 .device .composer.composer-enhanced .composer-agent-card{border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 8px 24px #2934490a}
 .composer-agent-header{display:flex;align-items:center;justify-content:space-between;padding:0 12px;min-height:44px}
 .composer-agent-header>button:first-child{min-height:44px;text-align:left;font:var(--type-module);color:var(--color-primary)}
@@ -38,3 +40,10 @@
 .composer-hidden-file{display:none}.composer-error{margin-top:8px;font:var(--type-helper);color:var(--color-brand)}
 .device .chat-page{padding-bottom:calc(var(--composer-height,180px) + var(--preview-keyboard-height,0px) + 16px)}
 .device .fixed-composer .composer.composer-enhanced .composer-options>button{min-width:0;justify-content:flex-start}
+
+.device .composer.composer-enhanced.is-default .composer-input:focus-within{border-color:var(--color-brand)}
+
+.composer-knowledge-switch{display:block;position:relative;flex:none;width:34px;height:20px;margin-left:auto;border-radius:999px;background:#d9dade;transition:background-color .15s}
+.composer-knowledge-switch>i{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .15s}
+.composer-knowledge-toggle[aria-checked=true] .composer-knowledge-switch{background:var(--color-brand)}
+.composer-knowledge-toggle[aria-checked=true] .composer-knowledge-switch>i{transform:translateX(14px)}
