@@ -1,9 +1,10 @@
 import {useEffect,useRef,useState} from 'react';
-import {ArrowLeft,Check,ChevronRight,Eye,FolderOpen} from 'lucide-react';
+import {ArrowLeft,Check,ChevronRight,Eye} from 'lucide-react';
 import {readLocal,saveLocal} from '../data';
 import {Empty,FeatureSearch,FeatureTabs,Mark} from '../features/UI';
 import ResourceBrowserIcon from '../features/ResourceBrowserIcon';
-import {knowledgePath,type KnowledgeNode} from '../features/knowledgeCatalog';
+import KnowledgeNodeList from '../features/KnowledgeNodeList';
+import {knowledgeFileIds,knowledgePath,type KnowledgeNode} from '../features/knowledgeCatalog';
 import {readResources,type Resource} from '../features/data';
 import ComposerSheet from './ComposerSheet';
 import '../features/resource-browser.css';
@@ -14,8 +15,8 @@ export default function KnowledgePicker({device,close,choose}:{device:HTMLElemen
  const dialog=useRef<HTMLElement>(null),{nodes,path}=knowledgePath(ids,scope),files=resources.filter(file=>library?.resourceIds?.includes(file.id)&&file.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())),visible=nodes.filter(node=>(node.name+(node.description||'')).toLocaleLowerCase().includes(query.toLocaleLowerCase()));
  useEffect(()=>{if(!preview)return;setText('');setError('');if(!/\.(txt|csv|md|json)$/i.test(preview.name)){setLoading(false);return}let active=true;const controller=new AbortController();setLoading(true);const timer=setTimeout(()=>controller.abort(),15000);fetch(preview.url,{signal:controller.signal}).then(response=>{if(!response.ok)throw new Error();return response.text()}).then(value=>{if(active)setText(value)}).catch(()=>{if(active)setError('文档读取失败，可下载查看或重新打开预览')}).finally(()=>{clearTimeout(timer);if(active)setLoading(false)});return()=>{active=false;clearTimeout(timer);controller.abort()}},[preview]);
  function browse(next:string[]){setIds(next);setLibrary(null);setQuery('');setError('')}
- function open(node:KnowledgeNode){setQuery('');node.kind==='library'?setLibrary(node):browse([...ids,node.id])}
- function count(node:KnowledgeNode){return node.kind==='library'?resources.filter(file=>node.resourceIds?.includes(file.id)).length:(node.children||[]).filter(item=>item.kind==='library').length}
+ function openFiles(node:KnowledgeNode){setQuery('');setLibrary({...node,resourceIds:knowledgeFileIds(node)});setError('')}
+ function openChildren(node:KnowledgeNode){browse([...ids,node.id])}
  function toggle(id:string){setSelected(values=>values.includes(id)?values.filter(value=>value!==id):[...values,id]);setError('')}
  function confirm(){if(!saveLocal('writing-knowledge',selected)){setError('选择保存失败，请重试');return}choose(selected)}
  function back(){if(preview){setPreview(null);setError('')}else if(library){setLibrary(null);setQuery('')}else browse(ids.slice(0,-1))}
@@ -26,7 +27,8 @@ export default function KnowledgePicker({device,close,choose}:{device:HTMLElemen
    <FeatureTabs label="知识库范围" segmented items={['通用','组织','团队','个人']} value={scope} onChange={next=>{setScope(next);browse([])}}/>
    <FeatureSearch value={query} onChange={setQuery} placeholder={library?'搜索知识库文档':'搜索'+scope+'知识库'}/>
    {(path.length>0||library)&&<nav className="knowledge-picker-crumbs" aria-label="知识库位置"><button type="button" className="knowledge-picker-back" aria-label="返回上一级" onClick={back}><ArrowLeft size={17}/></button><button type="button" onClick={()=>browse([])}>{scope}</button>{path.map((node,index)=><span key={node.id}><ChevronRight size={12}/><button type="button" onClick={()=>browse(path.slice(0,index+1).map(value=>value.id))}>{node.name}</button></span>)}{library&&<span><ChevronRight size={12}/>{library.name}</span>}</nav>}
-   <div className="knowledge-picker-list">{library?files.map(file=><div className="knowledge-picker-row" key={file.id}><button type="button" className="knowledge-picker-open" role="checkbox" aria-checked={selected.includes(file.id)} aria-label={'选择'+file.name} onClick={()=>toggle(file.id)}><i className={'knowledge-picker-check'+(selected.includes(file.id)?' is-checked':'')}>{selected.includes(file.id)&&<Check size={14}/>}</i><ResourceBrowserIcon kind={file.name.endsWith('.txt')?'text':file.kind}/><span><strong><Mark text={file.name} query={query}/></strong><small>{file.size}</small></span></button><button type="button" className="knowledge-picker-preview-button" aria-label={'预览'+file.name} onClick={()=>setPreview(file)}><Eye size={18}/></button></div>):visible.map(node=><button className="knowledge-picker-row knowledge-picker-open" type="button" key={node.id} onClick={()=>open(node)}><ResourceBrowserIcon kind={node.kind}/><span><strong><Mark text={node.name+'('+count(node)+')'} query={query}/>{node.kind!=='library'&&count(node)>0&&<FolderOpen size={16}/>}</strong>{node.description&&<small>{node.description}</small>}</span><ChevronRight size={16}/></button>)}{(library?!files.length:!visible.length)&&<Empty>{query?'未找到相关内容':'暂无知识库内容'}</Empty>}</div>
+   {library?<div className="knowledge-picker-list">{files.map(file=><div className="knowledge-picker-row" key={file.id}><button type="button" className="knowledge-picker-open" role="checkbox" aria-checked={selected.includes(file.id)} aria-label={'选择'+file.name} onClick={()=>toggle(file.id)}><i className={'knowledge-picker-check'+(selected.includes(file.id)?' is-checked':'')}>{selected.includes(file.id)&&<Check size={14}/>}</i><ResourceBrowserIcon kind={file.name.endsWith('.txt')?'text':file.kind}/><span><strong><Mark text={file.name} query={query}/></strong><small>{file.size}</small></span></button><button type="button" className="knowledge-picker-preview-button" aria-label={'预览'+file.name} onClick={()=>setPreview(file)}><Eye size={18}/></button></div>)}{!files.length&&<Empty>{query?'未找到相关内容':'暂无文档'}</Empty>}</div>:<KnowledgeNodeList nodes={visible} resources={resources} scope={scope} query={query} onFiles={openFiles} onChildren={openChildren}/>}
+
    {error&&<p className="knowledge-picker-error" role="alert">{error}</p>}
    <footer className="knowledge-picker-footer"><div><span>已选择 {selected.length} 份文档</span><button type="button" disabled={!selected.length} onClick={()=>setSelected([])}>清空</button></div><div><button type="button" className="knowledge-picker-cancel" onClick={close}>取消</button><button type="button" className="knowledge-picker-confirm" onClick={confirm}>确定{selected.length?'（'+selected.length+'）':''}</button></div></footer>
   </div>}

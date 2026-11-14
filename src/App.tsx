@@ -189,7 +189,7 @@ export default function App(){
     if(a.type==='navigate'){navigate(a.value);return}
     if(a.type==='list'&&['知识库','云盘'].includes(a.value)){navigate(a.value==='知识库'?'knowledge':'cloud-drive');return}
     if(a.type==='composer-agent'||(a.type==='agent'&&['制作PPT','财务自动差旅'].includes(a.value))){setComposerRequest(value=>({id:value.id+1,mode:a.value==='制作PPT'?'PPT生成':a.value==='财务自动差旅'?'AI+财务自动差旅':a.value}));return}
-    if(a.type==='agent'&&a.value.includes('智写')){navigate('writing');return}
+    if(a.type==='agent'&&a.value.includes('智写')){if(route!=='chat'){saveLocal('composer-mode-v2','智能写作');setComposerMode('智能写作');navigate('chat')}else setComposerRequest(value=>({id:value.id+1,mode:'智能写作'}));return}
     if(a.type==='share-answer'){if(!startShare({kind:'text',title:'数据监测与优化策略',text:a.value},locationKey.replace(/^#\//,''),navigate))notify('无法创建分享，请重试');return}
     if(a.type==='conversation'){
       const groups=readLocal('im2-groups',initialGroups),group=groups.find(g=>g.name===a.value||(g.id==='original'&&a.value==='刘磊、胡磊、陈丽、胡可'));

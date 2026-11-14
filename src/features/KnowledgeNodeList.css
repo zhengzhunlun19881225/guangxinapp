@@ -1,0 +1,11 @@
+.knowledge-node-columns,.knowledge-node-row{--knowledge-hit:max(44px,calc(44px / var(--app-zoom,1)));display:grid;grid-template-columns:minmax(0,1fr) 68px var(--knowledge-hit);align-items:center;width:100%}
+.knowledge-node-columns{flex:none;height:28px;font:var(--type-helper);color:var(--color-muted)}.knowledge-node-columns>span:not(:first-child){text-align:center}
+.knowledge-node-list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.knowledge-node-row{min-height:70px;border-bottom:1px solid #eff0f3}
+.knowledge-node-name{display:flex;align-items:center;gap:10px;width:100%;min-width:0;min-height:69px;padding:8px 0;text-align:left;color:var(--color-primary)}
+.knowledge-node-name>.resource-browser-icon{width:32px;height:32px;flex:0 0 32px}.knowledge-node-name>.resource-browser-icon.is-team{border:0;background:#effbfc;border-radius:8px;color:#00b6c9}.knowledge-node-name>.resource-browser-icon.is-team>svg{width:23px;height:23px;stroke-width:1.6}
+.knowledge-node-name>span:last-child{min-width:0;flex:1}.knowledge-node-name strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:var(--type-list);font-weight:400}.knowledge-node-name small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:var(--type-helper);color:var(--color-muted);margin-top:2px}
+.knowledge-node-files{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;width:68px;min-height:var(--knowledge-hit);color:var(--color-action);font:var(--type-function)}.knowledge-node-files>span{color:var(--color-secondary)}.knowledge-node-files>svg{flex:none}.knowledge-node-files::after{position:absolute;right:0;top:50%;transform:translateY(-50%);content:'';width:1px;height:18px;background:#edeef2}
+.knowledge-node-children-cell{display:flex;align-items:center;justify-content:center;min-width:0}.knowledge-node-children{display:grid;place-items:center;width:var(--knowledge-hit);min-width:var(--knowledge-hit);height:var(--knowledge-hit);color:var(--color-muted)}
+.knowledge-node-row button:active{background:#f7f8fa}.knowledge-node-row button:focus-visible{outline:2px solid var(--color-brand);outline-offset:-2px;border-radius:6px}
+.knowledge-page .knowledge-node-list{overflow:visible}

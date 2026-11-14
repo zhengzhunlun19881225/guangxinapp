@@ -5,7 +5,7 @@ import './ComposerSheet.css';
 
 export default function ComposerSheet({device,title,closeLabel,close,escape,dialogRef,children,compact=false}:{device:HTMLElement;title:string;closeLabel:string;close:()=>void;escape?:()=>void;dialogRef:RefObject<HTMLElement|null>;children:ReactNode;compact?:boolean}){
  const [height,setHeight]=useState(600),escapeRef=useRef(escape||close);escapeRef.current=escape||close;
- useEffect(()=>{const update=()=>{const zoom=Number(getComputedStyle(device).getPropertyValue('--app-zoom'))||1;setHeight(Math.max(240,device.clientHeight/zoom-72))};const observer=new ResizeObserver(update);observer.observe(device);update();return()=>observer.disconnect()},[device]);
+ useEffect(()=>{const update=()=>{const baseline=parseFloat(getComputedStyle(device).getPropertyValue('--app-design-width'))||375,zoom=device.clientWidth/baseline;setHeight(Math.max(240,device.clientHeight/zoom-72))};const observer=new ResizeObserver(update);observer.observe(device);update();return()=>observer.disconnect()},[device]);
  useEffect(()=>{
   const previous=document.activeElement as HTMLElement,overlay=dialogRef.current?.parentElement;
   const siblings=Array.from(device.children).filter((el):el is HTMLElement=>el!==overlay&&el instanceof HTMLElement),inert=siblings.map(el=>el.inert);siblings.forEach(el=>el.inert=true);

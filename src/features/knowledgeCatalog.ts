@@ -8,3 +8,6 @@ export const knowledgeCatalog:Record<string,KnowledgeNode[]>={
 };
 export function knowledgePath(ids:string[],scope:string){let nodes=knowledgeCatalog[scope]||[],path:KnowledgeNode[]=[];for(const id of ids){const node=nodes.find(item=>item.id===id);if(!node)break;path.push(node);nodes=node.children||[]}return {path,nodes}}
 export function findKnowledge(id:string):KnowledgeNode|undefined{function find(nodes:KnowledgeNode[]):KnowledgeNode|undefined{for(const node of nodes){if(node.id===id)return node;const match=find(node.children||[]);if(match)return match}}return find(Object.values(knowledgeCatalog).flat())}
+
+// Files in this node's own libraries belong to the current level; deeper nodes are excluded.
+export function knowledgeFileIds(node:KnowledgeNode):string[]{return [...new Set([...(node.resourceIds||[]),...(node.children||[]).filter(child=>child.kind==='library').flatMap(child=>child.resourceIds||[])])]}

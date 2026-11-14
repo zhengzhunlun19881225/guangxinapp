@@ -50,7 +50,6 @@ export default function Composer({onSend,onAction,request,onModeChange}:{onSend:
  function submit(event:FormEvent){event.preventDefault();if(attachmentBusy||(!text.trim()&&!attachments.length))return;setError('');setKeyboard(false);input.current?.blur();
   if(attachments.length){const sent=onSend(text.trim()||'请查看附件',attachments);if(sent===false){setError('消息保存失败，请保留附件后重试');return}attachmentApi.current?.clearSent();setText('');setPanel('');return}
   if(mode==='PPT生成'){if(!ppt){setPanel('ppt');return}writingDocument(text.slice(0,30)+' · 演示大纲',text+'\n模板：'+ppt+'\n\n1. 封面：'+text+'\n2. 背景与目标：介绍主题背景及目标。\n3. 现状分析：补充现状、数据与主要问题。\n4. 重点工作：说明行动计划、责任分工与节点。\n5. 总结与展望：汇总成果、风险及下一步安排。','PPT大纲');return}
-  if(mode==='智能写作'){saveLocal('writing-draft',{template:'方案策划',prompt:text,deep:false,showTemplates:true});navigate('writing');return}
   if(mode==='智能摘要'){const sentences=text.trim().split(/(?<=[。！？!?；;\n])/).map(value=>value.trim()).filter(Boolean);writingDocument(summary,summary+'\n\n'+sentences.slice(0,5).map((sentence,index)=>(index+1)+'. '+sentence).join('\n')+'\n\n原文\n'+text,'智能摘要');return}
   if(onSend(text.trim())===false){setError('消息保存失败，请保留内容后重试');return}setText('');setPanel('');
  }
