@@ -15,12 +15,16 @@
 .device .composer-attachment-retry{position:absolute;bottom:0;right:2px;min-width:44px;min-height:32px;font:var(--type-helper);color:var(--color-action)}
 .composer-attachments.is-expanded>header{display:flex;align-items:center;justify-content:space-between;min-height:44px}.composer-attachments.is-expanded>header>button{display:flex;align-items:center;gap:6px;min-height:44px;font:var(--type-body)}.composer-attachment-clear{color:var(--color-action)}
 .composer-attachments.is-expanded .composer-attachment-cards{grid-template-columns:minmax(0,1fr);max-height:min(350px,38dvh);overflow-y:auto;padding:4px 2px 8px;overscroll-behavior:contain}
-.composer-attachment-tools{margin:4px -2px 0;padding:0 0 8px;background:var(--canvas);border-radius:12px}
-.composer-attachment-tools>header{display:flex;align-items:center;justify-content:flex-end;gap:4px;padding:0 8px;color:var(--color-secondary);font:var(--type-helper);min-height:32px}.composer-attachment-tools>header>button{display:grid;place-items:center;width:44px;height:44px}
-.composer-attachment-tools>div{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:0 4px}
-.device .composer-attachment-tools>div>button{min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:76px;color:var(--color-secondary)}
-.composer-attachment-tools>div>button>span{display:grid;place-items:center;width:46px;height:46px;border-radius:10px;background:#fff}.composer-attachment-tools>div>button>small{font:var(--type-helper);white-space:nowrap}
-.composer-attachment-tools>p{text-align:center;font:var(--type-helper);color:var(--color-muted);margin:4px 0 0}
+.composer-attachment-tools-host:empty{display:none}
+.composer-attachment-tools{margin:10px 0 0;padding:12px 4px 16px;background:var(--canvas);border:0;border-radius:0;box-shadow:none}
+.composer-attachment-tools>div{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.device .composer-attachment-tools>div>button{min-width:0;display:flex;flex-direction:column;align-items:center;gap:7px;min-height:76px;color:var(--color-secondary)}
+.composer-attachment-tools>div>button>span{display:grid;place-items:center;width:50px;height:50px;border-radius:8px;background:#fff}.composer-attachment-tools>div>button>small{font:var(--type-helper);white-space:nowrap}
+.composer-source-icon.source-0 svg>path:first-child,.composer-source-icon.source-4 svg>path{fill:currentColor}
+.composer-source-icon.source-0 svg>path:last-child{stroke:#fff}
+.composer-source-icon.source-4 svg>circle{stroke:#fff}
+.composer-source-icon.source-3 svg>path{fill:currentColor}
+
 .composer-attachment-progress,.composer-attachment-error{display:flex;align-items:center;gap:4px;margin:4px 0;font:var(--type-helper);color:var(--color-muted);overflow-wrap:anywhere}.composer-attachment-error{color:var(--color-error)}
 .composer-attachment-progress>svg{flex:none;animation:composer-attachment-spin 1s linear infinite}
 .composer-resource-picker{display:flex;flex-direction:column;flex:1;min-height:0;padding:0 12px}
