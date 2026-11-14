@@ -14,7 +14,7 @@ const textColors=[
   {name:'主要内容',size:'14 / 22',color:'#03091B',token:'primary'},
   {name:'次级内容',size:'12 / 18',color:'#4E5969',token:'secondary'},
   {name:'时间 / 元数据',size:'12 / 18',color:'#878B99',token:'muted'},
-  {name:'链接文字',size:'14 / 22',color:'#006DFF',token:'blue'},
+  {name:'链接文字',size:'14 / 22',color:'#FF0000',token:'brand'},
 ];
 const typography=[
   {name:'页面标题',sample:'页面标题',role:'page',size:'18 / 26',weight:400,color:'#03091B',token:'primary'},

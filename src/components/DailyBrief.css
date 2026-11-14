@@ -4,7 +4,7 @@
 .daily-brief-title>button,.daily-brief-actions>button{display:grid;place-items:center;width:44px;height:44px;color:var(--color-secondary)}
 .work-daily-brief h2{display:flex;align-items:center;gap:var(--section-title-gap);font:var(--section-title-font)}
 .work-daily-brief article+article{margin-top:20px;padding-top:16px;border-top:1px solid #f0f2f5}
-.work-daily-brief h3{display:flex;align-items:center;gap:8px;font:600 15px/24px var(--font-app);margin:0 0 12px}
+.work-daily-brief h3{display:flex;align-items:center;gap:8px;font:var(--type-module);margin:0 0 12px}
 .daily-brief-icon{width:24px;height:24px;display:grid;place-items:center;flex-shrink:0;background:#ff5d5f;color:#fff;border-radius:50%}
 .daily-brief-icon.orange{background:#ff9314}
 .daily-brief-banner{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover;border-radius:10px;margin-bottom:14px}

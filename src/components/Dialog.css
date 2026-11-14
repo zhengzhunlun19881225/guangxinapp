@@ -7,7 +7,7 @@
 .app-dialog-footer>button{flex:1;min-width:0;min-height:48px;padding:0 8px;color:var(--color-primary);font:400 16px/24px var(--font-app)}
 .app-dialog-footer.is-default>button+button{border-left:1px solid var(--divider-color,#edf0f4)}
 .app-dialog-footer>button>span{display:flex;align-items:center;justify-content:center;gap:6px;min-width:0}
-.app-dialog-footer>button.is-primary{color:var(--color-blue)}
+.app-dialog-footer>button.is-primary{color:var(--color-action)}
 .app-dialog-footer>button:active:not(:disabled){background:#f5f6f8}
 .app-dialog-footer>button:disabled{opacity:.6;cursor:default}
 .app-dialog-footer.is-round{gap:12px;border:0;padding:0 24px 20px}

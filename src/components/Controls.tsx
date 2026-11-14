@@ -2,7 +2,7 @@ import {readWorkbenchTasks,type TaskKind} from '../data/workbenchTasks';
 import {readImConversations} from '../im/conversations';
 import {readScheduleEvents,scheduleEnded,todayKey} from '../schedule/data';
 import {useEffect,useLayoutEffect,useState,useRef,type FormEvent} from 'react';
-import {ArrowRight,BellOff,Camera,ChevronDown,ChevronRight,CirclePlus,Mic,Pin,Plus} from 'lucide-react';
+import {ArrowRight,BellOff,Camera,ChevronDown,CirclePlus,Mic,Pin,Plus} from 'lucide-react';
 import AppNavBar from './AppNavBar';
 import {imageFor, mascot, agents, skills, conversations, contacts, questions,readLocal,saveLocal} from '../data';
 import type {Action} from './SceneAction';
@@ -85,7 +85,7 @@ export function Suggestions({onAction,history=[]}:{onAction:(a:Action)=>void;his
   return <section className="chat-suggestions native-card">
     <div className="suggestion-tabs" role="tablist" aria-label="AI 首页推荐">{['最近记录','热门问答'].map(t=><button role="tab" aria-selected={tab===t} key={t} className={tab===t?'selected':''} onClick={()=>setTab(t)}>{t}</button>)}</div>
     {rows.map((q,i)=><button className="suggestion-row" key={q+i} onClick={()=>onAction({type:'question',value:q})}>
-      <span>{i+1}.</span><span>{q}</span><i><ChevronRight size={16}/></i></button>)}
+      <span>{i+1}.</span><span>{q}</span></button>)}
     {!rows.length&&<p className="small-empty">暂无最近记录</p>}
   </section>;
 }
@@ -125,7 +125,7 @@ export function FeatureCards({onAction}:{onAction:(a:Action)=>void}){
   };
   return <div ref={carousel} className={'feature-carousel'+(scrolling?' is-scrolling':'')} aria-label="AI 功能卡片" onScroll={handleScroll}>
     {items.map((x,index)=><button className="feature-card" style={cardStyle(index)} key={x.name} onClick={()=>onAction({type:'agent',value:x.name})}>
-      {x.node==='0:5343'?<img src="/assets/chat/document-card.png" alt=""/>:x.node==='0:5312'?<img src="/assets/chat/legal-card.png" alt=""/>:<Asset node={x.node}/>}<h3 style={{color:x.color}}>{x.name}</h3><b style={{background:x.color}}/>
+      {x.node==='0:5343'?<img src="/assets/chat/document-card.png" alt=""/>:x.node==='0:5312'?<img src="/assets/chat/legal-card.png" alt=""/>:<Asset node={x.node}/>}<h3>{x.name}</h3><b style={{background:x.color}}/>
       <p>{x.description}</p><span className="feature-arrow"><ArrowRight size={18} strokeWidth={1.5}/></span>
     </button>)}
   </div>;

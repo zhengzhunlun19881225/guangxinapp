@@ -1,3 +1,4 @@
+import type {ComposerAttachment} from './components/attachmentStore';
 import {nodeImages, assets} from './assets';
 import {assetOverrides} from './assetOverrides';
 export const imageFor = (id: string) => assetOverrides[id] || nodeImages[id];
@@ -42,7 +43,7 @@ export const roles = [
   {route:'portal-manager',name:'中层门户',description:'系统导航、主动服务与业务资讯'},
   {route:'portal-staff',name:'员工门户',description:'常用系统、集团新闻与通知'}];
 
-export type Message = {role:'user'|'assistant';text:string};
+export type Message = {role:'user'|'assistant';text:string;attachments?:ComposerAttachment[];plain?:boolean};
 export function readLocal<T>(key:string, fallback:T):T {
   try {const value=localStorage.getItem('gx-app-'+key); return value ? JSON.parse(value) as T : fallback;}
   catch {return fallback;}

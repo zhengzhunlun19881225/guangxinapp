@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useRef,useState} from 'react';
 import {Menu,X,Volume2,Copy,Download,RotateCw,Share2,ThumbsUp,ThumbsDown,FileText,FileType} from 'lucide-react';
 import AppNavBar,{NavBackIcon} from './AppNavBar';
 import {assets} from '../assets';
@@ -6,6 +6,8 @@ import type {Message} from '../data';
 import type {Action} from './SceneAction';
 import {FeatureCards,Suggestions} from './Controls';
 import {copyText,downloadText} from '../features/data';
+import {ComposerAttachmentPreview} from './ComposerAttachments';
+import {attachmentSize,type ComposerAttachment} from './attachmentStore';
 import './ChatPage.css';
 
 type Props={active:boolean;messages:Message[];selectedAgent:string;history:string[];height:number;onAction:(action:Action)=>void;onHome:()=>void;onClearAgent:()=>void};
@@ -31,14 +33,16 @@ function AiAnswerCard({onAction}:{onAction:(action:Action)=>void}){
  </article>;
 }
 export default function ChatPage({active,messages,selectedAgent,history,height,onAction,onHome,onClearAgent}:Props){
- return <section className="chat-page" style={{minHeight:height}}>
+ const root=useRef<HTMLElement>(null),[preview,setPreview]=useState<ComposerAttachment|null>(null);
+ return <section ref={root} className="chat-page" style={{minHeight:height}}>
   <header className="chat-header">
    <div className="chat-status"><time>19:41</time><div><img src={assets.chat.imgCellularConnection} alt=""/><img src={assets.chat.imgWifi} alt=""/><img src={assets.chat.imgBattery} alt=""/></div></div>
    <AppNavBar label="小新 AI 导航" title="广智新" left={<><button aria-label={active?'返回 AI 首页':'返回工作台'} onClick={()=>active?onHome():onAction({type:'navigate',value:'workbench'})}><NavBackIcon/></button><button aria-label="打开历史记录" onClick={()=>onAction({type:'navigate',value:'history'})}><Menu size={22}/></button></>}/>
   </header>
   {!active?<div className="chat-welcome"><h2>您好，欢迎使用广智新</h2><FeatureCards onAction={onAction}/><Suggestions history={history} onAction={onAction}/></div>:<>
    {selectedAgent&&<button className="chat-selected-agent" onClick={onClearAgent}>{selectedAgent}<X size={14}/></button>}
-   <section className="ai-messages" aria-label="AI 对话">{messages.map((message,index)=><div className={'message '+message.role} key={index}>{message.role==='assistant'?<AiAnswerCard onAction={onAction}/>:<><small>我</small><p>{message.text}</p></>}</div>)}</section>
+   <section className="ai-messages" aria-label="AI 对话">{messages.map((message,index)=><div className={'message '+message.role} key={index}>{message.role==='assistant'?(message.plain?<p>{message.text}</p>:<AiAnswerCard onAction={onAction}/>):<><small>我</small><p>{message.text}</p>{!!message.attachments?.length&&<div className="message-attachments" aria-label="已发送附件">{message.attachments.map(item=><button type="button" className="message-attachment" key={item.id} onClick={()=>setPreview(item)} aria-label={'预览已发送附件 '+item.name}><FileText size={22}/><span><strong>{item.name}</strong><small>{attachmentSize(item.size)} · {item.source}</small></span></button>)}</div>}</>}</div>)}</section>
   </>}
+ {preview&&root.current?.closest<HTMLElement>('.device')&&<ComposerAttachmentPreview device={root.current.closest<HTMLElement>('.device')!} item={preview} close={()=>setPreview(null)}/>}
  </section>;
 }

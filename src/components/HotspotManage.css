@@ -9,30 +9,30 @@
 .hotspot-follow-card{padding:14px;border:1px solid #e7ecf5;border-radius:12px;background:#fff}
 .hotspot-follow-card+.hotspot-follow-card{margin-top:12px}
 .hotspot-follow-card h3{font:600 14px/22px var(--font-app);font-synthesis:weight;margin:0;color:var(--color-primary);overflow-wrap:anywhere}
-.hotspot-follow-card p{font:var(--type-helper);line-height:20px;color:var(--color-muted);margin:6px 0 0;overflow-wrap:anywhere}
+.hotspot-follow-card p{font:var(--type-helper);color:var(--color-muted);margin:6px 0 0;overflow-wrap:anywhere}
 .hotspot-follow-actions{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:10px}
 .hotspot-follow-action,.hotspot-follow-edit{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;min-height:28px;padding:2px 12px;border:1px solid #e7ecf5;border-radius:999px;color:var(--color-muted);font:var(--type-function);white-space:nowrap}
 .hotspot-follow-action[aria-pressed=true]{color:var(--color-brand);border-color:#ffb1b1}
 .hotspot-follow-actions>button{position:relative}
 .hotspot-follow-actions>button:after{content:'';position:absolute;inset:-8px 0}
-.hotspot-manage-subtitle{font:600 15px/24px var(--font-app);font-synthesis:weight;margin:24px 0 14px}
-.hotspot-manage-empty{font:var(--type-function);color:var(--color-muted);text-align:center;padding:22px 10px;line-height:22px}
+.hotspot-manage-subtitle{font:var(--type-module);font-synthesis:weight;margin:24px 0 14px}
+.hotspot-manage-empty{font:var(--type-function);color:var(--color-muted);text-align:center;padding:22px 10px}
 .hotspot-manager-footer{padding:10px 20px max(20px,env(safe-area-inset-bottom));background:white;flex-shrink:0}
 .hotspot-manager-footer>div{display:flex;gap:10px}.hotspot-manager-footer>div>button{flex:1;min-width:0}
 .hotspot-manager-footer .primary-button{background:var(--primary-button-background);color:white}
 .hotspot-manager.is-creating .hotspot-manager-body{padding-top:10px}
-.hotspot-manage-error{font:var(--type-function);line-height:22px;color:var(--color-brand);margin:0 0 10px}
+.hotspot-manage-error{font:var(--type-function);color:var(--color-brand);margin:0 0 10px}
 .hotspot-manage-back{display:flex;align-items:center;gap:3px;min-height:36px;color:var(--color-secondary);font:var(--type-module)}
 .hotspot-manage-back+.hotspot-manage-subtitle{margin-top:8px}
 .hotspot-topic-fields{display:flex;flex-direction:column;gap:18px}
 .hotspot-topic-fields small{font:var(--type-helper);color:var(--color-muted)}
 .hotspot-topic-fields input,.hotspot-topic-fields select{min-height:40px}
-.hotspot-manager .news-sub-ai-heading{font:600 15px/24px var(--font-app);font-synthesis:weight;margin:0}
-.hotspot-ai-help{font:var(--type-helper);color:var(--color-muted);line-height:20px;margin:2px 0 6px}
+.hotspot-manager .news-sub-ai-heading{font:var(--type-module);font-synthesis:weight;margin:0}
+.hotspot-ai-help{font:var(--type-helper);color:var(--color-muted);margin:2px 0 6px}
 .hotspot-manager .news-sub-prompt{margin-top:0}.hotspot-manager .news-sub-prompt textarea{height:132px;min-height:132px;padding:10px 10px 28px;font:var(--type-function);resize:vertical}
 .hotspot-manager .hotspot-generate{margin-top:16px;height:36px;min-height:36px;padding:6px 12px;background:var(--primary-button-background);color:white;border-radius:7px}
 .hotspot-manager .hotspot-generate:disabled{background:#ff9999;color:white}
-.hotspot-generated{margin-top:24px}.hotspot-generated>p{font:var(--type-function);line-height:22px;color:var(--color-blue);margin:0 0 18px}
+.hotspot-generated{margin-top:24px}.hotspot-generated>p{font:var(--type-function);color:var(--color-blue);margin:0 0 18px}
 
 .hotspot-manager .hotspot-manage-toolbar .news-sub-modes>button{height:32px;min-height:32px}
 .hotspot-manager .hotspot-manager-footer button{height:36px;min-height:36px;padding-block:6px}

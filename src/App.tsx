@@ -1,5 +1,6 @@
 import {lazy,Suspense,useCallback,useEffect,useLayoutEffect,useRef,useState,type ComponentType,type FormEvent,type CSSProperties} from 'react';
 import manifest from './manifest.json';
+import type {ComposerAttachment} from './components/attachmentStore';
 import {assets} from './assets';
 import {contacts,historyItems,mascot,questions,readLocal,roles,saveLocal,type Message} from './data';
 import {Asset,Calendar,Composer,Directory,MessagingList,Search,Todo} from './components/Controls';
@@ -123,7 +124,7 @@ export default function App(){
   const [zoom,setZoom]=useState(1),[historySearch,setHistorySearch]=useState(''),[selectedAgent,setSelectedAgent]=useState('');
   const [messages,setMessages]=useState<Message[]>(()=>readLocal<Message[]>('ai-messages',[]));
   const [skillTreeOpen,setSkillTreeOpen]=useState(false);
-  const [chatActive,setChatActive]=useState(false),[composerRequest,setComposerRequest]=useState({id:0,mode:''});
+  const [chatActive,setChatActive]=useState(()=>readLocal<Message[]>('ai-messages',[]).length>0),[composerRequest,setComposerRequest]=useState({id:0,mode:''});
   const [savedHistory,setSavedHistory]=useState<string[]>(()=>readLocal<string[]>('history',[]));
   const [role,setRole]=useState(()=>readLocal('portal-role','portal-overview'));
   const [company,setCompany]=useState('全部企业'),[year,setYear]=useState('2026年');
@@ -166,14 +167,16 @@ export default function App(){
     const saved=saveLocal('news-feedback',next);
     notify(saved?(next[id]?(value==='interested'?'已标记为感兴趣':'已记录：减少此类'):'已取消偏好'):'已在本次会话记录，未能保存到本机');
   }
-  function send(text:string){
+  function send(text:string,attachments?:ComposerAttachment[]){
     const answer='数据监测与优化策略\n\n一、关键指标\n为贯彻落实政府服务数字化转型要求，提升服务效率与质量，建议加快推进智能问答与反检系统建设。\n\n二、当前存在的问题\n两系统应协同联动，形成服务质检改进闭环机制，实现数据共享与动态优化。';
-    const next:Message[]=[...messages,{role:'user',text},{role:'assistant',text:answer}];
-    setMessages(next);saveLocal('ai-messages',next);
+    const next:Message[]=[...messages,{role:'user',text,...(attachments?.length?{attachments:attachments.map(({text:_text,...item})=>item)}:{})},{role:'assistant',text:attachments?.length?'已收到 '+attachments.length+' 个附件。可点击文件卡片预览或下载。当前尚未连接附件分析服务，暂不能根据附件生成回答。':answer,...(attachments?.length?{plain:true}:{})}];
+    if(!saveLocal('ai-messages',next)){notify('消息保存失败，请保留内容后重试');return false}
+    setMessages(next);
     const hs=[text,...savedHistory.filter(v=>v!==text)];setSavedHistory(hs);saveLocal('history',hs);
     if(route!=='chat')navigate('chat');
     setChatActive(true);
     setTimeout(()=>scroll.current?.scrollTo({top:scroll.current.scrollHeight,behavior:'smooth'}),50);
+    return true;
   }
   const onAction=(a:Action)=>{
     if(a.type==='navigate'){navigate(a.value);return}

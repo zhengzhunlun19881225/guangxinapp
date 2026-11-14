@@ -1,6 +1,6 @@
-.device .composer-picker-overlay{position:absolute;inset:0;z-index:65;display:flex;align-items:flex-end;justify-content:center;background:#0009;backdrop-filter:none;overscroll-behavior:contain}
-.device .composer-picker-sheet{width:375px;max-width:none;display:flex;flex-direction:column;min-height:0;background:#fff;border-radius:24px 24px 0 0;overflow:hidden;box-shadow:0 -8px 32px #1820360c;animation:slide-in .18s ease-out}
-.device .composer-picker-sheet>header{display:flex;align-items:center;flex-shrink:0;padding:12px 26px;min-height:66px;border:0}
+.device .composer-picker-overlay{position:absolute;inset:0;z-index:65;display:flex;align-items:flex-end;justify-content:center;background:#13192866;backdrop-filter:blur(2px);overscroll-behavior:contain}
+.device .composer-picker-sheet{width:375px;max-width:none;display:flex;flex-direction:column;min-height:0;background:#fff;border-radius:22px 22px 0 0;overflow:hidden;box-shadow:0 -8px 32px #1820360c;animation:slide-in .18s ease-out}
+.device .composer-picker-sheet>header{display:flex;align-items:center;flex-shrink:0;padding:12px 20px;min-height:66px;border:0}
 .composer-picker-sheet h2{font:600 18px/26px var(--font-app);color:var(--color-primary);margin:0}
 .composer-picker-categories{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:0 15px 8px;flex-shrink:0}
 .composer-picker-categories>button{height:44px;min-height:44px;flex-shrink:0;font:var(--type-function);color:var(--color-muted)}

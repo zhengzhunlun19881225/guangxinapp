@@ -20,7 +20,7 @@
 .applications-portal .application-main>span:not(.pc-app-icon){white-space:normal;max-width:100%;text-align:center;text-wrap:balance;overflow-wrap:anywhere}
 .shortcut-portal .shortcut-grid>button{gap:4px}
 .shortcut-portal .shortcut-grid>button>.pc-app-icon{width:34px;height:34px}
-.shortcut-portal .shortcut-grid>button>span:not(.pc-app-icon){font:12px/16px var(--font-app);white-space:normal;max-width:100%;text-align:center;text-wrap:balance;overflow-wrap:anywhere}
+.shortcut-portal .shortcut-grid>button>span:not(.pc-app-icon){font:var(--type-helper);white-space:normal;max-width:100%;text-align:center;text-wrap:balance;overflow-wrap:anywhere}
 
 /* Native horizontal paging supports touch/trackpad scrolling and mouse dragging. */
 .shortcut-track{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;user-select:none;-webkit-user-select:none}

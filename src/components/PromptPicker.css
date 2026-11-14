@@ -2,7 +2,7 @@
 .prompt-picker-list>article{display:flex;align-items:center;min-width:0;border:1px solid #e5e8ef;border-radius:12px;background:#fff}
 .prompt-picker-choose{display:flex;flex:1;min-width:0;flex-direction:column;gap:6px;padding:14px;text-align:left;min-height:80px}
 .prompt-picker-choose>span:first-child{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.prompt-picker-choose strong,.prompt-preview-heading h3{font:600 15px/23px var(--font-app);color:var(--color-primary)}
+.prompt-picker-choose strong,.prompt-preview-heading h3{font:var(--type-list);color:var(--color-primary)}
 .prompt-picker-choose small,.prompt-preview-heading small{font:var(--type-helper);padding:1px 5px;color:var(--color-brand);background:var(--color-brand-soft);border-radius:4px}
 .prompt-picker-choose>span:last-child{font:var(--type-function);color:var(--color-muted)}
 .prompt-picker-preview-button{flex-shrink:0;min-width:44px;min-height:44px;margin-right:8px;font:var(--type-function);color:var(--color-muted)}

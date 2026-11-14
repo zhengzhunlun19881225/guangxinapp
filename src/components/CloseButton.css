@@ -18,7 +18,7 @@
 }
 .app-close-button::before{content:'';position:absolute;inset:0;margin:auto;width:var(--close-visual-size);height:var(--close-visual-size);border-radius:50%;background:var(--close-background)}
 :is(.device,.desktop-spec-panel) button.app-close-button>svg{position:relative;display:block;width:var(--close-icon-size);height:var(--close-icon-size);flex-shrink:0}
-:is(.device,.desktop-spec-panel) button.app-close-button:focus-visible{outline:2px solid var(--color-blue);outline-offset:0}
+:is(.device,.desktop-spec-panel) button.app-close-button:focus-visible{outline:2px solid var(--color-action);outline-offset:0}
 :is(.device,.desktop-spec-panel) .app-close-surface{position:relative}
 :is(.device,.desktop-spec-panel) .app-close-surface>header{position:static;padding-right:56px}
 :is(.device,.desktop-spec-panel) .app-close-surface>header>button.app-close-button{

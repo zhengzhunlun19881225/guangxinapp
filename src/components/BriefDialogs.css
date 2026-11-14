@@ -27,7 +27,7 @@
 .daily-history-scroll{background:#f4f6f8;padding:12px}
 .daily-history-content{display:flex;flex-direction:column;gap:12px}
 .daily-history-content>article{background:#fff;padding:14px;border-radius:12px}
-.daily-history-content h3{display:flex;align-items:center;gap:8px;font:600 15px/24px var(--font-app);color:var(--color-primary);margin:0 0 12px}
+.daily-history-content h3{display:flex;align-items:center;gap:8px;font:var(--type-module);color:var(--color-primary);margin:0 0 12px}
 .daily-history-content h4{font:600 14px/22px var(--font-app);color:var(--color-primary);margin:0 0 4px}
 .daily-history-content p{font:var(--type-body);color:var(--color-muted);margin:0;white-space:pre-line;overflow-wrap:anywhere}
 .daily-history-content .daily-brief-icon.purple{background:var(--color-purple)}

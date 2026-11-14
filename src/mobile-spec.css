@@ -14,15 +14,20 @@
   --color-secondary: #4e5969;
   --color-muted: #878b99;
   --color-action: var(--color-brand);
-  --color-link: var(--color-blue);
+  --color-link: var(--color-brand);
   --color-error: var(--color-brand);
   --color-brand-soft: #fff0f0;
   --color-brand-border: #ffdada;
   --color-brand-disabled: #ff9999;
+  --control-background: #ffffff;
+  --control-active-background: #fcfcfe;
+  --control-border: #e7ecf5;
+  --secondary-button-background: #f2f4f7;
   --accent: var(--color-action);
   --muted: var(--color-muted);
   --type-page: 400 18px/26px var(--font-app);
-  --type-module: 500 16px/24px var(--font-app);
+  --type-module: 600 16px/24px var(--font-app);
+  --type-dialog: 600 18px/26px var(--font-app);
   --type-list: 400 16px/24px var(--font-app);
   --type-body: 400 14px/22px var(--font-app);
   --type-function: 400 13px/20px var(--font-app);
@@ -41,12 +46,12 @@
 .scene-layer .app-type-secondary {font:var(--type-secondary);color:var(--color-secondary)}
 .scene-layer .app-type-helper {font:var(--type-helper)}
 .scene-layer .app-type-badge {font:var(--type-badge);color:#fff}
-.scene-layer .app-type-link {font:var(--type-body);color:var(--color-blue)}
+.scene-layer .app-type-link {font:var(--type-body);color:var(--color-link)}
 .scene-layer .app-inherit-leading {line-height:inherit}
 .scene-layer p:not([class*="app-type-"]) {font-weight:400}
 .device,.artboard,.scene-layer,.scene-layer>div,.fixed-composer,.fixed-home,.bottom-nav,.history-runtime,.ai-messages {width:var(--app-design-width)}
 /* Shared native controls use the same semantic type roles as the source scenes. */
-.profile-page>h1,.canvas-index h1,.modal-sheet h2,.agent-detail h3,.detail-article h3 {
+.profile-page>h1,.canvas-index h1,.agent-detail h3,.detail-article h3 {
   font:var(--type-page);color:var(--color-primary);
 }
 .profile-card h2,.work-todo h2,.work-calendar h2,.simple-list article h3 {
@@ -78,7 +83,7 @@
 }
 .demo-note,.detail-meta {font-size:12px!important;line-height:18px!important;color:var(--color-muted)!important}
 .badge {font:var(--type-badge);color:#fff;background:var(--color-brand)}
-.text-link {font:var(--type-body);color:var(--color-blue)}
+.text-link {font:var(--type-body);color:var(--color-link)}
 .directory-tabs button[aria-selected=true],.bottom-nav>button[aria-current],
 .week-strip .current small,.selected-agent,.suggestion-row>span:first-child,
 .suggestion-tabs .selected,.canvas-index>a>span {color:var(--color-brand)}
@@ -104,9 +109,9 @@
 .success {background:#eaf9f3;border:1px solid var(--color-success);color:var(--color-success)}
 .calendar-event strong {font:var(--type-body);color:var(--color-primary)}
 .detail-tag {font:var(--type-helper);background:#fff6eb;color:var(--color-warning)}
-.demo-form input,.demo-form textarea,.filter-options select,.detail-article textarea {outline-color:var(--color-blue)}
+.demo-form input,.demo-form textarea,.filter-options select,.detail-article textarea {outline-color:var(--color-action)}
 button:focus-visible,a:focus-visible,[role=button]:focus-visible,input:focus-visible,
-select:focus-visible,textarea:focus-visible {outline-color:var(--color-blue)}
+select:focus-visible,textarea:focus-visible {outline-color:var(--color-action)}
 /* Allow the larger line boxes without squeezing directory text or card copy. */
 .directory-row {height:96px;padding-top:12px;padding-bottom:10px}
 .directory-info {gap:4px}
@@ -155,12 +160,17 @@ select:focus-visible,textarea:focus-visible {outline-color:var(--color-blue)}
 [data-node-id="0:6407"],[data-node-id="0:6416"]) {left:46px;width:50px}
 @media(max-width:600px) {.device {width:100%;max-width:480px}}
 
-/* System theme: primary actions and selections are brand red; links are blue. */
+/* Brand actions, links and selected business controls share the red theme. */
 .todo-tabs button[aria-pressed=true]{color:var(--color-brand)}
 .segmented button[aria-selected=false]{color:var(--color-secondary);font-weight:400}
 .segmented button[aria-selected=true]{color:var(--color-primary);font-weight:600;font-synthesis:weight}
 .device input::placeholder,.device textarea::placeholder{color:var(--color-muted);opacity:1}
 .device input,.device textarea,.device select{caret-color:var(--color-brand)}
+.device :is(input,textarea,select){font-family:var(--font-app);accent-color:var(--color-brand)}
+.device :is(input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),textarea,select){font:var(--type-body);color:var(--color-primary)}
+.device :is(input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),textarea,select):is(:hover,:focus){background-color:var(--control-active-background)}
+.device :is(input,textarea,select)[aria-invalid=true]{border-color:var(--color-error)}
+.device .modal-sheet>header h2{font:var(--type-dialog);color:var(--color-primary)}
 .device ::selection{background:var(--color-brand-soft);color:var(--color-primary)}
 
 /* Shared select arrow: inset 10px from the trailing edge on every form. */

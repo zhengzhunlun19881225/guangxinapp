@@ -1,7 +1,7 @@
 .overview-tax-tabs{position:absolute;left:15px;top:58px;width:325px;height:32px;display:grid;grid-template-columns:1.2fr 1fr;gap:2px;padding:2px;border-radius:8px;background:#f3f4f6}
 .overview-tax-tabs button{min-width:0;padding:0 4px;display:flex;align-items:center;justify-content:center;border:0;border-radius:6px;background:transparent;color:var(--color-secondary);font:400 14px/22px var(--font-app);white-space:nowrap}
 .overview-tax-tabs button[aria-selected="true"]{background:#fff;color:var(--color-primary);font-weight:600}
-.overview-tax-tabs button:focus-visible{outline:2px solid var(--color-blue);outline-offset:-2px}
+.overview-tax-tabs button:focus-visible{outline:2px solid var(--color-action);outline-offset:-2px}
 
 /* Portal overview typography follows the approved mobile design scale. The
    existing nodes and geometry stay intact; only type metrics are normalized. */

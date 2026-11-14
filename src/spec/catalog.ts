@@ -25,7 +25,7 @@ export const catalog:Record<string,SpecItem[]>={
  item('system-grid','系统导航 · 五列入口','SystemGrid','系统导航、我的系统、全部系统均为 5 列；首页每页 5 个，图标 34px、文字 13/20，左右滑动、分页按钮与键盘方向键联动；分页红条12×3px、灰条6×3px，间距4px，全圆角。',true),
   item('common-shortcuts','常用功能 · 毛玻璃','CommonShortcuts','常用功能每页 4 列 × 2 行，彩色图标 34px；白色背景透明度 0.7、背景模糊 12px，图标和文字保持不透明；分页红条12×3px、灰条6×3px，间距4px，全圆角。',true),
   item('poster-cases','海报 · 五个案例','PortalBanner','复用门户的 5 个案例；375px 基准下海报 355×134px、16px 圆角。左右滑动与圆点切换联动，点击海报查看对应案例。',true),
-  item('chat-composer','AI 输入栏','ChatComposer','AI 页面背景 #F8FAFE；顶部模型、联网搜索与智能问答选项按钮高度 34px；输入栏白底、16px 圆角。相机与加号图标 18px，在 30px 浅灰圆底水平垂直居中；操作热区独立扩展，语音使用橙红色圆按钮。',true),
+  item('chat-composer','AI 输入栏','ChatComposer','AI 页面背景 #F8FAFE；选项按钮34px，输入栏白底16px圆角；加号18px、30px浅灰圆底、44px热区。加号展开本地文件、云盘、聊天文件、照片、拍摄五种方式，最多5个、单个20MB；文件名14/22、大小与状态12/18；点击红色附件数量展开列表，支持预览、移除、清空和草稿恢复。',true),
   item('daily-brief','每日简报 · 标题操作','DailyBrief','模块标题 16/24、600；详情紧邻标题右侧，历史在最右侧，两枚图标均为 16px；AI 帮写感谢等特殊按钮主体高 32px、胶囊圆角，独立保留 44px 点击热区。',true),
   item('adaptive-news','资讯列表 · 内容自适应','AdaptiveNews','与AI智能资讯、集团综合资讯和AI热点追踪共用28px胶囊分类，视觉间距16px；分类切换后卡片高度随内容变化，3条、1条及空状态均不保留固定高度空白，后续模块紧随其后。',true),
   item('follow-settings','管理关注 · AI 订阅','HotspotManage','已关注主题与 AI 订阅双视图；页签容器高 36px、四周内间距 2px；关注、已关注和编辑按钮高 28px、全圆角；关注主题为描边卡片、红色星标及编辑按钮。AI 订阅支持 4000 字，生成条件后可编辑，保存后关注。示例设置仅在本页生效。',true),
@@ -41,7 +41,7 @@ export const catalog:Record<string,SpecItem[]>={
   item('segmented','顶部视图切换','Segmented','门户的“总体情况 / 综合资讯”与“IM / 通讯录”水平居中；两组切换容器均宽158px、高30px、内边距2px、选项间距0，选项等宽；白色选中块、黑色 #03091B 文字、16/24、600 加粗，未选中 #4E5969、400；两侧操作与顶部导航共用 15px 视觉边距。业务分类另用红色选中。',true),
  ],
  buttons:[
-  item('button-types','按钮类型','Button','主按钮使用从 #FF9622 到 #FF0000 的横向渐变、白色文字，实心按钮不加描边；次要浅灰；文字蓝色；幽灵红边框；危险操作红色。',true),
+  item('button-types','按钮类型','Button','主按钮使用从 #FF9622 到 #FF0000 的横向渐变、白色文字，实心按钮不加描边；次要浅灰、无描边；文字品牌红；幽灵红边框；危险操作红色。',true),
   item('button-states','按钮状态','Button States','默认、点击、禁用、加载与报错反馈清晰；加载期间阻止重复提交。'),
   item('floating','悬浮按钮','FloatingActionButton','沿用日程页 50px 圆形加号；品牌红用于新建入口，距边缘 20px。',true),
   item('button-group','按钮组与分段按钮','ButtonGroup','动作并列使用等宽按钮；分段切换与管理关注一致：容器高 36px、四周内间距 2px、12px 圆角及 #F4F5F7 灰底，内部选项高 32px、9px 圆角，选中白底、黑色加粗，未选中 #878B99。'),

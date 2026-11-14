@@ -4,7 +4,7 @@
 .group-detail-nav>button{width:44px;height:44px;display:grid;place-items:center}.group-detail-nav h1{font:var(--type-page);text-align:center}
 .group-detail-scroll{min-height:0;flex:1;overflow-y:auto;overscroll-behavior:contain}
 .group-detail-article{padding:14px 18px 24px}
-.group-detail-article>header h2{font:600 20px/30px var(--font-app);color:var(--color-primary);font-synthesis:weight;margin:0 0 12px}
+.group-detail-article>header h2{font:var(--type-dialog);color:var(--color-primary);font-synthesis:weight;margin:0 0 12px}
 .group-detail-article>header h2{max-width:none;overflow:visible;white-space:normal}
 .group-detail-meta{display:flex;align-items:baseline;justify-content:flex-start;flex-wrap:wrap;gap:0 8px;font:var(--type-helper);color:var(--color-muted)}
 .group-detail-meta>span{min-width:0;overflow-wrap:anywhere}
@@ -12,10 +12,10 @@
 .group-detail-hero,.group-detail-inline{width:100%;height:auto;display:block;border-radius:4px;object-fit:cover}
 .group-detail-hero{aspect-ratio:678/243;margin:14px 0}
 .group-detail-inline{aspect-ratio:678/381;margin:18px 0 14px}
-.group-detail-article>p{font:400 16px/28px var(--font-app);color:var(--color-secondary);text-align:justify;letter-spacing:1px;margin:0 0 20px;overflow-wrap:anywhere}
+.group-detail-article>p{font:var(--type-body);color:var(--color-secondary);text-align:justify;letter-spacing:1px;margin:0 0 20px;overflow-wrap:anywhere}
 .group-detail-attachments{border-top:1px solid #e9edf3;padding-top:10px}
 .group-detail-attachments h3{font:var(--type-module);display:flex;align-items:center;gap:6px;margin:0 0 10px}
-.group-detail-attachments h3>svg{color:var(--color-blue)}
+.group-detail-attachments h3>svg{color:var(--color-action)}
 .group-detail-attachments>a{display:flex;align-items:center;gap:8px;min-width:0;min-height:44px;margin:8px 0;font:var(--type-body);color:var(--color-secondary)}
 .group-attachment-icon{flex-shrink:0;background:#f45b60;color:#fff;width:22px;height:24px;border-radius:4px;display:grid;place-items:center}
 .group-detail-attachments>a>span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
