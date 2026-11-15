@@ -14,7 +14,7 @@ export default function ShortcutCard({kind,origin,onAction}:{kind:ShortcutKind;o
   <header><h2>{title}</h2><button onClick={more} aria-label={title+'更多'}>更多<img src="/assets/spec/ChevronRight.svg" alt=""/></button></header>
   <div className="shortcut-track" ref={track} {...bindings} tabIndex={0} aria-label={title+'左右滑动翻页'}>
    {Array.from({length:pages},(_,index)=><div className="shortcut-grid" key={index} role="group" aria-label={title+'第'+(index+1)+'页'} inert={index!==page}>
-    {ids.slice(index*size,(index+1)*size).map(id=>{const a=appById[id];return <button key={id} onClick={()=>onAction(a.action)}><AppIcon app={a} system={kind==='portal'}/><span data-node-id={id==='travel'?'0:6734':undefined}>{a.name}</span></button>})}
+    {ids.slice(index*size,(index+1)*size).map(id=>{const a=appById[id];return <div className="shortcut-item" key={id}><AppIcon app={a} system={kind==='portal'}/><span data-node-id={id==='travel'?'0:6734':undefined}>{a.name}</span></div>})}
     {!ids.length&&<button className="shortcut-empty" onClick={more}>{kind==='portal'?'添加常用系统':'添加常用应用'}</button>}
    </div>)}
   </div>

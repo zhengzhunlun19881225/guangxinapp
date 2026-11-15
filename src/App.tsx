@@ -24,6 +24,7 @@ import MeetingDetail from './components/MeetingDetail';
 import CloseButton from './components/CloseButton';
 import TravelDocuments from './components/TravelDocuments';
 import ChatPage from './components/ChatPage';
+import {createDemoReply,normalizeDemoMessages} from './ai/replies';
 import AppNavBar,{NavSearchIcon} from './components/AppNavBar';
 import LeaderScenePortalToggle from './screens/LeaderScenePortalToggle';
 import PortalNews,{PortalNewsPage,PortalNewsDetail} from './components/PortalNews';
@@ -56,8 +57,8 @@ const navMasks=['','nav-workbench.svg','nav-portal.svg','nav-im.svg','nav-profil
 function currentRoute(){
   const hashRoute=location.hash.replace(/^#\/?/,'').split('?')[0];
   const captureRoute=(new URLSearchParams(location.search).get('route')||'').split('?')[0];
-  const r=hashRoute==='figmacapture'?captureRoute:hashRoute;
-  return validRoutes.includes(r)?r:'chat';
+  const r=hashRoute.startsWith('figmacapture')?captureRoute:hashRoute;
+  return validRoutes.includes(r)?r:'workbench';
 }
 
 function Modal({action,close,children}:{action:Action;close:()=>void;children:React.ReactNode}){
@@ -116,6 +117,7 @@ function Conversation({name}:{name:string}){
 
 export default function App(){
   const [requestedRoute,setRoute]=useState(currentRoute),[modal,setModal]=useState<Action|null>(null),[toast,setToast]=useState('');
+  const captureState=location.hash.startsWith('#figmacapture')?(new URLSearchParams(location.search).get('state')||''):'';
   const [requestedLocationKey,setLocationKey]=useState(()=>location.hash.startsWith('#figmacapture')?`#/${new URLSearchParams(location.search).get('route')||''}`:location.hash),[deviceHeight,setDeviceHeight]=useState(812);
   const [wideWorkspace,setWideWorkspace]=useState(()=>matchMedia('(min-width:1200px)').matches);
   const [preview,setPreview]=useState(()=>({route:currentRoute()==='mobile-spec'?'workbench':currentRoute(),locationKey:location.hash}));
@@ -123,7 +125,7 @@ export default function App(){
   const route=readLocal<boolean>('im2-session',true)===false&&(previewRoute==='im'||previewRoute==='contacts'||imRoutes.includes(previewRoute)||(previewRoute.startsWith('im-')&&featureRoutes.includes(previewRoute)))?'im-login':previewRoute;
   const locationKey=wideWorkspace&&requestedRoute==='mobile-spec'?preview.locationKey:requestedLocationKey;
   const [zoom,setZoom]=useState(1),[historySearch,setHistorySearch]=useState(''),[selectedAgent,setSelectedAgent]=useState('');
-  const [messages,setMessages]=useState<Message[]>(()=>readLocal<Message[]>('ai-messages',[]));
+  const [messages,setMessages]=useState<Message[]>(()=>normalizeDemoMessages(readLocal<Message[]>('ai-messages',[])));
   const [skillTreeOpen,setSkillTreeOpen]=useState(false);
   const [composerMode,setComposerMode]=useState(()=>readLocal('composer-mode-v2',''));
   const [chatActive,setChatActive]=useState(()=>readLocal<Message[]>('ai-messages',[]).length>0),[composerRequest,setComposerRequest]=useState<ComposerRequest>({id:0,mode:''});
@@ -170,8 +172,7 @@ export default function App(){
     notify(saved?(next[id]?(value==='interested'?'已标记为感兴趣':'已记录：减少此类'):'已取消偏好'):'已在本次会话记录，未能保存到本机');
   }
   function send(text:string,attachments?:ComposerAttachment[]){
-    const answer='数据监测与优化策略\n\n一、关键指标\n为贯彻落实政府服务数字化转型要求，提升服务效率与质量，建议加快推进智能问答与反检系统建设。\n\n二、当前存在的问题\n两系统应协同联动，形成服务质检改进闭环机制，实现数据共享与动态优化。';
-    const next:Message[]=[...messages,{role:'user',text,...(attachments?.length?{attachments:attachments.map(({text:_text,...item})=>item)}:{})},{role:'assistant',text:attachments?.length?'已收到 '+attachments.length+' 个附件。可点击文件卡片预览或下载。当前尚未连接附件分析服务，暂不能根据附件生成回答。':answer,...(attachments?.length?{plain:true}:{})}];
+    const next:Message[]=[...messages,{role:'user',text,...(attachments?.length?{attachments:attachments.map(({text:_text,...item})=>item)}:{})},createDemoReply(text,messages,attachments)];
     if(!saveLocal('ai-messages',next)){notify('消息保存失败，请保留内容后重试');return false}
     setMessages(next);
     const hs=[text,...savedHistory.filter(v=>v!==text)];setSavedHistory(hs);saveLocal('history',hs);
@@ -195,7 +196,7 @@ export default function App(){
     if(a.type==='list'&&['知识库','云盘'].includes(a.value)){navigate(a.value==='知识库'?'knowledge':'cloud-drive');return}
     if(a.type==='composer-agent'||(a.type==='agent'&&['制作PPT','财务自动差旅'].includes(a.value))){setComposerRequest(value=>({id:value.id+1,mode:a.value==='制作PPT'?'PPT生成':a.value==='财务自动差旅'?'AI+财务自动差旅':a.value}));return}
     if(a.type==='agent'&&a.value.includes('智写')){if(route!=='chat'){saveLocal('composer-mode-v2','智能写作');setComposerMode('智能写作');navigate('chat')}else setComposerRequest(value=>({id:value.id+1,mode:'智能写作'}));return}
-    if(a.type==='share-answer'){if(!startShare({kind:'text',title:'数据监测与优化策略',text:a.value},locationKey.replace(/^#\//,''),navigate))notify('无法创建分享，请重试');return}
+    if(a.type==='share-answer'){if(!startShare({kind:'text',title:a.value.split('\n')[0].slice(0,60)||'AI回答',text:a.value},locationKey.replace(/^#\//,''),navigate))notify('无法创建分享，请重试');return}
     if(a.type==='conversation'){
       const groups=readLocal('im2-groups',initialGroups),group=groups.find(g=>g.name===a.value||(g.id==='original'&&a.value==='刘磊、胡磊、陈丽、胡可'));
       if(group&&(group.left||group.disbanded)){notify(group.disbanded?'该群聊已解散':'你已退出该群聊');return}
@@ -271,7 +272,7 @@ export default function App(){
           </>}
         </main>
       </div>
-      {isChat&&route!=='history'&&<div className="fixed-composer" style={{zoom}}><Composer onSend={send} onAction={onAction} request={composerRequest} onModeChange={setComposerMode}/></div>}
+      {isChat&&route!=='history'&&<div className="fixed-composer" style={{zoom}}><Composer onSend={send} onAction={onAction} request={composerRequest} onModeChange={setComposerMode} captureState={captureState}/></div>}
       {isDirectory&&<div className="fixed-home" style={{zoom}}><div className="home-indicator"/></div>}
       {showNav&&<nav className="bottom-nav" aria-label="底部导航" style={{zoom}}>
         {navItems.map((item,i)=>{const active=route===item.route||(i===2&&isPortal)||(i===3&&isMessaging);

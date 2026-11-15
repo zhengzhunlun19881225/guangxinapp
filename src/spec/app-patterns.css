@@ -35,7 +35,7 @@
 .spec-adaptive-stage{background:var(--canvas);padding:10px;border-radius:16px}
 .spec-adaptive-news{padding:14px;background:white;border-radius:16px}
 .spec-adaptive-news [role=tablist]{display:flex;gap:var(--category-pill-gap);margin-top:8px;flex-wrap:wrap}
-.spec-adaptive-news [role=tablist]>button{display:grid;place-items:center}
+.spec-adaptive-news [role=tablist]>button{display:grid;place-items:center;min-height:44px;min-width:44px}
 .spec-adaptive-rows>article{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid #f7f8fa}
 .spec-adaptive-rows>article:last-child{border:0}
 .spec-adaptive-rows>article>span{color:var(--color-brand);font:var(--type-body)}

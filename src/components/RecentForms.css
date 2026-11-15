@@ -21,8 +21,6 @@
 }
 .recent-form-entry>img {width:14px;height:18px;object-fit:contain;flex-shrink:0}
 .recent-form-entry>span {white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.recent-form-entry:hover {background:var(--color-brand-soft)}
-.recent-form-entry:active {background:#ffe5e5}
 .route-workbench .work-calendar {top:1015px}
 .recent-forms-list {display:flex;flex-direction:column;gap:10px}
 .recent-forms-list>.search-control {background:#f5f6fa;margin-bottom:4px}

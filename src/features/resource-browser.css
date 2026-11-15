@@ -9,7 +9,7 @@
 .resource-browser-search .feature-search input::placeholder{color:var(--color-muted)}
 .resource-browser .feature-tabs.is-segmented{margin:0 14px;background:#f7f8fa;border-radius:12px;padding:2px;gap:0}
 .resource-browser .feature-tabs.is-segmented>button{min-height:36px;font:var(--type-list);color:var(--color-primary)}
-.resource-browser .feature-tabs.is-segmented>button[aria-selected=true]{color:var(--color-action);font-weight:600}
+.resource-browser .feature-tabs.is-segmented>button[aria-selected=true]{color:var(--color-primary);font-weight:600}
 .resource-browser-crumbs{display:flex;align-items:center;gap:3px;flex-wrap:wrap;min-height:38px;padding:0 14px 7px;color:var(--color-muted);font:var(--type-body)}
 .resource-browser-crumbs button{color:var(--color-action);min-height:30px}
 .resource-browser-crumbs svg{flex:none}

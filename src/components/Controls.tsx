@@ -103,10 +103,10 @@ export function FeatureCards({onAction}:{onAction:(a:Action)=>void}){
   const carousel=useRef<HTMLDivElement>(null),scrollTimer=useRef<number|undefined>(undefined),[scrollLeft,setScrollLeft]=useState(30),[scrolling,setScrolling]=useState(false);
   const step=137;
   const items=[
-    {name:'财务自动差旅',description:'一句话提交出差申请单',node:'0:5343',color:'#006dff'},
-    {name:'法智小新',description:'解法规，答操作',node:'0:5312',color:'#722ed1'},
-    {name:'制作PPT',description:'从需求到方案一键生成完整方案',node:'0:5327',color:'#ff7d00'},
-    {name:'AI+员工服务',description:'一句话提交请假、加班申请',node:'0:5298',color:'#ff0000'}];
+    {name:'财务自动差旅',description:'一句话提交出差申请单',image:'document-card.png',color:'#006dff'},
+    {name:'法智小新',description:'解法规，答操作',image:'legal-card.png',color:'#722ed1'},
+    {name:'制作PPT',description:'从需求到方案一键生成完整方案',image:'ppt-card.png',color:'#ff7d00'},
+    {name:'AI+员工服务',description:'一句话提交请假、加班申请',image:'employee-card.png',color:'#ff0000'}];
   useLayoutEffect(()=>{carousel.current?.scrollTo({left:30,behavior:'auto'})},[]);
   useEffect(()=>()=>{if(scrollTimer.current!==undefined)window.clearTimeout(scrollTimer.current)},[]);
   const cardStyle=(index:number)=>{const center=16+64.5+index*step,offset=(center-(scrollLeft+187.5))/step,curve=Math.max(-1.65,Math.min(1.65,offset)),distance=Math.min(1.5,Math.abs(curve)),verticalOffset=Math.max(0,distance*22-4);return {transform:`translateY(${verticalOffset}px) scale(${1-distance*.1}) rotate(${curve*8}deg)`,zIndex:String(20-Math.round(distance*10))}};
@@ -118,7 +118,7 @@ export function FeatureCards({onAction}:{onAction:(a:Action)=>void}){
   };
   return <div ref={carousel} className={'feature-carousel'+(scrolling?' is-scrolling':'')} aria-label="AI 功能卡片" onScroll={handleScroll}>
     {items.map((x,index)=><button className="feature-card" style={cardStyle(index)} key={x.name} onClick={()=>onAction({type:'agent',value:x.name})}>
-      {x.node==='0:5343'?<img src="/assets/chat/document-card.png" alt=""/>:x.node==='0:5312'?<img src="/assets/chat/legal-card.png" alt=""/>:<Asset node={x.node}/>}<h3>{x.name}</h3><b style={{background:x.color}}/>
+      <img src={'/assets/chat/'+x.image} alt=""/><h3 style={{color:x.color}}>{x.name}</h3><b style={{background:x.color}}/>
       <p>{x.description}</p><span className="feature-arrow"><ArrowRight size={18} strokeWidth={1.5}/></span>
     </button>)}
   </div>;

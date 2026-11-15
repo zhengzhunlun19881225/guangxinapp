@@ -28,7 +28,7 @@ export default function ProfilePage({onAction,navigate}:{onAction:(action:Action
   <section className="profile-card"><Asset node="0:6645"/><div><h2>唐学文</h2><p>AI项目组-助理经理</p></div></section>
   <div className="profile-link-groups">{groups.map((items,index)=><section key={index} className="profile-links native-card" aria-label={index?'个人设置与帮助':'个人服务'}>
    {items.map(item=><button key={item.label} aria-label={item.label} onClick={()=>open(item.label)}>
-    {item.icon==='knowledge'||item.icon==='cloud-drive'?<ResourceIcon name={item.icon} className="profile-link-icon"/>:<img className="profile-link-icon" src={'/assets/profile/'+item.icon+'.svg'} alt=""/>}
+    {item.icon==='knowledge'||item.icon==='cloud-drive'?<ResourceIcon name={item.icon} size={20} className="profile-link-icon"/>:<img className="profile-link-icon" src={'/assets/profile/'+item.icon+'.svg'} alt=""/>}
     <span className="profile-link-label">{item.label}</span>
     {item.icon==='version'&&<small className="profile-version">V{version}</small>}
     <ChevronRight size={18} aria-hidden="true"/>

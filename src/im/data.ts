@@ -1,6 +1,6 @@
 import {contacts,imageFor} from '../data';
 export const imAsset=(name:string)=>'/assets/im/'+name+'.png';
-export type Person={id:string;name:string;job:string;avatar:string;nickname?:string};
+export type Person={id:string;name:string;job:string;avatar:string;nickname?:string;phone?:string;email?:string;company?:string;department?:string;position?:string;gender?:string};
 export const people:Person[]=[
  {id:'shi',name:'石梁雅',job:'软件及通信解决方案部',avatar:imAsset('member-0')},
  {id:'dong',name:'董巧珑',job:'副总经理',avatar:imAsset('member-1')},
@@ -29,7 +29,7 @@ export const initialGroups:Group[]=[
  {id:'customer',name:'客户沟通群',created:false,members:[...initialMembers,...people.slice(0,2)],avatar:imAsset('group-1')},
  {id:'original',name:'刘磊、胡磊、陈丽、胡可',created:false,members:initialMembers,avatar:imAsset('group-0')},
 ];
-export type ChatMessage={id:string;side:'in'|'out';text?:string;image?:string;time?:string;read?:boolean;createdAt?:string;attachment?:{name:string;url:string;kind:string}};
+export type ChatMessage={id:string;side:'in'|'out';senderName?:string;senderAvatar?:string;text?:string;image?:string;time?:string;read?:boolean;createdAt?:string;attachment?:{name:string;url:string;kind:string}};
 export const initialMessages:ChatMessage[]=[
  {id:'1',side:'in',text:'少即是多'},
  {id:'2',side:'out',image:imAsset('chat-photo'),read:true},

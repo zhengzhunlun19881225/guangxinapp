@@ -14,7 +14,7 @@
   --color-secondary: #4e5969;
   --color-muted: #878b99;
   --color-action: var(--color-brand);
-  --color-link: var(--color-brand);
+  --color-link: var(--color-blue);
   --color-error: var(--color-brand);
   --color-brand-soft: #fff0f0;
   --color-brand-border: #ffdada;

@@ -9,7 +9,7 @@
 .im2-status-wide{padding-left:35px}
 .im2-status img:nth-child(1){width:18px;height:12px}.im2-status img:nth-child(2){width:16px;height:12px}.im2-status img:nth-child(3){width:25px;height:12px}
 .im2-header{flex-shrink:0}
-.im2-header .im2-text-button{width:auto;min-width:44px;padding:0 11px;font:400 14px/22px var(--font-app);color:var(--im2-accent);white-space:nowrap}
+.im2-header .im2-text-button{width:auto;min-width:44px;padding:0 11px;font:400 14px/22px var(--font-app);color:var(--color-blue);white-space:nowrap}
 .im2-header button:disabled{opacity:.4}
 .im2-body{overflow-y:auto;overflow-x:hidden;flex:1;min-height:0;padding:2px 15px 18px;overscroll-behavior:contain;scrollbar-width:none}
 .im2-body::-webkit-scrollbar{display:none}
@@ -54,7 +54,7 @@
 .im2-members-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:0;row-gap:20px;padding:0}
 .im2-members-grid>button{min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px}
 .im2-members-grid small{font-size:12px;line-height:18px;color:var(--color-secondary);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
-.im2-member-action{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px dashed #9299aa;border-radius:50%;color:var(--color-muted)}
+.im2-member-action{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px dashed #9299aa;border-radius:12px;color:var(--color-muted)}
 .im2-more-members{font-size:12px;line-height:18px;color:var(--color-muted);min-height:46px;width:100%;margin-top:5px}
 .im2-mute-option>button{display:flex;align-items:center;gap:5px;flex:1;min-height:52px;text-align:left}
 .im2-mute-option>.im2-icon{color:var(--im2-accent)}
@@ -79,7 +79,7 @@
 .im2-primary:disabled{opacity:1;background:var(--color-brand-disabled);color:#fff;cursor:default}
 .im2-wide{display:flex;width:100%;min-height:40px;margin-top:20px}
 .im2-breadcrumb{display:flex;align-items:center;gap:4px;font-size:14px;color:var(--color-muted);margin:0 0 15px}
-.im2-breadcrumb>button{color:var(--im2-accent)}
+.im2-breadcrumb>button{color:var(--color-blue)}
 .im2-directory-card{padding:0 15px}.im2-directory-card>.im2-row{min-height:53px;font-size:16px}.im2-directory-card>.im2-row>span{min-width:0}.im2-directory-card>.im2-row small{font-size:14px;color:var(--color-muted)}.im2-directory-card>.im2-person-row{min-height:70px}
 .im2-overlay{position:absolute;inset:0;z-index:40;background:#0009;display:flex;align-items:flex-end}
 .im2-dialog{background:#fff;width:100%;max-height:calc(100% - 72px);min-height:280px;border-radius:13px 13px 0 0;display:flex;flex-direction:column;padding:0 15px 30px;overflow:hidden}
@@ -91,7 +91,11 @@
 .im2-selected-list>.im2-person-row:first-child{margin-top:12px}
 .im2-dialog>footer{display:flex;gap:26px;margin-top:14px;padding-top:12px;flex-shrink:0}
 .im2-dialog>footer>button{flex:1;min-height:44px;border-radius:12px}
-.im2-confirm-text{padding:20px 0;flex:1;text-align:center}
+.im2-confirm-text{padding:20px 0;flex:1;text-align:center}.im2-confirm-text.is-block-warning{text-align:left;font:var(--type-body)}
+.im2-group-qr{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:18px 0 30px;text-align:center}
+.im2-group-qr svg{width:190px;height:190px;padding:10px;background:#fff;color:#111}
+.im2-group-qr strong{font-size:16px;line-height:24px;font-weight:500}
+.im2-group-qr p{font-size:13px;line-height:20px;color:var(--color-muted)}
 .im2-image-preview{width:100%;min-height:0;object-fit:contain;margin-bottom:10px}
 .im2-weekday{justify-content:flex-start;gap:15px;min-height:54px}
 .im2-weekday input{border-radius:50%;width:20px;height:20px}
@@ -176,3 +180,5 @@
 .im2-im-chat .im2-composer-wrap{display:flex;flex-direction:column}
 .im2-im-chat .im2-composer{order:1}
 .im2-im-chat .im2-composer-panel{order:2}
+
+.im2-profile-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.im2-profile-actions>button{min-height:40px}.im2-profile-actions>button:disabled{color:var(--color-muted);cursor:default}.im2-profile-details .im2-row>span:first-child{flex-shrink:0}

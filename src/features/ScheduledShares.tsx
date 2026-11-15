@@ -2,23 +2,25 @@ import {useState} from 'react';
 import {ChevronDown,ChevronUp,Plus,RotateCw,Users} from 'lucide-react';
 import {saveLocal} from '../data';
 import {Empty,FeatureShell,Sheet} from './UI';
-import {dateKey,generateDocument,queryFor,readRecipients,readScheduledShares,uid,type FeatureProps,type ScheduledShare} from './data';
+import {dateKey,generateDocument,queryFor,readScheduledShares,uid,type FeatureProps,type ScheduledShare} from './data';
 import {RecipientPicker} from './SharePage';
+import './ScheduledShares.css';
 
+function createdTime(value:string){return new Date(value).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).replaceAll('/','-')}
 const dayNames=['星期一','星期二','星期三','星期四','星期五','星期六','星期日'];
-function emptyShare(prompt=''):ScheduledShare{const now=new Date(),end=new Date(now);end.setMonth(end.getMonth()+3);return{id:uid(),prompt,title:'',content:'',frequency:'每月',days:[1,2,3,4,5],time:'12:30',start:dateKey(now),end:dateKey(end),recipients:[],createdAt:now.toISOString()}}
+function emptyShare(prompt=''):ScheduledShare{const now=new Date(),end=new Date(now);end.setMonth(end.getMonth()+3);return{id:uid(),prompt,title:'',content:'',frequency:'每月',days:[1,2,3,4,5],time:'12:30',start:dateKey(now),end:dateKey(end),recipients:[],createdAt:now.toISOString(),creator:'唐学文'}}
 export default function ScheduledShares({locationKey,height,navigate,notify}:FeatureProps){
  const query=queryFor(locationKey),[items,setItems]=useState(readScheduledShares),[draft,setDraft]=useState<ScheduledShare|null>(()=>query.get('new')==='1'?emptyShare(query.get('prompt')||''):null),[start,setStart]=useState(''),[end,setEnd]=useState(''),[error,setError]=useState(''),[expanded,setExpanded]=useState(true),[daysOpen,setDaysOpen]=useState(false),[dayDraft,setDayDraft]=useState<number[]>([]),[pick,setPick]=useState(false),[deleteId,setDeleteId]=useState('');
- const recipients=readRecipients();const visible=items.filter(item=>(!start||item.createdAt.slice(0,10)>=start)&&(!end||item.createdAt.slice(0,10)<=end));
+ const visible=items.filter(item=>(!start||createdTime(item.createdAt).slice(0,10)>=start)&&(!end||createdTime(item.createdAt).slice(0,10)<=end));
  function update(change:Partial<ScheduledShare>){setDraft(value=>value?{...value,...change}:null);setError('')}
  function generate(){if(!draft?.prompt.trim()){setError('请输入提示词内容');return}const generated=generateDocument('统计报告',draft.prompt);update({title:generated.title,content:generated.content});setExpanded(true)}
  function save(){if(!draft)return;if(!draft.prompt.trim()){setError('请输入提示词内容');return}if(!draft.start||!draft.time||draft.frequency!=='单次'&&!draft.end){setError('请补齐推送时间和日期');return}if(draft.frequency!=='单次'&&draft.end<draft.start){setError('结束日期不能早于开始日期');return}if(draft.frequency==='每周'&&!draft.days.length){setError('请至少选择一个星期');return}if(!draft.recipients.length){setError('请选择推送对象');return}if(!draft.content.trim()){setError('请先生成并核对分享内容');return}const next=[draft,...items.filter(item=>item.id!==draft.id)];if(!saveLocal('scheduled-shares',next)){setError('保存失败，请保留填写内容并重试');return}setItems(next);setDraft(null);notify('分享计划已保存')}
  if(pick&&draft)return <RecipientPicker height={height} close={()=>setPick(false)} notify={notify} initialSelected={draft.recipients} onPick={ids=>{update({recipients:ids});setPick(false)}}/>;
- return <FeatureShell title="定时分享管理" height={height} back={()=>navigate(query.get('return')||'chat')} right={<button aria-label="新建定时分享" onClick={()=>{setDraft(emptyShare());setError('')}}><Plus size={22}/></button>}>
+ return <FeatureShell title="定时分享管理" className="scheduled-shares-page" height={height} back={()=>navigate(query.get('return')||'chat')} right={<button aria-label="新建定时分享" onClick={()=>{setDraft(emptyShare());setError('')}}><Plus size={22}/></button>}>
   <div className="feature-date-range"><input type="date" aria-label="筛选开始日期" value={start} onChange={e=>setStart(e.target.value)}/><span>至</span><input type="date" aria-label="筛选结束日期" min={start} value={end} onChange={e=>setEnd(e.target.value)}/></div>
   {start&&end&&end<start?<p className="feature-error" role="alert">结束日期不能早于开始日期</p>:null}
   <p className="feature-note">计划保存在此设备，自动推送需由企业服务启用。</p>
-  {visible.map(item=><div key={item.id}><p className="feature-section-label">{item.createdAt.slice(0,10)===dateKey(new Date())?'今天':item.createdAt.slice(0,10)}</p><article className="feature-surface feature-schedule-card"><h2>{item.title}</h2><dl><dt>分享类型：</dt><dd>{item.frequency==='单次'?'单次':'重复'}</dd><dt>分享频率：</dt><dd>{item.frequency}{item.frequency==='每周'?' · '+item.days.map(day=>dayNames[day-1]).join('、'):''}</dd><dt>推送时间：</dt><dd>{item.time}</dd><dt>日期：</dt><dd>{item.start}{item.frequency!=='单次'?' 至 '+item.end:''}</dd><dt>创建人：</dt><dd>唐学文</dd><dt>推送对象：</dt><dd>{item.recipients.map(id=>recipients.find(p=>p.id===id)?.name||'已失效对象').join('、')}</dd></dl><footer><button onClick={()=>setDeleteId(item.id)}>删除</button><button onClick={()=>{setDraft({...item});setError('')}}>修改</button></footer></article></div>)}
+  {visible.map(item=><article key={item.id} className="feature-surface feature-schedule-card" aria-label={item.title}><h2>{item.title}</h2><dl><dt>分享频率：</dt><dd>{item.frequency}</dd><dt>分享时间：</dt><dd><time dateTime={item.start+'T'+item.time}>{item.start} {item.time}</time></dd><dt>创建时间：</dt><dd><time dateTime={item.createdAt}>{createdTime(item.createdAt)}</time></dd><dt>创建人：</dt><dd>{item.creator||'唐学文'}</dd></dl><footer><button aria-label={'删除'+item.title} onClick={()=>setDeleteId(item.id)}>删除</button><button aria-label={'编辑'+item.title} onClick={()=>{setDraft({...item});setError('')}}>编辑</button></footer></article>)}
   {!visible.length&&<section className="feature-surface"><Empty>{items.length?'此日期范围没有分享计划':'暂无定时分享，点击右上角新建。'}</Empty></section>}
   {draft&&<Sheet title="定时分享" close={()=>{setDraft(null);setError('')}} footer={<button className="feature-primary" onClick={save}>保存</button>}>
    <div className="feature-form">

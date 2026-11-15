@@ -10,25 +10,25 @@ export const recentFormNames=[
   '信息系统群组变更申请','业务进出口情况月报','纺织股份用车审批表',
 ];
 
-function FormButton({name,onAction}:{name:string}&SceneProps){
-  return <button className="recent-form-entry" title={name} onClick={()=>onAction({type:'recent-form',value:name})}>
+function FormEntry({name}:{name:string}){
+  return <div className="recent-form-entry" title={name}>
     <img src="/assets/workbench/spreadsheet.png" alt=""/><span>{name}</span>
-  </button>;
+  </div>;
 }
 
 export default function RecentForms({onAction}:SceneProps){
   return <section className="work-recent-forms" aria-labelledby="recent-forms-heading">
     <header><h2 id="recent-forms-heading"><img src="/assets/workbench/section-accent.png" alt=""/>最近使用表单</h2>
       <button onClick={()=>onAction({type:'recent-forms',value:'最近使用表单'})}>更多 ›</button></header>
-    <div className="recent-forms-grid">{recentFormNames.slice(0,5).map(name=><FormButton key={name} name={name} onAction={onAction}/>)}</div>
+    <div className="recent-forms-grid">{recentFormNames.slice(0,5).map(name=><FormEntry key={name} name={name}/>)}</div>
   </section>;
 }
 
-export function RecentFormsList({onAction}:SceneProps){
+export function RecentFormsList(_props:SceneProps){
   const [query,setQuery]=useState('');
   const matches=recentFormNames.filter(name=>name.includes(query.trim()));
   return <div className="recent-forms-list"><Search value={query} onChange={setQuery}/>
-    {matches.map(name=><FormButton key={name} name={name} onAction={onAction}/>)}
+    {matches.map(name=><FormEntry key={name} name={name}/>)}
     {!matches.length&&<p className="empty-state">未找到相关表单</p>}
   </div>;
 }

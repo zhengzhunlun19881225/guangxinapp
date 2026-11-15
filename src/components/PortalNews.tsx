@@ -1,5 +1,5 @@
 import {useEffect,useId,useRef,useState} from 'react';
-import {BellPlus,ChevronLeft,ChevronRight,Search,X} from 'lucide-react';
+import {BellPlus,ChevronLeft,ChevronRight,Search} from 'lucide-react';
 import {assets} from '../assets';
 import {categoryNews,newsCategories,newsCategory,portalNews,type NewsCategory,type NewsItem,type NewsFeedback} from '../data/portalNews';
 import type {Action,SceneProps} from './SceneAction';
@@ -34,25 +34,20 @@ export default function PortalNews({route,onAction,subscription}:{route:string;s
 
 export function PortalNewsPage({locationKey,height,navigate,onAction,subscription}:{locationKey:string;height:number;navigate:(route:string)=>void;onAction:(action:Action)=>void;subscription:NewsSubscription|null}){
  const query=new URLSearchParams(locationKey.split('?')[1]||''),category=newsCategory(query.get('category')),id=useId(),panelId=id+'-list';
- const [searchOpen,setSearchOpen]=useState(false),[search,setSearch]=useState('');
- const searchInput=useRef<HTMLInputElement>(null),searchButton=useRef<HTMLButtonElement>(null),list=useRef<HTMLDivElement>(null);
- const items=categoryNews(category,subscription,search);
- useEffect(()=>{if(searchOpen)searchInput.current?.focus()},[searchOpen]);
- useEffect(()=>{list.current?.scrollTo({top:0})},[search,category]);
- useEffect(()=>{setSearch('')},[subscription]);
- function closeSearch(){setSearchOpen(false);setSearch('');searchButton.current?.focus()}
+ const list=useRef<HTMLDivElement>(null);
+ const items=categoryNews(category,subscription);
+ useEffect(()=>{list.current?.scrollTo({top:0})},[category]);
  const origin=['portal-staff','portal-manager','portal-leader'].includes(query.get('origin')||'')?query.get('origin')!:'portal-leader';
  return <section className="portal-news-page" style={{height}}>
   <div className="portal-news-status"><span>19:41</span><div><img src={assets.chat.imgCellularConnection} alt=""/><img src={assets.chat.imgWifi} alt=""/><img src={assets.chat.imgBattery} alt=""/></div></div>
-  <header className="portal-news-nav"><button aria-label="返回门户" onClick={()=>navigate(origin)}><ChevronLeft size={22}/></button><h1>AI 智能资讯</h1><div className="portal-news-tools"><button aria-label="资讯订阅设置" title="订阅" onClick={()=>onAction({type:'news-subscription',value:'资讯订阅设置'})}><BellPlus size={20}/></button><button ref={searchButton} aria-label="搜索资讯" title="搜索" aria-expanded={searchOpen} aria-controls={id+'-search'} onClick={()=>searchOpen?closeSearch():setSearchOpen(true)}><Search size={20}/></button></div></header>
-  {searchOpen&&<div className="portal-news-search" id={id+'-search'}><div><Search size={16} aria-hidden="true"/><input ref={searchInput} aria-label="搜索资讯标题或内容" placeholder="搜索资讯标题或内容" value={search} onChange={event=>setSearch(event.target.value)} onKeyDown={event=>{if(event.key==='Escape'){event.stopPropagation();closeSearch()}}}/>{search&&<button aria-label="清空资讯搜索" onClick={()=>{setSearch('');searchInput.current?.focus()}}><X size={16}/></button>}</div><button onClick={closeSearch}>取消</button></div>}
+  <header className="portal-news-nav"><button aria-label="返回门户" onClick={()=>navigate(origin)}><ChevronLeft size={22}/></button><h1>AI 智能资讯</h1><div className="portal-news-tools"><button aria-label="资讯订阅设置" title="订阅" onClick={()=>onAction({type:'news-subscription',value:'资讯订阅设置'})}><BellPlus size={20}/></button><span className="portal-news-search-placeholder" role="img" aria-label="搜索资讯" title="搜索"><Search size={20} aria-hidden="true"/></span></div></header>
   <NewsTabs categories={newsCategories} category={category} panelId={panelId} onChange={next=>navigate('portal-news?'+new URLSearchParams({origin,category:next}))}/>
   <div className="portal-news-list" ref={list} id={panelId} role="tabpanel" aria-labelledby={panelId+'-tab-'+newsCategories.indexOf(category)} key={category}>
    {items.map(item=><button className="portal-news-row" key={item.id} aria-label={item.title} onClick={()=>onAction({type:'portal-news-detail',value:item.id})}>
     <img src={item.image} alt="" loading="lazy"/>
     <span className="portal-news-row-copy"><strong>{item.title}</strong><NewsTags item={item} important={!!subscription?.important&&category==='我关注的'}/><NewsMeta item={item}/></span>
    </button>)}
-   {!items.length&&<div className="portal-news-empty" role="status"><p>暂无匹配资讯</p>{search?<button onClick={()=>setSearch('')}>清除搜索</button>:subscription&&category==='我关注的'?<button onClick={()=>onAction({type:'news-subscription',value:'资讯订阅设置'})}>调整订阅</button>:null}</div>}
+   {!items.length&&<div className="portal-news-empty" role="status"><p>暂无匹配资讯</p>{subscription&&category==='我关注的'?<button onClick={()=>onAction({type:'news-subscription',value:'资讯订阅设置'})}>调整订阅</button>:null}</div>}
   </div>
   <div className="portal-news-home"><div className="home-indicator"/></div>
  </section>;

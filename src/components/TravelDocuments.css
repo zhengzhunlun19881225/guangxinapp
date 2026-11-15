@@ -1,6 +1,6 @@
 .modal-sheet.modal-travel-documents{max-height:92%;padding-bottom:0}
-.modal-travel-documents>.modal-body{padding:0;background:#f7f9fe}
-.travel-documents{min-height:420px;padding:0 6px 20px;background:#f7f9fe;color:var(--color-primary)}
+.modal-travel-documents>.modal-body{padding:0;background:#fff}
+.travel-documents{min-height:420px;padding:0 6px 20px;background:#fff;color:var(--color-primary)}
 .travel-document-search{display:flex;align-items:center;gap:12px;padding:16px 0}
 .travel-document-search label{display:flex;align-items:center;gap:9px;flex:1;height:var(--control-height);padding:0 14px;border-radius:10px;background:#fff;color:var(--color-muted)}
 .travel-document-search input{min-width:0;flex:1;border:0;outline:0;background:transparent;font:var(--type-body);color:var(--color-primary)}
