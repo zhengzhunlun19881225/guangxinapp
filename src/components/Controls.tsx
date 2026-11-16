@@ -79,14 +79,12 @@ export function MessagingList({kind,onAction}:{kind:'im'|'contacts';onAction:(a:
     </div>}
   </>;
 }
-export function Suggestions({onAction,history=[]}:{onAction:(a:Action)=>void;history?:string[]}) {
-  const [tab,setTab]=useState('热门问答');
-  const rows=(tab==='最近记录'?history:questions).slice(0,3);
-  return <section className="chat-suggestions native-card" data-kind={tab==='最近记录'?'recent':'popular'}>
-    <div className="suggestion-tabs" role="tablist" aria-label="AI 首页推荐">{['最近记录','热门问答'].map(t=><button role="tab" aria-selected={tab===t} key={t} className={tab===t?'selected':''} onClick={()=>setTab(t)}>{t}</button>)}</div>
+export function Suggestions({onAction}:{onAction:(a:Action)=>void}) {
+  const rows=questions.slice(0,3);
+  return <section className="chat-suggestions native-card" data-kind="popular" aria-label="热门回答">
+    <h3 className="suggestion-heading">热门回答</h3>
     {rows.map((q,i)=><button className="suggestion-row" key={q+i} onClick={()=>onAction({type:'question',value:q})}>
       <span>{i+1}.</span><span>{q}</span></button>)}
-    {!rows.length&&<p className="small-empty">暂无最近记录</p>}
   </section>;
 }
 export function Todo({onAction}:{onAction:(a:Action)=>void}) {

@@ -38,7 +38,7 @@ export default function ChatPage({hideWelcome,active,messages,selectedAgent,hist
 
   </header>
    {selectedAgent&&<button className="chat-selected-agent" onClick={onClearAgent}>{selectedAgent}<X size={14}/></button>}
-  {!active?<>{!hideWelcome&&<div className="chat-welcome"><h2>您好，欢迎使用广智新</h2><FeatureCards onAction={onAction}/><Suggestions history={history} onAction={onAction}/></div>}</>:<>
+  {!active?<>{!hideWelcome&&<div className="chat-welcome"><h2>您好，欢迎使用广智新</h2><FeatureCards onAction={onAction}/><Suggestions onAction={onAction}/></div>}</>:<>
    <section className="ai-messages" aria-label="AI 对话">{messages.map((message,index)=><div className={'message '+message.role} key={index}>{message.role==='assistant'?(message.plain?<p>{message.text}</p>:<AiAnswerCard message={message} onAction={onAction}/>):<><p>{message.text}</p>{!!message.attachments?.length&&<div className="message-attachments" aria-label="已发送附件">{message.attachments.map(item=><button type="button" className="message-attachment" key={item.id} onClick={()=>setPreview(item)} aria-label={'预览已发送附件 '+item.name}><FileText size={22}/><span><strong>{item.name}</strong><small>{attachmentSize(item.size)} · {item.source}</small></span></button>)}</div>}</>}</div>)}</section>
   </>}
  {preview&&root.current?.closest<HTMLElement>('.device')&&<ComposerAttachmentPreview device={root.current.closest<HTMLElement>('.device')!} item={preview} close={()=>setPreview(null)}/>}
