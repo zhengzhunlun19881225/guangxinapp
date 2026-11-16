@@ -1,3 +1,4 @@
+.composer-picker-categories[aria-label="PPT模板分类"]>button[aria-selected=true]>span{color:var(--color-brand)}
 .ppt-picker-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px;row-gap:16px;align-items:start}
 .ppt-picker-grid>article{border:1px solid #e5e8ef;border-radius:8px;overflow:hidden;min-width:0;background:#fff}
 .ppt-picker-grid>article.is-selected{border-color:var(--color-brand)}

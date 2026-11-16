@@ -3,5 +3,5 @@
 .prompt-picker-choose{display:flex;flex:1;min-width:0;flex-direction:column;gap:6px;padding:14px;text-align:left;min-height:80px}
 .prompt-picker-choose>span:first-child{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .prompt-picker-choose strong{font:var(--type-list);color:var(--color-primary)}
-.prompt-picker-choose small{font:var(--type-helper);padding:1px 5px;color:var(--color-brand);background:var(--color-brand-soft);border-radius:4px}
+.prompt-picker-choose small{font:var(--type-helper);padding:1px 5px;color:var(--color-muted);background:#f4f6f8;border-radius:4px}
 .prompt-picker-choose>span:last-child{font:var(--type-function);color:var(--color-muted)}

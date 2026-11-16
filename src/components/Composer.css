@@ -15,7 +15,7 @@
 .device .composer.composer-enhanced .composer-tools-grid{display:grid;place-items:center;flex:0 0 var(--composer-hit);width:var(--composer-hit);height:var(--composer-hit);min-width:var(--composer-hit);min-height:var(--composer-hit);border:0;padding:0;border-radius:50%;background:transparent;box-shadow:none;pointer-events:auto}
 .device .composer.composer-enhanced .composer-tools-grid>span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;padding:0;color:var(--color-primary);background:#fff;box-shadow:var(--composer-tool-shadow)}
 .device .composer.composer-enhanced .composer-tools-grid svg{width:16px;height:16px}
-.device .composer.composer-enhanced .composer-input{display:block;height:auto;min-height:52px;padding:6px 16px;border:0;border-radius:16px;background:#fff;box-shadow:var(--composer-surface-shadow)}
+.device .composer.composer-enhanced .composer-input{display:block;height:auto;min-height:52px;padding:6px 16px;border:0;border-radius:16px;background:#fff;box-shadow:var(--shadow-float,0 5px 20px #16203815)}
 .composer-default-entry{display:flex;flex-direction:column;align-items:stretch;min-width:0}.composer-default-entry>textarea{width:100%;min-width:0;background:#fff;outline:0;border:0;box-sizing:border-box;height:32px;min-height:32px;max-height:150px;padding:6px 4px 0;resize:none;overflow-y:auto;overflow-wrap:anywhere;white-space:pre-wrap;font:var(--type-body);color:var(--color-primary)}.composer-default-entry>textarea::placeholder{color:var(--color-muted)}
 .device .fixed-composer .composer.composer-enhanced .composer-input .composer-default-entry>textarea:is(:hover,:focus){background:#fff}
 .composer-entry-actions{display:flex;align-items:center;min-height:44px;gap:0}.composer-entry-actions>.composer-add{margin-right:auto}
@@ -32,6 +32,14 @@
 .device .composer.composer-enhanced .composer-agent-card .composer-options>button>span{height:34px;background:#fff;border:1px solid #ebeef5;border-radius:999px;padding:0 10px}
 .device .composer.composer-enhanced .composer-agent-card .composer-options>button:not(.composer-tools-grid)>span{width:100%;justify-content:center;overflow:hidden}
 .device .composer.composer-enhanced .composer-agent-card .composer-options>button:not(.composer-tools-grid)>span:has(.composer-option-arrow){justify-content:flex-start}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="AI+财务自动差旅"] .composer-options{gap:12px}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="AI+财务自动差旅"] .composer-options>button>span{gap:6px;padding-inline:6px}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="AI+财务自动差旅"] .composer-options svg{width:16px;height:16px}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="AI+财务自动差旅"] .composer-options{touch-action:pan-x;overscroll-behavior-x:contain;padding-right:16px}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="AI+财务自动差旅"] .composer-options>button:not(.composer-tools-grid){flex:0 0 auto}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="AI+财务自动差旅"] .composer-options>button:nth-child(1){width:100px}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="AI+财务自动差旅"] .composer-options>button:nth-child(n+2){width:128px}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="AI+财务自动差旅"] .composer-tool-label{max-width:none;overflow:visible;text-overflow:clip}
 .device .composer.composer-enhanced .composer-agent-card .composer-options>button>span{box-shadow:none}
 .device .composer.composer-enhanced .composer-agent-card .composer-option-arrow{display:block;width:20px;height:20px;margin-left:auto;color:#03091B;background:currentColor;flex-shrink:0;mask:url('/assets/ui/left-small-up.svg') center/contain no-repeat;transform:rotate(90deg)}
 .device .composer.composer-enhanced .composer-agent-header .app-close-button::before{width:22px;height:22px}
@@ -44,6 +52,9 @@
 .device .composer.composer-enhanced .composer-agent-card .composer-agent-header,
 .device .composer.composer-enhanced .composer-agent-card .composer-options,
 .device .composer.composer-enhanced .composer-agent-card .composer-input{padding-inline:16px}
+.device .composer.composer-enhanced .composer-agent-card[data-mode="智能问数"] .composer-agent-header,
+.device .composer.composer-enhanced .composer-agent-card[data-mode="智能问数"] .composer-options,
+.device .composer.composer-enhanced .composer-agent-card[data-mode="智能问数"] .composer-input{padding-inline:20px}
 .device .composer.composer-enhanced .composer-agent-card .composer-agent-header>button:first-child{font:var(--type-module);font-synthesis:weight}
 .device .composer.composer-enhanced .composer-default-entry>textarea{padding-left:0}
 .device .composer.composer-enhanced .composer-agent-card .composer-agent-header .app-close-button::before{left:auto;right:0}
@@ -61,8 +72,6 @@
 .composer-hidden-file{display:none}.composer-error{margin-top:8px;font:var(--type-helper);color:var(--color-brand)}
 .device .chat-page{padding-bottom:calc(var(--composer-height,180px) + var(--preview-keyboard-height,0px) + 16px)}
 .device .fixed-composer .composer.composer-enhanced .composer-options>button{min-width:0;justify-content:flex-start}
-
-.device .composer.composer-enhanced.is-default .composer-input:focus-within{outline:1px solid var(--color-brand);outline-offset:-1px}
 
 .composer-knowledge-switch{display:block;position:relative;flex:none;width:34px;height:20px;margin-left:auto;border-radius:999px;background:#d9dade;transition:background-color .15s}
 .composer-knowledge-switch>i{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .15s}

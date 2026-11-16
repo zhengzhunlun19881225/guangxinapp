@@ -1,7 +1,8 @@
 .skill-tree-content{display:flex;flex-direction:column;height:100%;min-height:0;background:#fff}
 .skill-tree-content>.feature-search{flex:none;margin-bottom:10px}
 .skill-tree-content>.feature-skills-card{flex:1;min-height:0;margin:0;padding:0 10px;border-radius:0;background:#fff;overflow:hidden}
-.skill-tree-content .feature-tabs{flex:none;border:0;gap:8px}
+.skill-tree-content .feature-tabs{flex:none;justify-content:flex-start;border:0;gap:24px}
+.skill-tree-content .feature-tabs>button{flex:0 0 auto;padding-inline:0}
 .skill-tree-types{display:flex;flex:none;align-items:center;gap:var(--category-pill-gap);overflow-x:auto;scrollbar-width:none;min-height:52px}
 .skill-tree-types>button{display:flex;align-items:center;flex:none;min-height:44px;padding:0;border:0;background:transparent}
 .skill-tree-questions{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}

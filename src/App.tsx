@@ -23,6 +23,7 @@ import TodoDetail,{referenceTodos,TodoDetailList} from './components/TodoDetail'
 import MeetingDetail from './components/MeetingDetail';
 import CloseButton from './components/CloseButton';
 import TravelDocuments from './components/TravelDocuments';
+import AnswerFeedback from './components/AnswerFeedback';
 import ChatPage from './components/ChatPage';
 import {createDemoReply,normalizeDemoMessages} from './ai/replies';
 import AppNavBar,{NavSearchIcon} from './components/AppNavBar';
@@ -84,7 +85,7 @@ function Modal({action,close,children}:{action:Action;close:()=>void;children:Re
   },[close]);
   return <div className="modal-backdrop" onClick={e=>{if(e.target===e.currentTarget)close()}}>
     <section className={'modal-sheet app-close-surface modal-'+action.type+(isArticle?' modal-article':'')+(isRecord?' modal-record':'')} role="dialog" aria-modal="true" aria-labelledby="modal-title" ref={ref}>
-      <header className={isArticle?'article-closebar':undefined}>{!isArticle&&<h2 id="modal-title">{isRecord?(recordTitle?scheduleTitle(recordTitle):findWorkbenchTask(action.value)?.title||action.value):action.type==='roles'?'切换门户':(action.type==='portal-news-detail'||action.type==='group-news-detail')?'资讯详情':action.type==='service-alerts'?(action.value==='all'?'全部智能提醒':'智能提醒详情'):action.type.startsWith('hotspot-')?hotspotTitle(action):action.value}</h2>}<CloseButton aria-label="关闭弹窗" onClick={close}/></header>
+      <header className={isArticle?'article-closebar':undefined}>{!isArticle&&<h2 id="modal-title">{isRecord?(recordTitle?scheduleTitle(recordTitle):findWorkbenchTask(action.value)?.title||action.value):action.type==='roles'?'切换门户':action.type==='answer-feedback'?(action.value==='positive'?'满意打分':'不满意反馈'):(action.type==='portal-news-detail'||action.type==='group-news-detail')?'资讯详情':action.type==='service-alerts'?(action.value==='all'?'全部智能提醒':'智能提醒详情'):action.type.startsWith('hotspot-')?hotspotTitle(action):action.value}</h2>}<CloseButton aria-label="关闭弹窗" onClick={close}/></header>
       <div className="modal-body">{children}</div>
     </section>
   </div>;
@@ -319,6 +320,7 @@ export default function App(){
         :modal.type==='meeting-detail'?<MeetingDetail key={modal.value} id={modal.value} onClose={closeModal} onEdit={event=>navigate('schedule-new?'+new URLSearchParams({id:event.id,date:event.start.slice(0,10),view:'day'}))} onDeleted={()=>{setTodoVersion(todoVersion+1);closeModal();notify('日程已删除')}}/>
         :['approve','todo-detail'].includes(modal.type)?<TodoDetail key={modal.value} title={modal.value} processable={modal.type==='approve'} onClose={closeModal}/>
         :modal.type==='travel-documents'?<TravelDocuments/>
+        :modal.type==='answer-feedback'?<AnswerFeedback kind={modal.value==='positive'?'positive':'negative'} onCancel={closeModal} onSaved={()=>{closeModal();notify('感谢你的反馈')}}/>
         :modal.type==='applications'?<div className="simple-list">{readLocal<{title:string;name:string;start:string;reason:string}[]>('applications',[]).length?
           readLocal<{title:string;name:string;start:string;reason:string}[]>('applications',[]).map((a,i)=><article key={i}><h3>{a.title} · {a.name}</h3><small>{a.start}</small><p>{a.reason}</p></article>):<p className="empty-state">暂无申请记录</p>}</div>
         :modal.type==='attendance-record'?<p className="empty-state">{readLocal('attendance','')?'今日打卡时间：'+readLocal('attendance',''):'今日暂无打卡记录'}</p>

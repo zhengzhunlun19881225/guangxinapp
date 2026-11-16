@@ -7,5 +7,5 @@
  font:400 14px/22px var(--font-app);white-space:nowrap;
 }
 :is(.device,.desktop-spec-panel) button[aria-selected=true]>.app-pill-label{
- background:#f4f6f8;color:#03091B;font-weight:600;font-synthesis:weight;
+ background:#f4f6f8;color:var(--color-brand);font-weight:600;font-synthesis:weight;
 }

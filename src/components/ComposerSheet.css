@@ -5,6 +5,6 @@
 .composer-picker-categories{display:flex;gap:var(--category-pill-gap);overflow-x:auto;scrollbar-width:none;padding:0 15px 8px;flex-shrink:0}
 .composer-picker-categories>button{height:44px;min-height:44px;min-width:44px;display:flex;align-items:center;flex-shrink:0;font:var(--type-function);color:var(--color-muted)}
 .composer-picker-categories>button>span{display:flex;align-items:center;justify-content:center;height:28px;padding:0 10px;border-radius:999px;background:#f4f6f8;color:var(--color-secondary);font:400 14px/22px var(--font-app)}
-.composer-picker-categories>button[aria-selected=true]>span{color:#03091B;background:#f4f6f8;font-weight:600}
+.composer-picker-categories>button[aria-selected=true]>span{color:var(--color-brand);background:#f4f6f8;font-weight:600}
 .composer-picker-content{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 14px max(24px,env(safe-area-inset-bottom));scrollbar-width:none}
 @media(prefers-reduced-motion:reduce){.device .composer-picker-sheet{animation:none}}

@@ -3,3 +3,5 @@
 .device .skill-tree-picker-content{display:flex;flex-direction:column;padding:0 10px;background:#fff;overflow:hidden}
 .skill-tree-picker-content>.skill-tree-content{flex:1;width:100%}
 .skill-tree-picker-content .feature-skills-card{padding:0}
+.device .skill-tree-picker-content{padding-inline:20px}
+.device .skill-tree-picker-content .feature-skills-card{padding-inline:0}
