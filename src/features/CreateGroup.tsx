@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Building2,Check,ChevronRight,Minus,Plus,Users,X} from 'lucide-react';
-import {imageFor,readLocal,saveLocal} from '../data';
+import {readLocal,saveLocal} from '../data';
 import {enterpriseDepartments,initialGroups,initialMembers,people,type Group,type Person} from '../im/data';
 import {Empty,FeatureSearch,FeatureShell,Mark,Sheet} from './UI';
 import {queryFor,routeTo,type FeatureProps} from './data';
@@ -9,7 +9,7 @@ import './CreateGroup.css';
 type Draft={name:string;members:string[]};
 type View='form'|'picker'|'groups'|'group-members'|'companies'|'departments'|'members'|'selected';
 const companyNames=['集团总部','广新企运','广新研究院','盛特投资','兴发铝业','星湖科技','香港港投','丝纺集团','佛塑科技','纺织股份','省开发','省食品'];
-const creator:Person={id:'self',name:'唐学文',job:'群主',avatar:imageFor('0:6645')||'/assets/im/self-avatar.png'};
+const creator:Person={id:'self',name:'唐学文',job:'群主',avatar:'/assets/im/create-group-owner.png'};
 const limit=1000;
 export default function CreateGroup({height,locationKey,navigate,notify}:FeatureProps){
  const query=queryFor(locationKey),origin=query.get('origin')==='contacts'?'contacts':'im',returnTo=query.get('from')==='groups'?'im-groups?origin='+origin:origin;

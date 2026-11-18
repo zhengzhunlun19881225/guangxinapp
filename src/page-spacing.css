@@ -28,8 +28,7 @@
 .artboard .contacts-content{left:var(--page-inset);right:var(--page-inset)}
 .artboard .contact-company,.artboard .contacts-list{padding-inline:var(--card-inset)}
 .artboard .work-todo,.artboard .work-calendar{padding-inline:var(--card-inset)}
-.artboard .todo-tabs{display:flex;justify-content:flex-start;align-items:center;gap:16px;height:44px;padding:0;background:transparent;border-radius:0;margin-bottom:0}
-.artboard .todo-tabs>button{position:relative;flex:0 0 auto;min-height:44px;height:44px;display:flex;align-items:center;border-radius:0;background:transparent;box-shadow:none}
+.artboard .todo-tabs{margin:4px 0 8px}
 .artboard .todo-row strong{padding-right:0}
 
 /* IM and personal-service pages use the requested 10px page gutter. */

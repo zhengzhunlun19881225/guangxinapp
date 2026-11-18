@@ -15,6 +15,7 @@ import AnniversaryGreeting from './components/AnniversaryGreeting';
 import {DailyBriefHistory,DailyBriefSources} from './components/BriefDialogs';
 import PortalFilters,{PortalFilterForm} from './components/PortalFilters';
 import ShortcutCard from './apps/ShortcutCard';
+import GlobalSearch from './components/GlobalSearch';
 import OverlayScrollbars from './components/OverlayScrollbars';
 import ResearchUpdates from './components/ResearchUpdates';
 import ProjectInvestments,{InvestmentFilterForm,defaultInvestmentFilters,type InvestmentFilters} from './components/ProjectInvestments';
@@ -329,7 +330,8 @@ export default function App(){
         :modal.type==='about'?<div className="agent-detail"><img src={mascot} alt=""/><h3>广智新 App</h3><p>小新 AI · 工作台 · 广新门户 · IM</p><p>App 设计还原独立演示项目<br/>版本 1.0.0</p></div>
         :modal.type==='voice'?<div className="agent-detail"><Asset node="0:5159"/><h3>语音输入</h3><p>当前演示环境请使用键盘输入，也可通过手机输入法的语音按钮转文字。</p><button className="primary-button" onClick={closeModal}>开始输入</button></div>
         :modal.type==='call'?<div className="agent-detail"><img src={mascot} alt=""/><h3>{modal.value}</h3><p>电话功能需要连接企业通讯录服务。</p><button className="primary-button" onClick={closeModal}>返回通讯录</button></div>
-        :['list','search','feed'].includes(modal.type)?<><Search value={modalSearch} onChange={setModalSearch}/>
+        :modal.type==='search'?<GlobalSearch onSelect={action=>{closeModal();onAction(action)}} notify={notify}/>
+        :['list','feed'].includes(modal.type)?<><Search value={modalSearch} onChange={setModalSearch}/>
           <div className="simple-list">{(modal.value.includes('通讯录')||modal.value.includes('集团')||modal.value.includes('群聊')?contacts.map(c=>c.name):questions)
             .filter(v=>v.includes(modalSearch)).map((v,i)=><button key={v+i} onClick={()=>setModal({type:contacts.some(c=>c.name===v)?'conversation':'detail',value:v})}><span>{v}</span><i>›</i></button>)}
           {modalSearch&&!questions.concat(contacts.map(c=>c.name)).some(v=>v.includes(modalSearch))&&<p className="empty-state">没有找到相关内容</p>}</div></>

@@ -7,7 +7,7 @@
 .composer-attachment-card{position:relative;display:flex;align-items:center;min-width:0;min-height:58px;border:1px solid var(--control-border);border-radius:12px;background:#fff;padding-right:calc(var(--composer-hit,44px) - 8px)}
 .device .composer-attachment-main{display:flex;align-items:center;gap:8px;min-width:0;width:100%;min-height:56px;padding:8px;text-align:left}
 .composer-attachment-main>.resource-browser-icon{width:28px;height:28px;flex:0 0 28px;border-radius:5px;display:grid;place-items:center;background:var(--color-muted);color:#fff}
-.composer-attachment-main>.resource-browser-icon.is-image{background:#ff9500}.composer-attachment-main>.resource-browser-icon.is-word{background:var(--color-blue)}
+.composer-attachment-main>.resource-browser-icon.is-image{background:#ff9500}.composer-attachment-main>.resource-browser-icon.is-artwork{background:transparent}
 .composer-attachment-main .resource-browser-icon svg{width:21px;height:21px}.composer-attachment-main .resource-browser-icon>span{font:400 22px/28px var(--font-app)}
 .composer-attachment-main>span:last-child{min-width:0;flex:1;display:grid}
 .composer-attachment-main strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:var(--type-body);color:var(--color-primary)}

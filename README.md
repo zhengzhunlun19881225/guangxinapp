@@ -189,3 +189,19 @@ node scripts/verify-browser.mjs
 - Chrome验证：`output/playwright/hotspot-manage/report.json`、`hotspots/report.json`、`schedule-create/report.json`、`schedule/report.json`，全部passed；对照截图位于 `hotspot-manage/` 和 `schedule-remove-extras/`。
 
 - 最新管理关注布局：切换栏铺满内容宽度；复选框紧随“仅展示关注主题”，新增入口位于同行右侧。主题标题与关注操作同排，说明独占下一行；移除说明条、列表编辑入口及列表底部关闭按钮，保留右上角X。新增页隐藏切换栏，顶部返回，四个字段及底部取消/保存并关注保留。对照截图：`output/playwright/hotspot-manage-layout/`。
+
+
+### App 全局搜索（2026-11-17，仅本地）
+
+全局搜索替换原热门问题列表，按姓名/岗位、应用名称/分类、智能体及技能名称/用途搜索。输入后显示全部、通讯录、系统应用、智能体&Skill四类，全部视图分组预览三项并提供查看全部；计数来自实际匹配，不采用参考截图中的占位数量。复用通讯录头像、应用图标和目录入口。关键词提交或打开结果后保存最近20条本机历史，支持重搜、单条删除、取消/确认全部清空。正文独立滚动，分类切换保留关键词，支持方向键切换分类及Escape关闭。
+
+验证记录：`output/playwright/global-search/report.json`，覆盖历史、分类、联系人/应用表单/智能体跳转、空状态、键盘及320/375/430/1440px边界。未接入远程搜索接口。
+
+### App 局部样式与内容（2026-11-17，仅本地）
+
+- 云盘顶部编辑/添加图标使用 #03091B、22px视觉尺寸及44px点击热区；目录链接和预览操作使用功能蓝 #006DFF。
+- 统一待办和管理关注复用 SegmentedTabs：36px灰底容器、32px白色选中块、黑字加粗，支持方向键与Home/End。
+- 知识库通用/组织/团队/个人各行均显示下级箭头；无下级、无文档及空搜索采用100px规范缺省插画。
+- AI首页热门问答从3条补至5条，顺序按用户截图；功能卡片横向外间距从8px减至0，轮播步长同步从137px改为129px。
+- 差旅偏好卡片、输入选择框、已选标签及操作按钮圆角8px。全局搜索历史改为浅灰标签并排自动换行，圆角8px、右侧保留删除操作。
+- 检查记录：`output/playwright/ui-refinements-1117/report.json`与`output/playwright/global-search/report.json`；本次未远程发布。

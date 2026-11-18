@@ -8,6 +8,6 @@ export default function AppIcon({app,system=false}:{app:Application;system?:bool
  const id=aliases[app.id]||app.id,definition=[...commonAppCatalog,...systemAppCatalog].find(a=>a.id===id);
  const Glyph=definition?.icon;
  return <span className="pc-app-icon" data-pc-icon={id} data-shape={system?'system':'application'} aria-hidden="true">
-  {hasWorkbenchVector(id)?<WorkbenchVectorIcon name={id}/>:Glyph?<span className="pc-app-glyph" style={{background:`linear-gradient(145deg,${definition.color}aa,${definition.color})`} as CSSProperties}><Glyph size={22} strokeWidth={1.8}/></span>:null}
+  {system&&Glyph?<span className="pc-app-system-glyph"><Glyph size={22} strokeWidth={1.8}/></span>:hasWorkbenchVector(id)?<WorkbenchVectorIcon name={id}/>:Glyph?<span className="pc-app-glyph" style={{background:`linear-gradient(145deg,${definition.color}aa,${definition.color})`} as CSSProperties}><Glyph size={22} strokeWidth={1.8}/></span>:null}
  </span>
 }

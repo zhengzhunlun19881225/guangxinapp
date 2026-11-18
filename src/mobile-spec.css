@@ -1,6 +1,7 @@
 /* Approved mobile specification. All measurements are at the 375px baseline. */
 :root {
   --app-design-width: 375px;
+  --avatar-radius: 8px;
   --color-brand: #ff0000;
   --primary-button-background: linear-gradient(90deg, #FF9622 0%, #FF0000 100%);
   --control-height: 40px;
@@ -22,7 +23,10 @@
   --control-background: #ffffff;
   --control-active-background: #fcfcfe;
   --control-border: #e7ecf5;
-  --secondary-button-background: #f2f4f7;
+  --secondary-button-background: #ffffff;
+  --secondary-button-border: #e2e7ef;
+  --secondary-button-color: var(--color-primary);
+  --secondary-button-radius: 8px;
   --accent: var(--color-action);
   --muted: var(--color-muted);
   --type-page: 400 18px/26px var(--font-app);
@@ -95,7 +99,7 @@
 }
 .suggestion-tabs .selected,.selected-agent {background:#fff0f0}
 .search-control input::placeholder,.composer-input>input::placeholder {color:var(--color-muted)}
-.secondary-button {color:var(--color-secondary)}
+.secondary-button {color:var(--secondary-button-color)}
 .bottom-nav>button,.bottom-nav>button.mascot-nav span {font:var(--type-function);color:var(--color-other)}
 .bottom-nav>button[aria-current] span {color:var(--color-brand)}
 .nav-icon {height:22px;width:22px;margin-top:5px;background:var(--color-other);mask-size:contain;mask-repeat:no-repeat;mask-position:center}

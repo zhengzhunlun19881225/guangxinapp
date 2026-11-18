@@ -9,3 +9,6 @@
 :is(.device,.desktop-spec-panel) button[aria-selected=true]>.app-pill-label{
  background:#f4f6f8;color:var(--color-brand);font-weight:600;font-synthesis:weight;
 }
+:is(.device,.desktop-spec-panel) :is(.group-news,.spec-adaptive-news) button[aria-selected=true]>.app-pill-label{
+ background:var(--color-brand-soft);color:var(--color-brand);font-weight:400;
+}

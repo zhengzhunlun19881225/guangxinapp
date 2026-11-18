@@ -20,7 +20,7 @@ export function FeatureTabs({items,value,onChange,label='分类',segmented=false
  return <div className={'feature-tabs'+(segmented?' is-segmented':'')} role="tablist" aria-label={label}>{items.map(item=><button role="tab" key={item} aria-selected={item===value} onClick={()=>onChange(item)}>{item}</button>)}</div>;
 }
 export function Mark({text,query}:{text:string;query:string}){if(!query)return <>{text}</>;const parts=text.split(query);return <>{parts.map((part,i)=><span key={i}>{i>0&&<mark>{query}</mark>}{part}</span>)}</>}
-export function Empty({children='暂无相关内容'}:{children?:ReactNode}){return <p className="feature-empty" role="status">{children}</p>}
+export function Empty({children='暂无相关内容',illustration=false}:{children?:ReactNode;illustration?:boolean}){return illustration?<div className="feature-empty feature-empty-illustrated" role="status"><img src="/assets/ui/empty-records.png" alt=""/><p>{children}</p></div>:<p className="feature-empty" role="status">{children}</p>}
 export function Sheet({title,close,children,footer,compact=false}:{title:string;close:()=>void;children:ReactNode;footer?:ReactNode;compact?:boolean}){
  const ref=useRef<HTMLDivElement>(null),closeRef=useRef(close);closeRef.current=close;
  useEffect(()=>{const previous=document.activeElement as HTMLElement;const flow=ref.current?.closest('.feature-flow');const siblings:HTMLElement[]=[];let branch:Element|null=ref.current?.parentElement||null;while(branch&&branch!==flow){for(const el of Array.from(branch.parentElement?.children||[]))if(el!==branch&&el instanceof HTMLElement)siblings.push(el);branch=branch.parentElement}const inert=siblings.map(el=>el.inert);siblings.forEach(el=>el.inert=true);ref.current?.querySelector<HTMLElement>('input,button,textarea,select')?.focus();

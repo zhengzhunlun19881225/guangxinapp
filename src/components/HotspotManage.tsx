@@ -1,5 +1,6 @@
 import {useId,useRef,useState,type FormEvent} from 'react';
 import {ChevronLeft,Sparkles,Star} from 'lucide-react';
+import SegmentedTabs from './SegmentedTabs';
 import {emptyTopic,hotspotSources,hotspotTopics,interpretHotspotPrompt,normalizedTopicName,type FollowTopic,type HotspotSettings,type TopicInput} from '../data/hotspotSubscriptions';
 import './NewsSubscription.css';
 import './HotspotManage.css';
@@ -39,7 +40,7 @@ export default function HotspotManage({settings,onSave,onClose}:Props){
  </article>}
  return <div className={'hotspot-manager'+(creating?' is-creating':'')}>
   <div className="hotspot-manager-body" ref={body}>
-   {!creating&&<div className="hotspot-manage-toolbar"><div className="news-sub-modes" role="tablist" aria-label="热点关注方式">{(['manual','ai'] as const).map(tab=><button type="button" role="tab" id={id+'-'+tab} aria-controls={id+'-panel-'+tab} aria-selected={mode===tab} tabIndex={mode===tab?0:-1} key={tab} onClick={()=>changeMode(tab)} onKeyDown={event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const next=event.key==='Home'?'manual':event.key==='End'?'ai':mode==='manual'?'ai':'manual';changeMode(next);document.getElementById(id+'-'+next)?.focus()}}>{tab==='ai'&&<Sparkles size={14}/>} {tab==='manual'?'已关注主题':'AI 订阅'}</button>)}</div></div>}
+   {!creating&&<div className="hotspot-manage-toolbar"><SegmentedTabs id={id} className="news-sub-modes" label="热点关注方式" value={mode} onChange={changeMode} panels options={[{value:'manual',label:'已关注主题'},{value:'ai',label:<><Sparkles size={14}/>AI 订阅</>}]}/></div>}
    <div role={creating?undefined:'tabpanel'} aria-labelledby={creating?undefined:id+'-'+mode} id={id+'-panel-'+mode}>
     {mode==='manual'?(creating?<form id={id+'-new'} noValidate onSubmit={event=>saveTopic(event)}><button type="button" className="hotspot-manage-back" onClick={()=>{setEditingId(null);setError('')}}><ChevronLeft size={18}/>返回</button><h3 className="hotspot-manage-subtitle">编辑关注主题</h3>{fields(draft,setDraft)}</form>:<>
 

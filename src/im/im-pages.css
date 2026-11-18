@@ -3,7 +3,7 @@
 .im2-flow{--im2-accent:var(--color-brand);display:flex;flex-direction:column;position:relative;overflow:hidden;background:var(--canvas);color:var(--color-primary);width:375px;min-height:400px;font:var(--type-body)}
 .im2-flow button,.im2-flow input{font-family:inherit}
 .im2-icon{display:inline-block;flex-shrink:0;vertical-align:middle;background:currentColor;mask-position:center;mask-size:contain;mask-repeat:no-repeat}
-.im2-avatar{display:block;object-fit:cover;flex-shrink:0;border-radius:7px}
+.im2-avatar{display:block;object-fit:cover;flex-shrink:0;border-radius:var(--avatar-radius)}
 .im2-status{height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:15px;line-height:20px;color:#080808;font-weight:500}
 .im2-status>div{display:flex;align-items:center;gap:4px}
 .im2-status-wide{padding-left:35px}
@@ -75,7 +75,7 @@
 .im2-selection-footer>button:first-child span{color:var(--im2-accent);padding-left:4px}
 .im2-primary,.im2-secondary{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:5px 14px;min-height:32px;line-height:22px;font-size:14px}
 .im2-primary{background:var(--im2-accent);color:#fff}
-.im2-secondary{border:0;background:var(--secondary-button-background);color:var(--color-secondary)}
+.im2-secondary{border:1px solid var(--secondary-button-border);background:var(--secondary-button-background);color:var(--secondary-button-color);border-radius:var(--secondary-button-radius)}
 .im2-primary:disabled{opacity:1;background:var(--color-brand-disabled);color:#fff;cursor:default}
 .im2-wide{display:flex;width:100%;min-height:40px;margin-top:20px}
 .im2-breadcrumb{display:flex;align-items:center;gap:4px;font-size:14px;color:var(--color-muted);margin:0 0 15px}
@@ -90,7 +90,7 @@
 .im2-selected-list{flex:1;min-height:0;overflow-y:auto}
 .im2-selected-list>.im2-person-row:first-child{margin-top:12px}
 .im2-dialog>footer{display:flex;gap:26px;margin-top:14px;padding-top:12px;flex-shrink:0}
-.im2-dialog>footer>button{flex:1;min-height:44px;border-radius:12px}
+.im2-dialog>footer>button{flex:1;min-height:44px;border-radius:12px}.im2-dialog>footer>.im2-secondary{border-radius:var(--secondary-button-radius)}
 .im2-confirm-text{padding:20px 0;flex:1;text-align:center}.im2-confirm-text.is-block-warning{text-align:left;font:var(--type-body)}
 .im2-group-qr{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:18px 0 30px;text-align:center}
 .im2-group-qr svg{width:190px;height:190px;padding:10px;background:#fff;color:#111}

@@ -335,3 +335,23 @@ final result: passed
 - 资讯详情关闭按钮由 top/right 8px 调整为 12px，实际向下/向左各移动 4px；关闭交互正常。
 - Chrome 375×812、DPR 1 检查：总体情况、领导/管理/员工门户、工作台标题样式一致，无运行时错误；生产构建通过。
 - 证据：`output/playwright/title-background/report.json`、`background-comparison.png`、`title-comparison.png`、`close-comparison.png`、各路由截图。并排对比检查背景颜色、插画、标题字重、修饰条、关闭按钮位置，未发现阻断问题。
+
+
+## App 全局搜索（2026-11-17）
+
+final result: passed
+
+- 参考：用户提供的 accdc333（原App）及472a993c/4711bde5/e4fbae03/50421636（搜索历史与分类结果）截图；在App现有375px弹层中实现对应内容层级。
+- 搜索输入、红色选中分类、灰色数量/标签、头像、名称/说明和分组查看更多已目视检查；截图 `output/playwright/global-search/all-375.png`、`agents-375.png`、`contacts-375.png`。
+- 历史提交/重搜/单条删除/确认清空与取消、分类及关键词保留、实际计数、空结果、联系人/应用表单/智能体跳转、方向键与Escape、320/375/430/1440px边界通过；无浏览器运行时错误。
+- 仅验证本次全局搜索范围，数据来自现有本地目录。类型检查与生产构建通过；未发布GitHub或Figma。
+
+## 云盘、待办、知识库、AI首页与标签（2026-11-17）
+
+final result: passed
+
+对照用户提供的云盘颜色/尺寸、HotspotManage分段组件、知识库箭头、5条热门问答、差旅偏好与历史搜索标签截图完成局部调整。目视检查云盘顶部与目录颜色、待办三等分白色选中块、知识库各行箭头与缺省图、5条问答与卡片间距。
+
+Chrome检查覆盖：云盘图标22px及44px热区、编辑/添加/预览；待办分类与键盘切换、关注设置共用组件；四类知识库箭头、无下级及无文件插画；5条问答顺序、末项填入草稿、卡片129px步长、320/375/430/1440px滚动后内容可完整访问；差旅偏好8px圆角与选项保存重载；历史标签8px圆角及重搜/删除/清空。类型检查和生产构建通过，无浏览器运行时错误。
+
+证据目录：`output/playwright/ui-refinements-1117/`、`output/playwright/global-search/`。仅覆盖本次相关区域，未进行全站回归或远程发布。

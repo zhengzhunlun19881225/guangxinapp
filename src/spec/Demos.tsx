@@ -4,6 +4,7 @@ import CloseButton from '../components/CloseButton';
 import AppPatterns from './AppPatterns';
 import AppSelect from '../components/AppSelect';
 import AppNavBar,{NavBackIcon,NavMoreIcon} from '../components/AppNavBar';
+import SegmentedTabs from '../components/SegmentedTabs';
 import BannerDemo from './BannerDemo';
 import BadgeDemo from './BadgeDemo';
 import ActionSheetDemo from './ActionSheetDemo';
@@ -51,7 +52,7 @@ export default function SpecDemo({id,open,message}:Props){
   case 'button-types':return <div className="spec-button-grid">{button('主按钮')}{button('次要按钮','secondary')}{button('文字按钮','text')}{button('幽灵按钮','ghost')}{button('危险按钮','danger',()=>open('dialog'))}{button('普通按钮','plain')}</div>;
   case 'button-states':return <div className="spec-button-grid"><button className="spec-button spec-button-primary" disabled={busy} onClick={()=>loading(()=>message('操作成功'))}>{busy?<><SpecIcon name="LoaderCircle"/>加载中</>:'点击加载'}</button><button disabled className="spec-button spec-button-primary">禁用按钮</button>{button('模拟报错','ghost',()=>{setError(!error)})}{error&&<p className="spec-error" role="alert">提交失败，请重试</p>}</div>;
   case 'floating':return <div className="spec-floating-stage"><span>新建日程</span><button className="spec-fab" aria-label="悬浮新建" onClick={()=>message('已点击新建入口')}><SpecIcon name="Plus" size={28}/></button></div>;
-  case 'button-group':return <>{segments(['按日','按周','按月'],selected==='全部'?'按日':selected)}<div className="spec-button-grid">{button('取消','secondary')}{button('确认')}</div></>;
+  case 'button-group':return <><SegmentedTabs label="分段切换示例" value={selected==='全部'?'按日':selected} onChange={setSelected} options={['按日','按周','按月'].map(value=>({value,label:value}))}/><div className="spec-button-grid">{button('取消','secondary')}{button('确认')}</div></>;
   case 'iconbutton':return <div className="spec-row">{iconButton('Search','图标搜索',()=>message('搜索'))}{iconButton('Plus','图标新增',()=>message('新增'))}{iconButton('MoreHorizontal','图标更多',()=>open('actionsheet'))}<span className="spec-demo-note">视觉 20px · 热区 44px</span></div>;
   case 'input':return <label className="spec-input-label">姓名<div className="spec-input-wrap"><input aria-label="示例姓名" placeholder="请输入姓名" value={text} onChange={event=>setText(event.target.value)}/>{text&&iconButton('X','清空姓名',()=>setText(''))}</div></label>;
   case 'textarea':return <label className="spec-input-label">说明<textarea aria-label="示例说明" maxLength={100} value={text} onChange={event=>setText(event.target.value)} rows={3} placeholder="请填写详细说明"/><small className="spec-text-count">{text.length}/100</small></label>;

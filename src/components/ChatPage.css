@@ -16,7 +16,7 @@
 .chat-page .feature-carousel::-webkit-scrollbar,.chat-page .feature-carousel::-webkit-scrollbar-track,.chat-page .feature-carousel::-webkit-scrollbar-thumb{display:none;width:0;height:0;background:transparent}
 .device:has(.route-chat),.device:has(.route-chat) *{scrollbar-width:none;-ms-overflow-style:none}
 .device:has(.route-chat)::-webkit-scrollbar,.device:has(.route-chat) *::-webkit-scrollbar{display:none;width:0;height:0;background:transparent}
-.chat-page .feature-card{flex:0 0 129px;height:167px;margin-right:8px;border:0;border-radius:18px;box-shadow:0 6px 28px #7e8b9e24;scroll-snap-align:center;transform-origin:center bottom;transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s cubic-bezier(.22,1,.36,1);will-change:transform}
+.chat-page .feature-card{flex:0 0 129px;height:167px;margin-right:0;border:0;border-radius:18px;box-shadow:0 6px 28px #7e8b9e24;scroll-snap-align:center;transform-origin:center bottom;transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s cubic-bezier(.22,1,.36,1);will-change:transform}
 .chat-page .feature-carousel.is-scrolling .feature-card{transition:none}
 .chat-page .feature-card>img{top:0;left:0;width:127px;height:98px;object-fit:cover}
 .chat-page .feature-card:last-child{margin-right:0}

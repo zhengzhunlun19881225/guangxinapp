@@ -26,12 +26,14 @@
 .resource-browser-name strong{min-width:0}
 .resource-browser-name>svg{color:var(--color-action);flex:none}
 .resource-browser-icon{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:8px;overflow:hidden}
+.resource-browser-icon.is-artwork{display:block;object-fit:contain}
 .resource-browser-icon.is-outlined{border:1px solid #b5e7fa}
 .resource-browser-icon.is-team{color:#00c7d9;border:1px solid #b5e7fa;background:linear-gradient(135deg,#fff,#edfaff)}
 .resource-browser-icon.is-image{background:linear-gradient(135deg,#ffb000,#ff8600);color:#fff}
-.resource-browser-icon.is-word,.resource-browser-icon.is-document{background:linear-gradient(135deg,#75adff,#1477ef);color:#fff}
+.resource-browser-icon.is-document{background:linear-gradient(135deg,#75adff,#1477ef);color:#fff}
 .resource-browser-icon.is-text{background:linear-gradient(135deg,#a0a9c8,#717c9d);color:#fff}
-.resource-browser-icon.is-text>span,.resource-browser-icon.is-word>span{font:400 30px/40px var(--font-app)}
+.resource-browser-icon.is-text>span{font:400 30px/40px var(--font-app)}
 .resource-browser-icon.is-archive,.resource-browser-icon.is-video,.resource-browser-icon.is-audio{background:#eff5ff;color:var(--color-action)}
 .resource-browser-select-all{display:flex;justify-content:space-between;align-items:center;padding:0 14px 8px;font:var(--type-body);color:var(--color-action)}
 .resource-browser-select-all button{min-height:32px}
+.knowledge-page .resource-browser-crumbs button,.knowledge-page .resource-browser-preview{color:var(--color-link)}

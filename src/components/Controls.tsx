@@ -1,9 +1,10 @@
 import {readWorkbenchTasks,type TaskKind} from '../data/workbenchTasks';
 import {readImConversations} from '../im/conversations';
 import {readScheduleEvents,scheduleEnded,todayKey} from '../schedule/data';
-import {useEffect,useLayoutEffect,useState,useRef,type FormEvent} from 'react';
+import {useEffect,useLayoutEffect,useState,useRef,useId,type FormEvent} from 'react';
 import {ArrowRight,BellOff,Camera,ChevronDown,CirclePlus,Mic,Pin,Plus} from 'lucide-react';
 import AppNavBar from './AppNavBar';
+import SegmentedTabs from './SegmentedTabs';
 import {imageFor, mascot, agents, skills, conversations, contacts, questions,readLocal,saveLocal} from '../data';
 import type {Action} from './SceneAction';
 
@@ -80,7 +81,7 @@ export function MessagingList({kind,onAction}:{kind:'im'|'contacts';onAction:(a:
   </>;
 }
 export function Suggestions({onAction}:{onAction:(a:Action)=>void}) {
-  const rows=questions.slice(0,3);
+  const rows=[questions[0],questions[1],questions[3],questions[2],questions[4]];
   return <section className="chat-suggestions native-card" data-kind="popular" aria-label="热门回答">
     <h3 className="suggestion-heading">热门回答</h3>
     {rows.map((q,i)=><button className="suggestion-row" key={q+i} onClick={()=>onAction({type:'question',value:q})}>
@@ -89,23 +90,26 @@ export function Suggestions({onAction}:{onAction:(a:Action)=>void}) {
 }
 export function Todo({onAction}:{onAction:(a:Action)=>void}) {
   const [tab,setTab]=useState<TaskKind>('pending');
+  const tabId=useId();
   const tasks=readWorkbenchTasks(),pendingCount=tasks.filter(task=>task.kind==='pending').length,rows=tasks.filter(task=>task.kind===tab);
   return <section className="work-todo native-card"><header><h2>统一待办</h2><button onClick={()=>onAction({type:'list',value:'统一待办'})}>更多 ›</button></header>
-    <div className="todo-tabs" role="tablist" aria-label="待办分类">{(['pending','completed','messages'] as const).map(kind=><button key={kind} role="tab" aria-selected={tab===kind} onClick={()=>setTab(kind)}><span className="app-pill-label">{kind==='pending'?'待办('+pendingCount+')':kind==='completed'?'已办':'消息'}</span></button>)}</div>
+    <SegmentedTabs id={tabId} className="todo-tabs" label="待办分类" value={tab} onChange={setTab} panels options={[{value:'pending',label:'待办('+pendingCount+')'},{value:'completed',label:'已办'},{value:'messages',label:'消息'}]}/>
+    <div role="tabpanel" id={tabId+'-panel-'+tab} aria-labelledby={tabId+'-'+tab}>
     {rows.slice(0,3).map(task=><button className="todo-row" key={task.id} onClick={()=>onAction({type:task.kind==='pending'?'approve':'todo-detail',value:task.id})}
       ><strong>[系统来源] {task.title}</strong><span>发起人 <Asset node="0:6867"/> {task.author}　时间 {task.time}</span></button>)}
     {!rows.length&&<p className="small-empty">暂无{tab==='messages'?'消息':tab==='completed'?'已办事项':'待办事项'}</p>}
+    </div>
   </section>;
 }
 export function FeatureCards({onAction}:{onAction:(a:Action)=>void}){
-  const carousel=useRef<HTMLDivElement>(null),scrollTimer=useRef<number|undefined>(undefined),[scrollLeft,setScrollLeft]=useState(30),[scrolling,setScrolling]=useState(false);
-  const step=137;
+  const carousel=useRef<HTMLDivElement>(null),scrollTimer=useRef<number|undefined>(undefined),[scrollLeft,setScrollLeft]=useState(22),[scrolling,setScrolling]=useState(false);
+  const step=129;
   const items=[
     {name:'财务自动差旅',description:'一句话提交出差申请单',image:'document-card.png',color:'#006dff'},
     {name:'法智小新',description:'解法规，答操作',image:'legal-card.png',color:'#722ed1'},
     {name:'制作PPT',description:'从需求到方案一键生成完整方案',image:'ppt-card.png',color:'#ff7d00'},
     {name:'AI+员工服务',description:'一句话提交请假、加班申请',image:'employee-card.png',color:'#ff0000'}];
-  useLayoutEffect(()=>{carousel.current?.scrollTo({left:30,behavior:'auto'})},[]);
+  useLayoutEffect(()=>{carousel.current?.scrollTo({left:22,behavior:'auto'})},[]);
   useEffect(()=>()=>{if(scrollTimer.current!==undefined)window.clearTimeout(scrollTimer.current)},[]);
   const cardStyle=(index:number)=>{const center=16+64.5+index*step,offset=(center-(scrollLeft+187.5))/step,curve=Math.max(-1.65,Math.min(1.65,offset)),distance=Math.min(1.5,Math.abs(curve)),verticalOffset=Math.max(0,distance*22-4);return {transform:`translateY(${verticalOffset}px) scale(${1-distance*.1}) rotate(${curve*8}deg)`,zIndex:String(20-Math.round(distance*10))}};
   const handleScroll=(event:React.UIEvent<HTMLDivElement>)=>{

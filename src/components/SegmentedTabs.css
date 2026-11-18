@@ -1,0 +1,5 @@
+.app-segmented-tabs{display:flex;align-items:stretch;gap:0;width:100%;height:36px;padding:2px;background:#f4f5f7;border-radius:12px}
+.app-segmented-tabs>button{position:relative;display:flex;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0;height:32px;min-height:32px;border-radius:9px;color:var(--color-muted);font:var(--type-function);white-space:nowrap}
+.app-segmented-tabs>button::before{content:'';position:absolute;inset:-6px 0}
+.app-segmented-tabs>button[aria-selected=true]{background:#fff;color:var(--color-primary);font-weight:600;font-synthesis:weight;box-shadow:0 1px 3px #03091b08}
+.app-segmented-tabs>button:focus-visible{outline:2px solid var(--color-brand);outline-offset:1px}
